@@ -45,6 +45,8 @@
     83
   ],
   "settings_key_panel": true,
+  "quick_panel_side": true,
+  "power_on_home_always": true,
   "weather": true,
   "weather_lat": 46.7712,
   "weather_lon": 23.6236

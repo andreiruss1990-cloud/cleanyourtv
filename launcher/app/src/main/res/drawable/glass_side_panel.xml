@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- quick_panel_side: a full-height sheet on the right edge, dark enough to read over a bright wallpaper or a
+     playing app, light enough to see through. One hairline on its inner edge, no corners. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:angle="0" android:startColor="#730A0C10" android:endColor="#A60A0C10" />
+        </shape>
+    </item>
+    <item android:top="-2dp" android:right="-2dp" android:bottom="-2dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#2EFFFFFF" />
+        </shape>
+    </item>
+</layer-list>

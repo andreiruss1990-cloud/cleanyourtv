@@ -38,6 +38,8 @@ public final class QuickSettingsActivity extends Activity {
             position.setMargins(inset, position.topMargin, 0, position.bottomMargin);
             panel.setLayoutParams(position);
         }
+        boolean side = Config.load(this).quickPanelSide;
+        if (side) placeOnSide();
         findViewById(R.id.scrim).setOnClickListener(v -> finish());
         LinearLayout rows = findViewById(R.id.rows);
         addRow(rows, R.drawable.ic_settings, R.string.tv_settings, 0, SystemSettings.intent(this, Settings.ACTION_SETTINGS));
@@ -48,7 +50,32 @@ public final class QuickSettingsActivity extends Activity {
         // Through Home, so it rebuilds with the new choices when Launcher settings closes.
         addRow(rows, R.drawable.ic_home_settings, R.string.launcher_settings, 0,
                 new Intent(this, MainActivity.class).setAction(MainActivity.ACTION_LAUNCHER_SETTINGS));
+        if (side) spaceRows(rows);
         rows.getChildAt(0).requestFocus();
+    }
+
+    /** quick_panel_side: full height against the right edge (left in Hebrew), see-through, no corners. */
+    private void placeOnSide() {
+        float dp = getResources().getDisplayMetrics().density;
+        View panel = findViewById(R.id.panel);
+        android.widget.FrameLayout.LayoutParams lp = new android.widget.FrameLayout.LayoutParams(
+                Math.round(320 * dp), android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                getResources().getBoolean(R.bool.rtl_menu_bar) ? android.view.Gravity.LEFT : android.view.Gravity.RIGHT);
+        panel.setLayoutParams(lp);
+        panel.setBackgroundResource(R.drawable.glass_side_panel);
+        panel.setElevation(0);
+        panel.setPadding(Math.round(28 * dp), Math.round(64 * dp), Math.round(28 * dp), Math.round(32 * dp));
+    }
+
+    /** Taller rows with air between them, to suit the full-height sheet. */
+    private static void spaceRows(LinearLayout rows) {
+        float dp = rows.getResources().getDisplayMetrics().density;
+        for (int i = 0; i < rows.getChildCount(); i++) {
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) rows.getChildAt(i).getLayoutParams();
+            lp.height = Math.round(50 * dp);
+            lp.bottomMargin = Math.round(6 * dp);
+            rows.getChildAt(i).setLayoutParams(lp);
+        }
     }
 
     /** Settings pressed again while the panel is up. */

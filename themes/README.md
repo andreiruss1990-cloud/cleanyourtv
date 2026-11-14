@@ -192,6 +192,7 @@ A new key needs one there in the same pull request.
 | `weather_lat` | number | Latitude for `weather` |
 | `weather_lon` | number | Longitude for `weather` |
 | `hide_top_buttons` | bool | Draws no Inputs, Wi-Fi, Reorder or Settings button in the top bar; the remote's Settings key (`settings_key_keycodes`) and, with `clock_home`, the settings row still reach them (`false` by default) |
+| `quick_panel_side` | bool | The remote's Settings button opens its quick panel as a full-height, see-through sheet on the right edge instead of a small box under the Settings pill (`false` by default) |
 | `back_opens_clock` | bool | Back on the Home screen opens the clock screensaver (the same screen as `home_idle_clock_minutes`) instead of doing nothing. Back inside apps, Settings and the App library is unchanged; any key leaves the clock for Home. `false` by default |
 | `clock_wallpaper` | bool | The clock screensaver over Home's wallpaper instead of black with a coloured glow; the clock still moves every minute (`false` by default) |
 | `clock_wallpaper_dim` | 0 to 90 | How dark that wallpaper is behind the clock, in percent (50 by default) |
