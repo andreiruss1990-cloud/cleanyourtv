@@ -8,9 +8,8 @@
   ],
   "fill_dock": false,
   "columns": 5,
-  "rows_below_dock": 0,
-  "single_row": true,
-  "dock_band_all": true,
+  "rows_below_dock": 3,
+  "single_row": false,
   "dock_row": true,
   "background_color": "#05070C",
   "wallpaper": true,
@@ -44,5 +43,8 @@
   "settings_key_keycodes": [
     83
   ],
-  "settings_key_panel": true
+  "settings_key_panel": true,
+  "weather": true,
+  "weather_lat": 46.7712,
+  "weather_lon": 23.6236
 }

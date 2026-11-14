@@ -284,6 +284,22 @@
                             android:letterSpacing="0.14"
                             android:textAllCaps="true" />
 
+                        <!-- clock_home weather: "8°C · Cloudy", filled in once the first reading arrives. -->
+                        <TextView
+                            android:id="@+id/weather"
+                            android:gravity="left"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:textColor="#A6FFFFFF"
+                            android:textSize="14sp"
+                            android:fontFamily="@string/font_regular"
+                            android:letterSpacing="0.14"
+                            android:textAllCaps="true"
+                            android:visibility="gone" />
+
                         <!-- Lunar date ("Lunar 13/9 · Year of the Horse"), shown when lunar_date is on. -->
                         <TextView
                             android:id="@+id/lunarDate"
@@ -385,6 +401,7 @@
 
         <!-- The wrapper clips at the grid's edge; the grid itself must not clip so scaled tiles can overflow their cells. -->
         <FrameLayout
+            android:id="@+id/gridWrap"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -406,7 +423,8 @@
         </FrameLayout>
     </LinearLayout>
 
-    <!-- clock_home: a big centred clock over the wallpaper. Down reveals the dock, Up opens the settings bar. -->
+    <!-- clock_home: Home is the wallpaper with the clock, date and weather top left and the dock hidden. Down brings the
+         dock in, Up opens this row of settings, which Left and Right scroll through. -->
     <FrameLayout
         android:id="@+id/clockHome"
         android:layout_width="match_parent"
@@ -414,52 +432,12 @@
         android:visibility="gone"
         android:importantForAccessibility="no">
 
-        <LinearLayout
-            android:id="@+id/clockHomeBlock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextClock
-                android:id="@+id/bigClock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:format12Hour="h:mm"
-                android:format24Hour="HH:mm"
-                android:textColor="#FFFFFFFF"
-                android:textSize="150sp"
-                android:fontFamily="@string/font_light"
-                android:letterSpacing="-0.03"
-                android:fontFeatureSettings="tnum"
-                android:shadowColor="#66000000"
-                android:shadowRadius="24"
-                android:includeFontPadding="false" />
-
-            <TextClock
-                android:id="@+id/bigDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:format12Hour="@string/date_format_home"
-                android:format24Hour="@string/date_format_home"
-                android:textColor="#E6FFFFFF"
-                android:textSize="22sp"
-                android:fontFamily="@string/font_regular"
-                android:letterSpacing="0.14"
-                android:shadowColor="#66000000"
-                android:shadowRadius="12"
-                android:textAllCaps="true" />
-        </LinearLayout>
-
-        <!-- Up from the clock: a row of settings to scroll through left and right. -->
         <HorizontalScrollView
             android:id="@+id/settingsScroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginTop="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="90dp"
             android:scrollbars="none"
             android:overScrollMode="never"
             android:clipToPadding="false"

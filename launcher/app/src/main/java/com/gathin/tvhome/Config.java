@@ -140,6 +140,10 @@ final class Config {
     boolean clockHome;
     /** Theme hide_top_buttons: the Inputs, Wi-Fi and Settings buttons are not drawn (the remote's keys still work). */
     boolean hideTopButtons;
+    /** Theme weather: a temperature and sky line under the date, from Open-Meteo, for weather_lat / weather_lon. */
+    boolean weather;
+    double weatherLat;
+    double weatherLon;
     /** The ambient glow takes a new app's colour in one frame instead of dipping and fading (config.xml / theme glow_snap). */
     final boolean glowSnap;
     /** The remote's Settings button clears the TV Settings task before opening it (config.xml / theme settings_key_clear_task). */
@@ -747,6 +751,10 @@ final class Config {
         if (json != null) {
             built.clockHome = json.optBoolean("clock_home", false);
             built.hideTopButtons = json.optBoolean("hide_top_buttons", false);
+            built.weather = json.optBoolean("weather", false)
+                    && json.has("weather_lat") && json.has("weather_lon");
+            built.weatherLat = json.optDouble("weather_lat", 0);
+            built.weatherLon = json.optDouble("weather_lon", 0);
         }
         return built;
     }

@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,65 +22,99 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * clock_home: Home opens on a big centred clock over the wallpaper. Down shrinks the clock into the header
- * and brings the dock into focus; Up from the dock (or Back) returns to the clock; Up on the clock opens a row of
- * settings (Wi-Fi, Bluetooth, Display, Sound, Inputs, Apps, Settings) that Left and Right scroll through.
- * The clock screen and the settings row take every arrow key themselves; the grid only sees keys once the
- * clock has been left.
+ * clock_home: Home is the wallpaper with the clock, date and weather top left and the dock out of sight. Down slides
+ * the dock (and the rows of apps under it) in and focuses it; Up from the dock row (or Back) puts it away again;
+ * Up on the bare page opens a row of settings (Wi-Fi, Bluetooth, Display, Sound, Inputs, Apps, Settings) that Left
+ * and Right scroll through. The bare page and the settings row take every arrow key themselves; the grid only sees
+ * keys once the dock is in.
+ *
+ * The slides run on their own frame loop, not on Android's animators: many TVs ship with the animator duration
+ * scale at 0, which turns every ViewPropertyAnimator into a jump cut.
  */
 final class ClockHome {
     interface Host {
-        /** The clock was left: focus the dock. */
+        /** The dock slid in: focus it. */
         void focusDock();
 
         /** The Inputs entry of the settings row. */
         void openInputs();
     }
 
+    private interface Step {
+        void apply(float progress);
+    }
+
+    /** One timed change, driven by the view's own frame callbacks. */
+    private final class Tween implements Runnable {
+        private final long start = SystemClock.uptimeMillis();
+        private final long duration;
+        private final Step step;
+        private final Runnable end;
+        private boolean cancelled;
+
+        Tween(long duration, Step step, Runnable end) {
+            this.duration = duration;
+            this.step = step;
+            this.end = end;
+        }
+
+        void cancel() {
+            cancelled = true;
+        }
+
+        @Override
+        public void run() {
+            if (cancelled) return;
+            float t = duration <= 0 ? 1f : Math.min(1f, (SystemClock.uptimeMillis() - start) / (float) duration);
+            float inverse = 1f - t;
+            step.apply(1f - inverse * inverse * inverse);   // ease out
+            if (t < 1f) {
+                overlay.postOnAnimation(this);
+            } else if (end != null) {
+                end.run();
+            }
+        }
+    }
+
     private final Activity activity;
     private final Host host;
-    private final View content;
+    private final View gridWrap;
     private final View overlay;
-    private final TextClock bigClock;
-    private final TextClock bigDate;
-    private final TextClock headerClock;
-    private final View block;
     private final HorizontalScrollView scroll;
     private final LinearLayout bar;
-    private final View[] hiddenWhileActive;
+    private final View[] hiddenWhileHome;
     private final boolean animations;
     private final float density;
     private final int savedFocusability;
 
     private final List<View> cards = new ArrayList<>();
     private final List<Runnable> actions = new ArrayList<>();
-    private boolean active;
+    private boolean home;
     private boolean barOpen;
     private int selected;
     private long lastTransition;
+    private Tween gridTween;
+    private Tween barTween;
 
-    ClockHome(Activity activity, Host host, boolean animations, View... hiddenWhileActive) {
+    ClockHome(Activity activity, Host host, boolean animations, View... hiddenWhileHome) {
         this.activity = activity;
         this.host = host;
         this.animations = animations;
-        this.hiddenWhileActive = hiddenWhileActive;
+        this.hiddenWhileHome = hiddenWhileHome;
         density = activity.getResources().getDisplayMetrics().density;
-        content = activity.findViewById(R.id.content);
+        gridWrap = activity.findViewById(R.id.gridWrap);
         overlay = activity.findViewById(R.id.clockHome);
-        bigClock = activity.findViewById(R.id.bigClock);
-        bigDate = activity.findViewById(R.id.bigDate);
-        headerClock = activity.findViewById(R.id.clock);
-        block = activity.findViewById(R.id.clockHomeBlock);
         scroll = activity.findViewById(R.id.settingsScroll);
         bar = activity.findViewById(R.id.settingsBar);
-        savedFocusability = ((ViewGroup) content).getDescendantFocusability();
+        savedFocusability = ((ViewGroup) gridWrap).getDescendantFocusability();
     }
 
-    boolean isActive() {
-        return active;
+    /** True while the bare page (no dock) is showing. */
+    boolean isHome() {
+        return home;
     }
 
-    /** A held arrow repeats while a transition runs: those repeats must not move the dock selection too. */
+    /** A held arrow repeats while a slide runs: those repeats must not also move the dock selection. */
     boolean swallowRepeat(KeyEvent event) {
         return event.getRepeatCount() > 0 && System.currentTimeMillis() - lastTransition < 700;
     }
@@ -89,92 +123,51 @@ final class ClockHome {
         return animations ? ms : 0;
     }
 
-    /** Shows the clock screen. */
+    private void gridTo(float target, long ms, Runnable end) {
+        if (gridTween != null) gridTween.cancel();
+        final float from = gridWrap.getAlpha();
+        final float distance = 44 * density;
+        gridTween = new Tween(ms, p -> {
+            float v = from + (target - from) * p;
+            gridWrap.setAlpha(v);
+            gridWrap.setTranslationY((1f - v) * distance);
+        }, end);
+        gridTween.run();
+    }
+
+    /** Shows the bare page: the dock slides down and out of sight. */
     void show(boolean animated) {
-        if (active) {
-            if (barOpen) closeBar(false);
+        lastTransition = System.currentTimeMillis();
+        if (home) {
+            closeBar(false);
             return;
         }
-        active = true;
-        lastTransition = System.currentTimeMillis();
-        ((ViewGroup) content).setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+        home = true;
+        ((ViewGroup) gridWrap).setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         View focus = activity.getCurrentFocus();
         if (focus != null) focus.clearFocus();
-        for (View v : hiddenWhileActive) {
+        for (View v : hiddenWhileHome) {
             v.animate().cancel();
             v.setAlpha(0f);
         }
-        bigClock.setFormat24Hour(headerClock.getFormat24Hour());
-        bigClock.setFormat12Hour(headerClock.getFormat12Hour());
-        resetBlock();
-        overlay.animate().cancel();
-        content.animate().cancel();
-        long d = animated ? duration(300) : 0;
         overlay.setVisibility(View.VISIBLE);
-        if (d == 0) {
-            overlay.setAlpha(1f);
-            content.setAlpha(0f);
-        } else {
-            overlay.setAlpha(0f);
-            overlay.animate().alpha(1f).setDuration(d).start();
-            content.animate().alpha(0f).setDuration(d).start();
-        }
+        gridTo(0f, animated ? duration(280) : 0, null);
     }
 
-    /** Leaves the clock screen: the clock shrinks into the header and the dock takes focus. */
+    /** Leaves the bare page: the dock slides up and takes focus. */
     private void leave() {
-        if (!active) return;
-        active = false;
+        if (!home) return;
+        home = false;
         lastTransition = System.currentTimeMillis();
         closeBar(false);
-        ((ViewGroup) content).setDescendantFocusability(savedFocusability);
-        long d = duration(320);
-        content.animate().cancel();
-        overlay.animate().cancel();
-        if (d == 0) {
-            content.setAlpha(1f);
-            overlay.setVisibility(View.GONE);
-            resetBlock();
-        } else {
-            int[] from = new int[2];
-            int[] to = new int[2];
-            bigClock.getLocationInWindow(from);
-            headerClock.getLocationInWindow(to);
-            float scale = headerClock.getTextSize() / bigClock.getTextSize();
-            bigClock.setPivotX(0f);
-            bigClock.setPivotY(0f);
-            bigClock.animate().translationX(to[0] - from[0]).translationY(to[1] - from[1])
-                    .scaleX(scale).scaleY(scale).alpha(0f).setDuration(d).start();
-            bigDate.animate().alpha(0f).setDuration(d / 2).start();
-            content.animate().alpha(1f).setDuration(d).start();
-            overlay.animate().alpha(1f).setDuration(d).withEndAction(() -> {
-                if (!active) {
-                    overlay.setVisibility(View.GONE);
-                    resetBlock();
-                }
-            }).start();
-        }
+        ((ViewGroup) gridWrap).setDescendantFocusability(savedFocusability);
+        gridTo(1f, duration(300), null);
         host.focusDock();
     }
 
-    private void resetBlock() {
-        bigClock.animate().cancel();
-        bigDate.animate().cancel();
-        block.animate().cancel();
-        bigClock.setTranslationX(0f);
-        bigClock.setTranslationY(0f);
-        bigClock.setScaleX(1f);
-        bigClock.setScaleY(1f);
-        bigClock.setPivotX(bigClock.getWidth() / 2f);
-        bigClock.setPivotY(bigClock.getHeight() / 2f);
-        bigClock.setAlpha(1f);
-        bigDate.setAlpha(1f);
-        block.setAlpha(1f);
-    }
-
-    /** True when the key was used. Only the clock screen and the settings row take keys; the grid has the rest. */
+    /** True when the key was used. Only the bare page and the settings row take keys; the grid has the rest. */
     boolean handleKey(KeyEvent event) {
-        if (!active) return false;
+        if (!home) return false;
         int code = event.getKeyCode();
         boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
         boolean first = down && event.getRepeatCount() == 0;
@@ -296,38 +289,29 @@ final class ClockHome {
         selected = 0;
         refresh(false);
         scroll.scrollTo(0, 0);
-        long d = duration(220);
-        scroll.animate().cancel();
         scroll.setVisibility(View.VISIBLE);
-        if (d == 0) {
-            scroll.setAlpha(1f);
-            scroll.setTranslationY(0f);
-            block.setAlpha(0.3f);
-        } else {
-            scroll.setAlpha(0f);
-            scroll.setTranslationY(-px(24));
-            scroll.animate().alpha(1f).translationY(0f).setDuration(d).start();
-            block.animate().alpha(0.3f).setDuration(d).start();
-        }
+        barTo(1f, duration(240), null);
     }
 
     private void closeBar(boolean animated) {
         if (!barOpen) return;
         barOpen = false;
         lastTransition = System.currentTimeMillis();
-        long d = animated ? duration(200) : 0;
-        scroll.animate().cancel();
-        block.animate().cancel();
-        if (d == 0) {
-            scroll.setVisibility(View.GONE);
-            block.setAlpha(1f);
-        } else {
-            scroll.animate().alpha(0f).translationY(-px(24)).setDuration(d)
-                    .withEndAction(() -> {
-                        if (!barOpen) scroll.setVisibility(View.GONE);
-                    }).start();
-            block.animate().alpha(1f).setDuration(d).start();
-        }
+        barTo(0f, animated ? duration(200) : 0, () -> {
+            if (!barOpen) scroll.setVisibility(View.GONE);
+        });
+    }
+
+    private void barTo(float target, long ms, Runnable end) {
+        if (barTween != null) barTween.cancel();
+        final float from = scroll.getAlpha();
+        final float distance = 28 * density;
+        barTween = new Tween(ms, p -> {
+            float v = from + (target - from) * p;
+            scroll.setAlpha(v);
+            scroll.setTranslationY((1f - v) * distance);
+        }, end);
+        barTween.run();
     }
 
     private void select(int index) {
@@ -342,19 +326,15 @@ final class ClockHome {
             View card = cards.get(i);
             boolean on = i == selected;
             card.setBackground(background(on));
-            float scale = on ? 1.08f : 1f;
-            float alpha = on ? 1f : 0.8f;
-            if (animated && animations) card.animate().scaleX(scale).scaleY(scale).alpha(alpha).setDuration(140).start();
-            else {
-                card.setScaleX(scale);
-                card.setScaleY(scale);
-                card.setAlpha(alpha);
-            }
+            card.setScaleX(on ? 1.08f : 1f);
+            card.setScaleY(on ? 1.08f : 1f);
+            card.setAlpha(on ? 1f : 0.8f);
         }
-        View card = cards.get(selected);
+        View current = cards.get(selected);
         scroll.post(() -> {
-            int target = scroll.getPaddingLeft() + card.getLeft() + card.getWidth() / 2 - scroll.getWidth() / 2;
-            scroll.smoothScrollTo(Math.max(0, target), 0);
+            int target = scroll.getPaddingLeft() + current.getLeft() + current.getWidth() / 2 - scroll.getWidth() / 2;
+            if (animated && animations) scroll.smoothScrollTo(Math.max(0, target), 0);
+            else scroll.scrollTo(Math.max(0, target), 0);
         });
     }
 

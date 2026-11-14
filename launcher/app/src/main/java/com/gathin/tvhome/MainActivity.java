@@ -147,6 +147,16 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private WallpaperPlayer wallpaperPlayer;
     /** clock_home: the big clock screen in front of the dock; null when the theme does not ask for it. */
     private ClockHome clockHome;
+    /** clock_home weather line under the date; null unless the theme asks for it. */
+    private Weather weather;
+    private TextView weatherText;
+    private final Runnable weatherTick = new Runnable() {
+        @Override
+        public void run() {
+            refreshWeather();
+            root.postDelayed(this, 30 * MINUTE_MS);
+        }
+    };
     private GlassView glass;
     private View ambient;
     private TextView heroName;
@@ -975,6 +985,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             // Invisible, not gone: the Inputs list still hangs under its pill, and nothing can focus it.
             findViewById(R.id.topButtons).setVisibility(View.INVISIBLE);
         }
+        if (cfg.weather) {
+            weatherText = findViewById(R.id.weather);
+            weather = new Weather(cfg.weatherLat, cfg.weatherLon);
+        }
         if (cfg.clockHome) {
             clockHome = new ClockHome(this, new ClockHome.Host() {
                 @Override
@@ -1125,6 +1139,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             return;
         }
         restartIdleClock();
+        root.removeCallbacks(weatherTick);
+        if (weather != null) weatherTick.run();
         promptsPaused = false;
         if (grid.getAdapter() == null) grid.setAdapter(adapter);   // dropped by onTrimMemory
         switch (tileRefresh.onResume(packagesChangedSinceRebuild())) {
@@ -1312,6 +1328,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         });
     }
 
+    private void refreshWeather() {
+        if (weather == null || weatherText == null) return;
+        weather.refresh(text -> {
+            weatherText.setText(text);
+            weatherText.setVisibility(View.VISIBLE);
+        });
+    }
+
     /** Any key on Home restarts the countdown to the idle clock. */
     @Override
     public void onUserInteraction() {
@@ -1333,6 +1357,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         RemoteKeys.release(this);
         cancelHoldOk();
         root.removeCallbacks(showIdleClock);
+        root.removeCallbacks(weatherTick);
         endReorder();   // Home or another app while reordering keeps the order so far
         wallpaperPlayer.stop();
         stopAmbientAnimation();
@@ -1415,6 +1440,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         unregisterReceiver(packageReceiver);
         if (openOnStartOnWake) unregisterReceiver(wakeReceiver);
         wallpaperPlayer.close();
+        if (weather != null) weather.close();
         ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);   // as registered
         TvInputManager tim = (TvInputManager) getSystemService(TV_INPUT_SERVICE);
         if (tim != null) tim.unregisterCallback(inputCallback);
@@ -1470,7 +1496,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (clockHome.swallowRepeat(event)) return true;
             if (clockHome.handleKey(event)) return true;
             // Up from the dock row goes back to the clock.
-            if (!clockHome.isActive() && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP && grid.hasFocus()) {
+            if (!clockHome.isHome() && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP && grid.hasFocus()) {
                 int tile = focusedTilePosition();
                 if (tile >= 0 && tile < COLUMNS) {
                     if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) clockHome.show(true);
@@ -1812,7 +1838,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     public void onBackPressed() {
         // clock_home: Back from the dock returns to the big clock.
         if (clockHome != null) {
-            if (!clockHome.isActive()) clockHome.show(true);
+            if (!clockHome.isHome()) clockHome.show(true);
             return;
         }
         // Home screen: Back goes nowhere, unless back_opens_clock is on.
