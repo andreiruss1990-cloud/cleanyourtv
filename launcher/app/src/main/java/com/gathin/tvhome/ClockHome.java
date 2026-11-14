@@ -46,6 +46,15 @@ final class ClockHome {
 
         /** clock_home_idle_seconds: back to the bare page after this long without a key; 0 never. */
         int idleSeconds();
+
+        /** The painting collections, or null without art_source. */
+        ArtLibrary art();
+
+        /** A collection (or Auto) was chosen: show a painting from it now. */
+        void artChanged();
+
+        /** The slideshow's change interval was chosen on the TV. */
+        void intervalChanged(int minutes);
     }
 
     private interface Step {
@@ -101,6 +110,11 @@ final class ClockHome {
     private final FrameLayout allPanel;
     private final Carousel allList;
     private final List<DockApps.App> allApps = new ArrayList<>();
+    /** The panel shows the painting collections (Art) instead of the apps (All apps). */
+    private boolean artMode;
+    private final List<String[]> artRows = new ArrayList<>();   // {kind, id, name, detail}
+    private static final int[] INTERVALS = {5, 10, 30, 60, 1440};
+    private TextView panelTitle;
     private final Typeface light;
     private final Typeface regular;
     private final String style;
@@ -241,7 +255,7 @@ final class ClockHome {
         caption.setAlpha(0f);
 
         // ---- the settings row, in the header -----------------------------------------------------------------
-        settings = SettingsItems.build(activity, host::openInputs, this::openAllApps);
+        settings = SettingsItems.build(activity, host::openInputs, this::openAllApps, this::openArt);
         settingsRow = SettingsItems.row(activity, density, bandW, settings);
         FrameLayout.LayoutParams rowLp = new FrameLayout.LayoutParams(bandW, settingsRow.bandHeight(),
                 Gravity.TOP | Gravity.START);
@@ -289,6 +303,7 @@ final class ClockHome {
             }
         });
         TextView title = new TextView(activity);
+        panelTitle = title;
         title.setText(R.string.clock_all_apps);
         title.setTextColor(0xFFFFFFFF);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
@@ -308,7 +323,8 @@ final class ClockHome {
 
             @Override
             public void bind(View view, int index) {
-                bindListRow(view, allApps.get(index));
+                if (artMode) bindArtRow(view, artRows.get(index));
+                else bindListRow(view, allApps.get(index));
             }
         });
         allList.setVertical(0.03f);
@@ -396,13 +412,15 @@ final class ClockHome {
         return g;
     }
 
-    /** The wallpaper changed: its title and painter from wallpapers/captions.txt ("file<TAB>Title|Painter, date"). */
-    void setPainting(String file) {
+    /** The wallpaper changed: its title and painter, from the collection's index or wallpapers/captions.txt. */
+    void setPainting(java.io.File file) {
         if (captions == null) {
             java.io.File dir = Config.dir(activity);
             captions = WallpaperCaptions.read(dir == null ? null : new java.io.File(dir, "wallpapers"));
         }
-        String text = file == null ? null : captions.get(file);
+        ArtLibrary art = host.art();
+        String text = art == null ? null : art.caption(file);
+        if (text == null && file != null) text = captions.get(file.getName());
         if (text == null) {
             captionTitle.setText("");
             captionArtist.setText("");
@@ -649,9 +667,105 @@ final class ClockHome {
         closeBar(false);
         closeMenu();
         endMove();
+        artMode = false;
+        panelTitle.setText(R.string.clock_all_apps);
         allApps.clear();
         allApps.addAll(store.all());
         allList.setCount(allApps.size(), 0);
+        showPanel();
+    }
+
+    /** Art, from the settings row: Auto, the collections under their headings, and how often the painting changes. */
+    void openArt() {
+        closeBar(false);
+        closeMenu();
+        endMove();
+        artMode = true;
+        panelTitle.setText("Art");
+        buildArtRows();
+        ArtLibrary art = host.art();
+        String chosen = art == null ? ArtLibrary.AUTO : art.selection();
+        int first = 0;
+        for (int i = 0; i < artRows.size(); i++) if (artRows.get(i)[1].equals(chosen)) first = i;
+        allList.setCount(artRows.size(), first);
+        showPanel();
+    }
+
+    private void buildArtRows() {
+        artRows.clear();
+        ArtLibrary art = host.art();
+        List<ArtLibrary.Shelf> shelves = art == null ? new ArrayList<>() : art.shelves();
+        artRows.add(new String[]{"auto", ArtLibrary.AUTO, "Auto",
+                shelves.isEmpty() ? "Paintings are still downloading" : "Weather and season"});
+        for (String group : new String[]{"Subjects", "Movements", "Painters", "Your folders"}) {
+            boolean any = false;
+            for (ArtLibrary.Shelf shelf : shelves) {
+                if (!group.equals(shelf.group)) continue;
+                if (!any) artRows.add(new String[]{"header", "", group, ""});
+                any = true;
+                artRows.add(new String[]{"shelf", shelf.id, shelf.name, shelf.pieces.size() + " paintings"});
+            }
+        }
+        artRows.add(new String[]{"header", "", "Slideshow", ""});
+        artRows.add(new String[]{"interval", "", "Change every", intervalText()});
+    }
+
+    private int intervalMinutes() {
+        ArtLibrary art = host.art();
+        int chosen = art == null ? 0 : art.intervalMinutes();
+        return chosen > 0 ? chosen : 10;
+    }
+
+    private String intervalText() {
+        int m = intervalMinutes();
+        return m >= 1440 ? "Once a day" : m >= 60 ? (m / 60) + " hour" + (m >= 120 ? "s" : "") : m + " minutes";
+    }
+
+    private void bindArtRow(View view, String[] row) {
+        LinearLayout r = (LinearLayout) view;
+        ((ImageView) r.getChildAt(0)).setImageDrawable(null);
+        TextView name = (TextView) r.getChildAt(1);
+        TextView detail = (TextView) r.getChildAt(2);
+        boolean header = "header".equals(row[0]);
+        name.setText(header ? row[2].toUpperCase(java.util.Locale.ROOT) : row[2]);
+        name.setTextColor(header ? 0x99FFFFFF : 0xFFFFFFFF);
+        name.setLetterSpacing(header ? 0.15f : 0f);
+        ArtLibrary art = host.art();
+        boolean showing = !header && !"interval".equals(row[0])
+                && (art != null ? art.selection().equals(row[1]) : ArtLibrary.AUTO.equals(row[1]));
+        detail.setText("interval".equals(row[0]) ? intervalText() : showing ? "Showing · " + row[3] : row[3]);
+    }
+
+    private boolean artHeader(int index) {
+        return index >= 0 && index < artRows.size() && "header".equals(artRows.get(index)[0]);
+    }
+
+    /** Up/Down in Art: one step, and on past a heading, so the focus always rests on something to choose. */
+    private void artStep(int direction, boolean repeat) {
+        allList.step(direction, repeat);
+        for (int guard = 0; guard < 3 && artHeader(allList.current()); guard++) allList.step(direction, false);
+    }
+
+    private void chooseArt() {
+        int i = allList.current();
+        ArtLibrary art = host.art();
+        if (art == null || i < 0 || i >= artRows.size()) return;
+        String[] row = artRows.get(i);
+        if ("interval".equals(row[0])) {
+            int now = intervalMinutes(), next = INTERVALS[0];
+            for (int k = 0; k < INTERVALS.length; k++) {
+                if (INTERVALS[k] == now) next = INTERVALS[(k + 1) % INTERVALS.length];
+            }
+            art.setIntervalMinutes(next);
+            host.intervalChanged(next);
+        } else if (!"header".equals(row[0])) {
+            art.select(row[1]);
+            host.artChanged();
+        }
+        allList.refresh();
+    }
+
+    private void showPanel() {
         allOpen = true;
         lastTransition = System.currentTimeMillis();
         allPanel.setVisibility(View.VISIBLE);
@@ -738,11 +852,20 @@ final class ClockHome {
             if (back) {
                 if (first) closeAllApps(true);
             } else if (code == KeyEvent.KEYCODE_DPAD_UP) {
-                if (down) allList.step(-1, repeat);
+                if (down) {
+                    if (artMode) artStep(-1, repeat);
+                    else allList.step(-1, repeat);
+                }
             } else if (code == KeyEvent.KEYCODE_DPAD_DOWN) {
-                if (down) allList.step(1, repeat);
+                if (down) {
+                    if (artMode) artStep(1, repeat);
+                    else allList.step(1, repeat);
+                }
             } else if (isOk(code)) {
-                if (up && !event.isCanceled()) toggleOnHome();
+                if (up && !event.isCanceled()) {
+                    if (artMode) chooseArt();
+                    else toggleOnHome();
+                }
             }
             return true;
         }

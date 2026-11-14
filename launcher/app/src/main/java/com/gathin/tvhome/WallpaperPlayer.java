@@ -35,7 +35,7 @@ final class WallpaperPlayer {
     private final ImageView image;
     private final int backgroundColor;
     private final List<File> files;
-    private final long interval;
+    private long interval;
     private final String order;
     private final SharedPreferences preferences;
     private final ExecutorService decoder = Executors.newSingleThreadExecutor();
@@ -50,8 +50,11 @@ final class WallpaperPlayer {
     private Bitmap current;
     /** liquid_glass: told about every picture put on screen (null when it is released), for the dock's frost. */
     private java.util.function.Consumer<Bitmap> listener;
-    /** clock_home: told the file name of each picture put on screen, for the painting's caption. */
-    private java.util.function.Consumer<String> nameListener;
+    /** clock_home: told each picture put on screen, for the painting's caption. */
+    private java.util.function.Consumer<File> nameListener;
+    private File displayedFile;
+    /** art_source: where the pictures come from now (a collection, or Auto's pick); empty: the theme's own. */
+    private java.util.function.Supplier<List<File>> poolProvider;
     private boolean active;
     private boolean closed;
     private boolean loading;
@@ -122,7 +125,8 @@ final class WallpaperPlayer {
                 // The picture covers the whole screen: the root's plain colour under it is overdraw.
                 root.setBackground(null);
                 displayed = first.getName();
-                if (nameListener != null) nameListener.accept(displayed);
+                displayedFile = first;
+                if (nameListener != null) nameListener.accept(first);
                 showCaption(false);
                 if (!displayed.equals(previous)) {
                     preferences.edit().putString("image", displayed)
@@ -153,9 +157,20 @@ final class WallpaperPlayer {
     }
 
     /** clock_home: follow the name of the picture on screen; called at once with the current one. */
-    void setNameListener(java.util.function.Consumer<String> listener) {
+    void setNameListener(java.util.function.Consumer<File> listener) {
         nameListener = listener;
-        if (listener != null && !displayed.isEmpty()) listener.accept(displayed);
+        if (listener != null && displayedFile != null) listener.accept(displayedFile);
+    }
+
+    /** art_source: the pictures come from here while it has any; a picture outside them is replaced at the next update. */
+    void setPoolProvider(java.util.function.Supplier<List<File>> provider) {
+        poolProvider = provider;
+    }
+
+    /** Show a picture from the current pool now (a new collection was chosen, or the collections arrived). */
+    void changeNow() {
+        preferences.edit().putLong("changed", 0).apply();
+        update();
     }
 
     /** True when the wallpaper image sits in the root (wallpaper on and pictures found). */
@@ -176,6 +191,10 @@ final class WallpaperPlayer {
 
     /** The pictures the rotation picks from now: wallpaper_moods' group for the time of day, or the whole collection. */
     private List<File> playable() {
+        if (poolProvider != null) {
+            List<File> pool = poolProvider.get();
+            if (pool != null && !pool.isEmpty()) return pool;
+        }
         if (moods.isEmpty()) return files;
         LocalDateTime now = LocalDateTime.now();
         if (!now.toLocalDate().equals(sunDay)) {
@@ -220,7 +239,8 @@ final class WallpaperPlayer {
                 }
                 show(bitmap);
                 displayed = next.getName();
-                if (nameListener != null) nameListener.accept(displayed);
+                displayedFile = next;
+                if (nameListener != null) nameListener.accept(next);
                 showCaption(true);
                 if (!displayed.equals(previous) || changed == 0) {
                     preferences.edit().putString("image", displayed)
@@ -297,6 +317,46 @@ final class WallpaperPlayer {
         if (old != null && old != bitmap) image.postDelayed(old::recycle, 500);
     }
 
+    /** The change interval in minutes, chosen on the TV (Art, Change every); the theme's value until then. */
+    void setIntervalMinutes(int minutes) {
+        if (minutes > 0) interval = minutes * 60_000L;
+    }
+
+    /**
+     * A painting on a mat: the whole picture, with a margin, over a blurred and darkened copy of itself that fills the
+     * screen, and a soft shadow under it, like a print on a wall. The blur is a downscale to a few dozen pixels and
+     * back, which costs next to nothing.
+     */
+    private Bitmap mat(Bitmap src) {
+        int w = this.width, h = this.height;
+        Bitmap out = Bitmap.createBitmap(w, h, bitmapConfig == Bitmap.Config.RGB_565 ? Bitmap.Config.RGB_565
+                : Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(out);
+        android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.FILTER_BITMAP_FLAG);
+        float cover = Math.max(w / (float) src.getWidth(), h / (float) src.getHeight());
+        int tw = Math.max(2, Math.round(src.getWidth() * cover / 40f));
+        int th = Math.max(2, Math.round(src.getHeight() * cover / 40f));
+        Bitmap tiny = Bitmap.createScaledBitmap(src, tw, th, true);
+        float bw = src.getWidth() * cover, bh = src.getHeight() * cover;
+        canvas.drawBitmap(tiny, null, new android.graphics.RectF((w - bw) / 2f, (h - bh) / 2f, (w + bw) / 2f,
+                (h + bh) / 2f), paint);
+        tiny.recycle();
+        canvas.drawColor(0x99000000);
+        float margin = 0.07f;
+        float fit = Math.min(w * (1 - 2 * margin) / src.getWidth(), h * (1 - 2 * margin) / src.getHeight());
+        float pw = src.getWidth() * fit, ph = src.getHeight() * fit;
+        android.graphics.RectF frame = new android.graphics.RectF((w - pw) / 2f, (h - ph) / 2f, (w + pw) / 2f,
+                (h + ph) / 2f);
+        android.graphics.Paint shadow = new android.graphics.Paint();
+        for (int i = 6; i >= 1; i--) {
+            shadow.setColor(Math.round(18 / (float) i) << 24);
+            float d = i * 3f;
+            canvas.drawRect(frame.left - d / 2, frame.top + d / 3, frame.right + d / 2, frame.bottom + d, shadow);
+        }
+        canvas.drawBitmap(src, null, frame, paint);
+        return out;
+    }
+
     private Bitmap decode(File file) {
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -307,6 +367,9 @@ final class WallpaperPlayer {
                 Log.w("TvHome.Wallpaper", "bounds failed " + file.getName() + " readable=" + file.canRead() + " len=" + file.length());
                 return null;
             }
+            // A painting far from the screen's shape (a portrait, a square still life) is shown whole on a mat.
+            float screenAspect = this.width / (float) this.height;
+            boolean matted = Math.abs(width / (float) height - screenAspect) / screenAspect > 0.12f;
             int sample = WallpaperSize.sampleSize(width, height, this.width, this.height);
             if (!WallpaperSize.accepted(width / sample, height / sample)) {
                 Log.w("TvHome.Wallpaper", "too big " + width + "x" + height + " sample=" + sample + " screen=" + this.width + "x" + this.height);
@@ -314,7 +377,7 @@ final class WallpaperPlayer {
             }
             options.inJustDecodeBounds = false;
             options.inSampleSize = sample;
-            int[] scale = WallpaperSize.coverScale(width / sample, height / sample, this.width, this.height);
+            int[] scale = matted ? null : WallpaperSize.coverScale(width / sample, height / sample, this.width, this.height);
             if (scale != null) {
                 options.inScaled = true;
                 options.inDensity = scale[0];
@@ -326,6 +389,11 @@ final class WallpaperPlayer {
             if (decoded == null) {
                 Log.w("TvHome.Wallpaper", "decodeFile null " + file.getName());
                 return null;
+            }
+            if (matted) {
+                Bitmap framed = mat(decoded);
+                decoded.recycle();
+                decoded = framed;
             }
             if (dimColor != 0) new Canvas(decoded).drawColor(dimColor);
             // One copy in GPU memory instead of a software bitmap plus its texture; the decode stays off the UI

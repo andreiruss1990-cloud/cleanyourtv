@@ -107,6 +107,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** Sent by the "library" action word of app_keys: open the App library over Home (needs app_library). */
     /** clock_home: open All apps (the Settings button's window over an app sends it). */
     static final String ACTION_ALL_APPS = "com.gathin.tvhome.action.ALL_APPS";
+    /** clock_home: open Art (the painting collections). */
+    static final String ACTION_ART = "com.gathin.tvhome.action.ART";
     static final String ACTION_APP_LIBRARY = "com.gathin.tvhome.action.APP_LIBRARY";
     /** The system input switcher, forwarded here by InputsRequestActivity while handle_view_inputs is on. */
     static final String ACTION_VIEW_INPUTS = "com.android.tv.action.VIEW_INPUTS";
@@ -151,6 +153,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private ClockHome clockHome;
     /** liquid_glass: the frosted wallpaper behind the dock band, and the band's last place in the grid. */
     private FrostLayer frost;
+    /** art_source: the painting collections synced from the person's repository, and the sync. */
+    private ArtLibrary artLibrary;
+    private ArtSync artSync;
     private final android.graphics.RectF dockBand = new android.graphics.RectF();
     private float dockBandRadius;
     private boolean dockBandShown;
@@ -1047,7 +1052,30 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 public int idleSeconds() {
                     return cfg.clockIdleSeconds;
                 }
+
+                @Override
+                public ArtLibrary art() {
+                    return artLibrary;
+                }
+
+                @Override
+                public void artChanged() {
+                    wallpaperPlayer.changeNow();
+                }
+
+                @Override
+                public void intervalChanged(int minutes) {
+                    wallpaperPlayer.setIntervalMinutes(minutes);
+                }
             }, animations, hero, glass);
+            if (!cfg.artSource.isEmpty()) {
+                artLibrary = new ArtLibrary(this);
+                artSync = new ArtSync(this, cfg.artSource, cfg.artRefreshHours);
+                final double lat = cfg.weatherLat, lon = cfg.weatherLon;
+                wallpaperPlayer.setPoolProvider(() -> artLibrary.pool(artMoment(lat, lon)));
+                if (artLibrary.intervalMinutes() > 0) wallpaperPlayer.setIntervalMinutes(artLibrary.intervalMinutes());
+                wallpaperPlayer.update();
+            }
             wallpaperPlayer.setNameListener(clockHome::setPainting);
             clockHome.show(false);
         }
@@ -1140,6 +1168,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (openLauncherSettingsIfAsked(intent)) return;
         if (openLibraryIfAsked(intent)) return;
         if (openInputsIfAsked(intent)) return;
+        if (intent != null && ACTION_ART.equals(intent.getAction()) && clockHome != null) {
+            clockHome.openArt();
+            return;
+        }
         if (intent != null && ACTION_ALL_APPS.equals(intent.getAction()) && clockHome != null) {
             clockHome.openAllApps();
             return;
@@ -1162,6 +1194,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onStart() {
         super.onStart();
+        if (artSync != null) {
+            artSync.maybeRun(() -> {
+                artLibrary.load();
+                wallpaperPlayer.changeNow();
+            });
+        }
         stopped = false;
         started = true;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -1493,6 +1531,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (openOnStartOnWake) unregisterReceiver(wakeReceiver);
         wallpaperPlayer.close();
         if (weather != null) weather.close();
+        if (artSync != null) artSync.close();
         ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);   // as registered
         TvInputManager tim = (TvInputManager) getSystemService(TV_INPUT_SERVICE);
         if (tim != null) tim.unregisterCallback(inputCallback);
@@ -1933,6 +1972,17 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }, libraryExcludedApps);
         openPopup = appLibrary.popup;
         appLibrary.show();
+    }
+
+    /** art_source Auto: is it night in Cluj (or wherever weather_lat/lon point), what is falling, which season. */
+    private ArtLibrary.Moment artMoment(double lat, double lon) {
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        int[] sun = WallpaperMood.sun(now.toLocalDate(), String.valueOf(lat), String.valueOf(lon),
+                java.time.ZoneId.systemDefault());
+        int minute = now.getHour() * 60 + now.getMinute();
+        boolean night = sun != null && (minute < sun[0] || minute >= sun[1]);
+        String falling = weather == null ? null : Weather.tag(weather.code());
+        return new ArtLibrary.Moment(night, falling, ArtLibrary.season(now.getMonthValue()));
     }
 
     /** liquid_glass: the frost follows the dock band (grid coordinates) through the grid's scroll and gridWrap's slide. */

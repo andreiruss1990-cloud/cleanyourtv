@@ -37,7 +37,7 @@ final class SettingsItems {
     private SettingsItems() {
     }
 
-    static List<Item> build(Activity a, Runnable inputs, Runnable allApps) {
+    static List<Item> build(Activity a, Runnable inputs, Runnable allApps, Runnable art) {
         List<Item> items = new ArrayList<>();
         items.add(new Item(R.drawable.ic_wifi, a.getString(R.string.wifi),
                 () -> start(a, SystemSettings.intent(a, Settings.ACTION_WIFI_SETTINGS))));
@@ -48,6 +48,7 @@ final class SettingsItems {
         items.add(new Item(R.drawable.ic_sound, "Sound",
                 () -> start(a, SystemSettings.intent(a, Settings.ACTION_SOUND_SETTINGS))));
         items.add(new Item(R.drawable.ic_input, a.getString(R.string.inputs), inputs));
+        items.add(new Item(R.drawable.ic_art, "Art", art));
         items.add(new Item(R.drawable.ic_apps, a.getString(R.string.clock_all_apps), allApps));
         items.add(new Item(R.drawable.ic_apps_pill, a.getString(R.string.quick_apps),
                 () -> start(a, SystemSettings.intent(a, Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS))));

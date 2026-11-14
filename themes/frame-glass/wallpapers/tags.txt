@@ -1,0 +1,4 @@
+# file<TAB>tags
+04-autumn-on-the-hudson-river.jpg	autumn
+22-new-england-farm-in-winter.jpg	winter
+27-estuary-at-day-s-end.jpg	night

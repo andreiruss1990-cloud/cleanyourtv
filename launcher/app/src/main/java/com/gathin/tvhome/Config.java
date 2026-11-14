@@ -149,6 +149,10 @@ final class Config {
     String dockTileStyle = "glyph";
     /** Theme clock_home_idle_seconds: the open dock or settings row goes back to the bare page after this long. */
     int clockIdleSeconds = 30;
+    /** Theme art_source: the raw address of a repository branch holding art/index.json; empty: no collections. */
+    String artSource = "";
+    /** Theme art_refresh_hours: how often Home checks art_source for new or removed paintings. */
+    int artRefreshHours = 6;
     /** Theme power_on_input: with power_on_home_always, the TV input to open at power-on instead of Home while it is
      *  connected (a PC that is switched on), e.g. "com.tcl.tvinput/.TvPassThroughService/HW15". Empty: always Home. */
     String powerOnInput = "";
@@ -767,6 +771,8 @@ final class Config {
             built.liquidGlass = json.optBoolean("liquid_glass", false);
             built.dockTileStyle = json.optString("dock_tile_style", "glyph");
             built.clockIdleSeconds = json.optInt("clock_home_idle_seconds", 30);
+            built.artSource = json.optString("art_source", "").trim();
+            built.artRefreshHours = json.optInt("art_refresh_hours", 6);
             built.powerOnInput = json.optString("power_on_input", "").trim();
             built.weather = json.optBoolean("weather", false)
                     && json.has("weather_lat") && json.has("weather_lon");

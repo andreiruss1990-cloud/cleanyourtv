@@ -48,6 +48,8 @@
   "quick_panel_side": true,
   "liquid_glass": true,
   "dock_tile_style": "glyph",
+  "art_source": "https://raw.githubusercontent.com/andreiruss1990-cloud/cleanyourtv/calm-dark-theme/",
+  "art_refresh_hours": 6,
   "power_on_home_always": true,
   "power_on_input": "com.tcl.tvinput/.TvPassThroughService/HW15",
   "key_filter": false,

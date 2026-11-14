@@ -28,6 +28,8 @@ final class Weather {
     private final Handler main = new Handler(Looper.getMainLooper());
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private String text;
+    /** The last reading's WMO code, or -1 before the first one (art Auto matches the weather with it). */
+    private volatile int code = -1;
     private long fetchedAt;
     private boolean busy;
 
@@ -74,12 +76,25 @@ final class Weather {
             }
             JSONObject current = new JSONObject(out.toString("UTF-8")).getJSONObject("current");
             long degrees = Math.round(current.getDouble("temperature_2m"));
-            return degrees + "°C · " + describe(current.getInt("weather_code"));
+            code = current.getInt("weather_code");
+            return degrees + "°C · " + describe(code);
         } catch (Exception | OutOfMemoryError failure) {
             return null;
         } finally {
             if (connection != null) connection.disconnect();
         }
+    }
+
+    int code() {
+        return code;
+    }
+
+    /** The weather as an art tag: snow, rain or fog while it is happening, otherwise null. */
+    static String tag(int code) {
+        if ((code >= 71 && code <= 77) || code == 85 || code == 86) return "snow";
+        if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82) || code >= 95) return "rain";
+        if (code == 45 || code == 48) return "fog";
+        return null;
     }
 
     /** WMO weather interpretation codes, as Open-Meteo reports them. */

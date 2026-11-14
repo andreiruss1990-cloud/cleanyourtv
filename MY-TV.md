@@ -57,6 +57,39 @@ TV_ADB_BINARY=~/platform-tools/adb TV_HOST=<tv> ANDROID_SERIAL=<tv> tools/theme.
   pushed with `tools/theme.sh ~/tv-theme-private`; never commit them.
 - **Power-on input:** `power_on_input` is the input id from `adb shell dumpsys tv_input`. Remove the key to always land on Home.
 
+## Art collections
+
+Home's paintings come from three free open-access collections (CC0): the **National Gallery of Art**, the
+**Rijksmuseum** and, for your own pictures, folders in this repository. The list lives in `art/index.json`; the TV
+reads it from GitHub and downloads each painting once, straight from the museum's image server, into its own storage.
+No museum picture is stored in this repository.
+
+Choose what shows under **Art** in the settings row (Up on the bare page, or the Settings button):
+
+- **Auto**: paintings that match the weather in Cluj (snow, rain, fog), otherwise the season.
+- **Subjects**: Sea and coast, Mountains and valleys, Rivers and lakes, Cities and streets, Interiors and daily life,
+  Flowers and still life, Gardens and parks, Winter.
+- **Movements**: Romanticism and Hudson River School, Realism, Impressionism, Post-Impressionism and early Modern.
+- **Painters**: Monet, Van Gogh, Turner and Constable, Sargent and Homer.
+- **Your folders**: any folder of pictures you add under `art/`.
+- **Change every**: 5, 10 or 30 minutes, an hour, or once a day.
+
+Wide paintings fill the screen (cropped to 16:9 by the museum); tall or square ones are shown whole on a blurred,
+darkened copy of themselves.
+
+### How the collections were made, and how to change them
+
+1. `tools/art_catalog.py` gathers candidates (1700-1960, no battles, hunts or formal portraits) from the museums'
+   open data.
+2. `tools/art_sheets.py` lays them out on numbered contact sheets; each painting was looked at and tagged by eye
+   (subject, season, weather, quality 0-3, mood).
+3. `tools/art_build.py` turns the tags into `art/museums.json`: up to 40 of the best per collection.
+4. `tools/art_index.py` writes `art/index.json` from `art/museums.json` and your folders. Commit and push; the TV
+   picks the change up the next time Home starts, at most every 6 hours (`art_refresh_hours`).
+
+Your own pictures: make `art/<folder>/` with JPEGs (16:9 at 1920x1080 or more looks best), optionally `name.txt`,
+`captions.txt` (`file<TAB>Title|Painter, year`) and `tags.txt` (`file<TAB>winter,rain`), run step 4 and push.
+
 ## Rebuild and install everything
 
 ```bash
