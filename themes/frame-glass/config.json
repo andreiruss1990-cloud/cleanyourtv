@@ -17,7 +17,7 @@
   "wallpaper_captions": false,
   "wallpaper_rotation_minutes": 30,
   "wallpaper_order": "sequential",
-  "wallpaper_true_color": true,
+  "wallpaper_true_color": false,
   "wallpaper_dim": 8,
   "show_greeting": false,
   "clock_format": "24",
