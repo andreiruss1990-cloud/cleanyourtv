@@ -7,9 +7,9 @@ switched on). Wireless debugging is off when the job is done: switch it on again
 ## What is on the TV
 
 - **Home:** the launcher from this fork (`com.gathin.tvhome`) with the `themes/frame-glass` theme. The bare page shows
-  the clock, date and weather (Open-Meteo, at most every 30 minutes while Home is on screen). Down: the dock with
-  YouTube, YouTube Music, Kodi, Stremio and Spotify. Down again: all other apps. Up: the settings cards. Back: the
-  bare page.
+  only the wallpaper. Down: the clock, date and weather (Open-Meteo, at most every 30 minutes while Home is on
+  screen) with the frosted-glass dock at the bottom (YouTube, YouTube Music, Kodi, Stremio, Spotify). Down again:
+  all other apps slide up. Up from the dock or Back: the bare page. Up on the bare page: the settings cards.
 - **Settings button:** opens the launcher's quick panel on the right edge, but only while Home is in front
   (`key_filter: false`, see below).
 - **Power-on:** opens the PC's HDMI (HDMI 1) if the PC is on, otherwise Home (`power_on_home_always`, `power_on_input`).
@@ -38,7 +38,9 @@ TV_ADB_BINARY=~/platform-tools/adb TV_HOST=<tv> ANDROID_SERIAL=<tv> tools/theme.
 ```
 
 - **Dock order:** the `dock_apps` list, left to right (package names: `adb shell pm list packages`).
-- **Wallpapers:** pictures in the theme's `wallpapers/` folder; `wallpaper_rotation_minutes` sets the interval. The
+- **Wallpapers:** 30 landscape paintings from the National Gallery of Art's open access collection (CC0; titles
+  and links in `themes/frame-glass/CREDITS.md`), in the theme's `wallpapers/` folder; `wallpaper_rotation_minutes`
+  sets the interval. Any 16:9 JPEG dropped in that folder joins the slideshow. The
   TV draws its interface at 1920x1080, so 1920x1080 or larger 16:9 pictures look sharp. Pictures that may not be
   shared (Apple's wallpapers) go in a copy of the theme outside the checkout, e.g. `~/tv-theme-private`, and are
   pushed with `tools/theme.sh ~/tv-theme-private`; never commit them.
