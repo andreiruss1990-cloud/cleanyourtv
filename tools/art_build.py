@@ -67,13 +67,14 @@ def picture(c):
         url, fit = f"{c['iiif']}/full/!1920,1080/0/default.jpg", "mat"
     artist = re.sub(r"^(Attributed to|Circle of|Follower of|Workshop of|Style of|Imitator of)\s+", "", c["artist"] or "")
     title = c["title"] or "Untitled"
-    text = f"{title}|{artist}, {c['year']}" if c["year"] else f"{title}|{artist}"
+    who = ", ".join(x for x in (artist, str(c["year"]) if c["year"] else "") if x)
+    text = f"{title}|{who}"
     if len(text) > 80:
         title = re.sub(r"\s*\(.*?\)", "", title)
-        text = (f"{title}|{artist}, {c['year']}" if c["year"] else f"{title}|{artist}")
+        text = f"{title}|{who}"
         if len(text) > 80:
-            title = title[: max(10, 80 - len(text) + len(title) - 1)].rstrip() + "…"
-            text = f"{title}|{artist}, {c['year']}"
+            title = title[: max(10, 80 - len(who) - 2)].rstrip() + "…"
+            text = f"{title}|{who}"
     return {"url": url, "fit": fit, "caption": text[:80], "museum": c["museum"]}
 
 
@@ -89,6 +90,9 @@ def main():
             n, subj, season, weather, q, mood = (line.strip().split("|") + [""] * 6)[:6]
             c = cands.get(numbers.get(n))
             if not c or not q.isdigit() or int(q) == 0:
+                continue
+            # The Rijksmuseum shows images of 20th-century works that may still be under copyright: leave them out.
+            if c["museum"] == "Rijksmuseum" and c["year"] > 1905:
                 continue
             p = dict(c)
             p.update(subjects=set(t for t in subj.split(",") if t), season=SEASONS.get(season, ""),
