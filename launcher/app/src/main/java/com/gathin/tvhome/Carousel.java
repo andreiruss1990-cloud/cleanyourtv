@@ -39,7 +39,7 @@ final class Carousel extends FrameLayout {
     private final List<LiquidGlass> lifts = new ArrayList<>();
     private final boolean restGlass;
     private final float tileRadius;
-    private int restTop = 0x24FFFFFF, restBottom = 0x0AFFFFFF;
+    private int restTop = 0x38FFFFFF, restBottom = 0x17FFFFFF;
     private final List<View> slots = new ArrayList<>();
     private final List<Integer> bound = new ArrayList<>();
     private int count;

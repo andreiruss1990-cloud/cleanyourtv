@@ -47,6 +47,7 @@
   "settings_key_panel": true,
   "quick_panel_side": true,
   "liquid_glass": true,
+  "dock_tile_style": "glyph",
   "power_on_home_always": true,
   "power_on_input": "com.tcl.tvinput/.TvPassThroughService/HW15",
   "key_filter": false,

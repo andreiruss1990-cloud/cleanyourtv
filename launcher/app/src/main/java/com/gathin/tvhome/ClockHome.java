@@ -420,13 +420,12 @@ final class ClockHome {
 
     // ---- frost ------------------------------------------------------------------------------------------------
 
-    /** The faint blur goes under whichever glass is in front: All apps, the settings row or the dock. */
+    /** The faint blur goes under the All apps panel when it is open. */
     private void placeFrost() {
         FrostLayer frost = host.frost();
         if (frost == null) return;
-        View band = allPanel.getVisibility() == View.VISIBLE && allPanel.getAlpha() > 0f ? allPanel
-                : settingsRow.getVisibility() == View.VISIBLE && settingsRow.getAlpha() > 0f ? settingsRow
-                : dock.getAlpha() > 0f ? dock : null;
+        // Only All apps sits on frost: the dock and settings bands are clear, so their tiles stand apart from them.
+        View band = allPanel.getVisibility() == View.VISIBLE && allPanel.getAlpha() > 0f ? allPanel : null;
         if (band == null || band.getWidth() == 0) {
             frost.setAlpha(0f);
             return;

@@ -52,12 +52,13 @@ final class LiquidGlass extends Drawable {
 
     /** A band holding a row (the dock, the settings row): light glossy glass. */
     static LiquidGlass band(float density) {
-        return new LiquidGlass(density, 28 * density, 0x33FFFFFF, 0x12FFFFFF, false);
+        // Nearly clear: the painting shows through sharp, so the tiles on it read as the glass objects.
+        return new LiquidGlass(density, 28 * density, 0x14FFFFFF, 0x05FFFFFF, false);
     }
 
     /** A slot at rest: faint clear glass. */
     static LiquidGlass tile(float density, float radiusPx) {
-        return new LiquidGlass(density, radiusPx, 0x24FFFFFF, 0x0AFFFFFF, false);
+        return new LiquidGlass(density, radiusPx, 0x38FFFFFF, 0x17FFFFFF, false);
     }
 
     /** A slot in focus: the same glass, brighter and glossier (laid over tile() and faded in). */
