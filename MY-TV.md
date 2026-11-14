@@ -74,8 +74,9 @@ Choose what shows under **Art** in the settings row (Up on the bare page, or the
 - **Your folders**: any folder of pictures you add under `art/`.
 - **Change every**: 5, 10 or 30 minutes, an hour, or once a day.
 
-Wide paintings fill the screen (cropped to 16:9 by the museum); tall or square ones are shown whole on a blurred,
-darkened copy of themselves.
+Most paintings fill the screen, cropped to 16:9 by the museum; where the crop sits was chosen by eye for each one
+(`art/crops.json`, 0 = top or left, 1 = bottom or right). Tall, square and very wide paintings, and the few that crop
+badly, are shown whole on a blurred, darkened copy of themselves.
 
 ### How the collections were made, and how to change them
 

@@ -29,8 +29,8 @@
    ]
   },
   "nga-1226.jpg": {
-   "url": "https://api.nga.gov/iiif/4c91e476-adc9-4dbd-be17-0d81069af41b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4c91e476-adc9-4dbd-be17-0d81069af41b/0,480,5057,2845/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Junction of the Thames and the Medway|Joseph Mallord William Turner, 1807",
    "museum": "National Gallery of Art",
    "tags": [
@@ -38,8 +38,8 @@
    ]
   },
   "nga-32587.jpg": {
-   "url": "https://api.nga.gov/iiif/baa196ea-c6c8-4fcc-b320-5ebb2f49c8cb/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/baa196ea-c6c8-4fcc-b320-5ebb2f49c8cb/0,426,5048,2840/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Procession of Gondolas in the Bacino di San Marco, Venice|Antonio Joli, 1742",
    "museum": "National Gallery of Art",
    "tags": [
@@ -81,8 +81,8 @@
    "tags": []
   },
   "nga-127672.jpg": {
-   "url": "https://api.nga.gov/iiif/972b9157-26fc-4f11-9b9b-ab9c2c253e67/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/972b9157-26fc-4f11-9b9b-ab9c2c253e67/0,2228,28043,15774/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Stranded Ship|Asher Brown Durand, 1844",
    "museum": "National Gallery of Art",
    "tags": [
@@ -90,15 +90,15 @@
    ]
   },
   "nga-52279.jpg": {
-   "url": "https://api.nga.gov/iiif/d902b68e-b9cc-448c-856c-9bf49745d31d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d902b68e-b9cc-448c-856c-9bf49745d31d/0,462,5005,2815/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Rotterdam Ferry-Boat|Joseph Mallord William Turner, 1833",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-158587.jpg": {
-   "url": "https://api.nga.gov/iiif/6340c60b-570f-4872-b3be-16858dccafd0/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/6340c60b-570f-4872-b3be-16858dccafd0/0,1303,14286,8036/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Sunset at Scheveningen:  A Fleet of Fishing Vessels…|Hendrik Willem Mesdag, 1894",
    "museum": "National Gallery of Art",
    "tags": [
@@ -106,7 +106,7 @@
    ]
   },
   "nga-56574.jpg": {
-   "url": "https://api.nga.gov/iiif/e36f10fe-8366-4753-a447-a9467fb4de32/0,1381,37113,20876/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/e36f10fe-8366-4753-a447-a9467fb4de32/0,1382,37113,20876/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Beach at Beverly|John Frederick Kensett, 1869",
    "museum": "National Gallery of Art",
@@ -116,8 +116,8 @@
    ]
   },
   "nga-66427.jpg": {
-   "url": "https://api.nga.gov/iiif/b1461d28-88d4-4aee-88dd-a78d368308ff/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b1461d28-88d4-4aee-88dd-a78d368308ff/0,778,8363,4704/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "A Creek in St. Thomas (Virgin Islands)|Camille Pissarro, 1856",
    "museum": "National Gallery of Art",
    "tags": [
@@ -125,8 +125,8 @@
    ]
   },
   "nga-52190.jpg": {
-   "url": "https://api.nga.gov/iiif/7a87f86c-c6c7-42e0-a433-28f944de30f1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/7a87f86c-c6c7-42e0-a433-28f944de30f1/0,800,6248,3514/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Island of Raguenez, Brittany|Henri Moret, 1890",
    "museum": "National Gallery of Art",
    "tags": [
@@ -143,8 +143,8 @@
    ]
   },
   "nga-61361.jpg": {
-   "url": "https://api.nga.gov/iiif/3aabc076-e658-48c9-b48c-d6ce8a868bde/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/3aabc076-e658-48c9-b48c-d6ce8a868bde/0,1110,15292,8602/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Coast of Brittany|Eugène Boudin, 1870",
    "museum": "National Gallery of Art",
    "tags": [
@@ -171,8 +171,8 @@
    ]
   },
   "nga-126132.jpg": {
-   "url": "https://api.nga.gov/iiif/5e688f46-2045-4de7-8ec1-bc73115d15d3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5e688f46-2045-4de7-8ec1-bc73115d15d3/0,552,5996,3373/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Fog off Mount Desert|Frederic Edwin Church, 1850",
    "museum": "National Gallery of Art",
    "tags": [
@@ -189,8 +189,8 @@
    ]
   },
   "nga-66408.jpg": {
-   "url": "https://api.nga.gov/iiif/c790c1ba-9b5f-4275-9f7d-7f501e30992c/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c790c1ba-9b5f-4275-9f7d-7f501e30992c/0,2156,15417,8672/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Calm Sea|Gustave Courbet, 1866",
    "museum": "National Gallery of Art",
    "tags": []
@@ -205,7 +205,7 @@
    ]
   },
   "nga-164928.jpg": {
-   "url": "https://api.nga.gov/iiif/7408044a-5130-49b9-bf8e-5ef5133bad98/0,281,6429,3616/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/7408044a-5130-49b9-bf8e-5ef5133bad98/0,282,6429,3616/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "The Flirt|Winslow Homer, 1874",
    "museum": "National Gallery of Art",
@@ -223,8 +223,8 @@
    ]
   },
   "nga-52158.jpg": {
-   "url": "https://api.nga.gov/iiif/ce2428ad-dd31-4049-8f9a-d63ae483070e/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/ce2428ad-dd31-4049-8f9a-d63ae483070e/644,0,3739,2103/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Beach|Eugène Boudin, 1877",
    "museum": "National Gallery of Art",
    "tags": [
@@ -232,8 +232,8 @@
    ]
   },
   "nga-157928.jpg": {
-   "url": "https://api.nga.gov/iiif/199a3f5f-4bb5-4aa9-a8cc-73dd2ee06ad0/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/199a3f5f-4bb5-4aa9-a8cc-73dd2ee06ad0/0,570,5625,3164/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Village by the Sea in Brittany|Odilon Redon, 1880",
    "museum": "National Gallery of Art",
    "tags": [
@@ -241,8 +241,8 @@
    ]
   },
   "rijks-20026573.jpg": {
-   "url": "https://iiif.micr.io/uCjnJ/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/uCjnJ/0,770,7096,3992/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Navy's Man-of-War 'Amsterdam'off the Westerlaag on Y at…|Nicolaas Baur, 1807",
    "museum": "Rijksmuseum",
    "tags": [
@@ -259,8 +259,8 @@
    ]
   },
   "nga-61383.jpg": {
-   "url": "https://api.nga.gov/iiif/68979753-2414-4f87-9111-8f7566d54077/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/68979753-2414-4f87-9111-8f7566d54077/0,1986,15803,8889/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Lighthouse at Honfleur|Georges Seurat, 1886",
    "museum": "National Gallery of Art",
    "tags": [
@@ -277,8 +277,8 @@
    ]
   },
   "nga-103172.jpg": {
-   "url": "https://api.nga.gov/iiif/eae1e446-f067-4f1e-8eb4-b212b3ea0f35/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/eae1e446-f067-4f1e-8eb4-b212b3ea0f35/0,2865,15675,8817/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Poppies, Isles of Shoals|Childe Hassam, 1891",
    "museum": "National Gallery of Art",
    "tags": [
@@ -286,8 +286,8 @@
    ]
   },
   "nga-199285.jpg": {
-   "url": "https://api.nga.gov/iiif/5ce7eea6-3075-4e79-9af3-c08d6631db07/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5ce7eea6-3075-4e79-9af3-c08d6631db07/0,1413,17672,9940/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of Sommerspiret, the Cliffs of Møn|Georg Emil Libert, 1846",
    "museum": "National Gallery of Art",
    "tags": [
@@ -295,8 +295,8 @@
    ]
   },
   "nga-50729.jpg": {
-   "url": "https://api.nga.gov/iiif/05213163-b2fc-4523-b963-575f85884783/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/05213163-b2fc-4523-b963-575f85884783/4258,0,20736,11664/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Much Resounding Sea|Thomas Moran, 1884",
    "museum": "National Gallery of Art",
    "tags": [
@@ -322,8 +322,8 @@
    ]
   },
   "rijks-20027240.jpg": {
-   "url": "https://iiif.micr.io/UUQDp/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/UUQDp/0,302,3870,2177/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of Dordrecht seen from Papendr…|Christiaan Lodewijk Willem Dreibholtz, 1830",
    "museum": "Rijksmuseum",
    "tags": [
@@ -331,7 +331,7 @@
    ]
   },
   "nga-79891.jpg": {
-   "url": "https://api.nga.gov/iiif/fea92cca-bb1f-4774-ac7c-b1b114719234/0,253,4815,2708/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/fea92cca-bb1f-4774-ac7c-b1b114719234/0,254,4815,2708/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Dad's Coming!|Winslow Homer, 1873",
    "museum": "National Gallery of Art",
@@ -340,8 +340,8 @@
    ]
   },
   "nga-71550.jpg": {
-   "url": "https://api.nga.gov/iiif/579777b9-33fb-493e-8e2c-89b972019854/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/579777b9-33fb-493e-8e2c-89b972019854/0,1268,19047,10714/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Sainte-Adresse|Claude Monet, 1867",
    "museum": "National Gallery of Art",
    "tags": [
@@ -349,8 +349,8 @@
    ]
   },
   "nga-166452.jpg": {
-   "url": "https://api.nga.gov/iiif/0dff6c29-1e00-45cb-90ba-49a8ef600e15/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/0dff6c29-1e00-45cb-90ba-49a8ef600e15/0,2108,15493,8715/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "A North East Headland|Childe Hassam, 1901",
    "museum": "National Gallery of Art",
    "tags": [
@@ -367,8 +367,8 @@
    ]
   },
   "nga-54131.jpg": {
-   "url": "https://api.nga.gov/iiif/25378dc6-d789-4af1-ba58-480bc250f43e/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/25378dc6-d789-4af1-ba58-480bc250f43e/0,463,7351,4135/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Murnau|Alexej von Jawlensky, 1910",
    "museum": "National Gallery of Art",
    "tags": [
@@ -385,7 +385,7 @@
    ]
   },
   "nga-166428.jpg": {
-   "url": "https://api.nga.gov/iiif/b5657933-52bc-4bfa-9bb9-12ea235e7198/0,291,8903,5008/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/b5657933-52bc-4bfa-9bb9-12ea235e7198/0,292,8903,5008/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Mount Corcoran|Albert Bierstadt, 1876",
    "museum": "National Gallery of Art",
@@ -412,8 +412,8 @@
    ]
   },
   "nga-166437.jpg": {
-   "url": "https://api.nga.gov/iiif/10dcd16f-7fc6-4ac4-a93c-f77be29b39ec/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/10dcd16f-7fc6-4ac4-a93c-f77be29b39ec/0,1552,17899,10068/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Tamaca Palms|Frederic Edwin Church, 1854",
    "museum": "National Gallery of Art",
    "tags": [
@@ -428,8 +428,8 @@
    "tags": []
   },
   "nga-71025.jpg": {
-   "url": "https://api.nga.gov/iiif/7ce06963-2e5f-4d9e-9a38-3c1b59e80a81/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/7ce06963-2e5f-4d9e-9a38-3c1b59e80a81/0,1361,17795,10010/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Sunrise in the Catskills|Thomas Cole, 1826",
    "museum": "National Gallery of Art",
    "tags": [
@@ -446,8 +446,8 @@
    ]
   },
   "rijks-20078750.jpg": {
-   "url": "https://iiif.micr.io/OOoAD/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/OOoAD/0,738,7059,3971/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of Civita Castellana|1792",
    "museum": "Rijksmuseum",
    "tags": [
@@ -464,8 +464,8 @@
    ]
   },
   "nga-166471.jpg": {
-   "url": "https://api.nga.gov/iiif/482e9978-5e15-4947-bf8b-67275347b13d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/482e9978-5e15-4947-bf8b-67275347b13d/0,1870,17592,9896/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Simplon Pass|John Singer Sargent, 1911",
    "museum": "National Gallery of Art",
    "tags": [
@@ -473,7 +473,7 @@
    ]
   },
   "nga-50727.jpg": {
-   "url": "https://api.nga.gov/iiif/47966446-8944-44fa-9166-be2c68bbc30a/0,1193,26925,15145/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/47966446-8944-44fa-9166-be2c68bbc30a/0,1194,26925,15145/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "A View of the Mountain Pass Called the Notch of the White Mou…|Thomas Cole, 1839",
    "museum": "National Gallery of Art",
@@ -483,8 +483,8 @@
    ]
   },
   "nga-130894.jpg": {
-   "url": "https://api.nga.gov/iiif/2b9b82ee-eb14-4b71-a6e5-4506b776ec22/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/2b9b82ee-eb14-4b71-a6e5-4506b776ec22/0,310,3961,2228/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Village on the Island o…|Sébastien-Louis-Guillaume Norblin de la Gourdaine, 1826",
    "museum": "National Gallery of Art",
    "tags": [
@@ -527,8 +527,8 @@
    "tags": []
   },
   "nga-127219.jpg": {
-   "url": "https://api.nga.gov/iiif/3edbebac-16d5-48d2-a57f-54bad01e19b1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/3edbebac-16d5-48d2-a57f-54bad01e19b1/0,1188,11638,6546/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Swiss Landscape|Alexandre Calame, 1830",
    "museum": "National Gallery of Art",
    "tags": [
@@ -536,7 +536,7 @@
    ]
   },
   "nga-110104.jpg": {
-   "url": "https://api.nga.gov/iiif/e5fffc83-c01c-4fbb-979b-ccefb49232cd/0,651,19205,10803/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/e5fffc83-c01c-4fbb-979b-ccefb49232cd/0,652,19205,10803/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "View from Vaekero near Christiania|Johan Christian Dahl, 1827",
    "museum": "National Gallery of Art",
@@ -554,8 +554,8 @@
    ]
   },
   "nga-46475.jpg": {
-   "url": "https://api.nga.gov/iiif/e3dc7526-af36-406f-bee4-c87391bc3e2c/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e3dc7526-af36-406f-bee4-c87391bc3e2c/0,553,6041,3398/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Fanciful Landscape|Thomas Doughty, 1834",
    "museum": "National Gallery of Art",
    "tags": [
@@ -563,8 +563,8 @@
    ]
   },
   "rijks-200108386.jpg": {
-   "url": "https://iiif.micr.io/TwvEJ/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/TwvEJ/0,790,6682,3759/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Italianate Landscape with Pines|Hendrik Voogd, 1795",
    "museum": "Rijksmuseum",
    "tags": [
@@ -572,8 +572,8 @@
    ]
   },
   "nga-130880.jpg": {
-   "url": "https://api.nga.gov/iiif/d25ae4f0-6e09-4ae3-9229-5d45ca3dec56/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d25ae4f0-6e09-4ae3-9229-5d45ca3dec56/0,623,6012,3382/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "On the Bay of Naples|Léon-François-Antoine Fleury, 1830",
    "museum": "National Gallery of Art",
    "tags": [
@@ -590,8 +590,8 @@
    ]
   },
   "nga-83883.jpg": {
-   "url": "https://api.nga.gov/iiif/fcf7a2ab-1b88-4aef-a6ac-b24fe7242837/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/fcf7a2ab-1b88-4aef-a6ac-b24fe7242837/0,558,7175,4036/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View at West Point|American 19th Century, 1852",
    "museum": "National Gallery of Art",
    "tags": [
@@ -617,8 +617,8 @@
    ]
   },
   "nga-234159.jpg": {
-   "url": "https://api.nga.gov/iiif/ea9f5af3-5a0f-41ee-8f96-f76074abbabc/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/ea9f5af3-5a0f-41ee-8f96-f76074abbabc/0,3647,29939,16841/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Yumurí Valley (Valle de Yumurí)|Esteban Chartrand, 1875",
    "museum": "National Gallery of Art",
    "tags": [
@@ -645,15 +645,15 @@
    ]
   },
   "nga-61397.jpg": {
-   "url": "https://api.nga.gov/iiif/45f1753d-dd24-4bfa-b3c2-8ae851335877/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/45f1753d-dd24-4bfa-b3c2-8ae851335877/0,3610,30587,17205/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Italian Landscape|Joseph Wright, 1790",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-130896.jpg": {
-   "url": "https://api.nga.gov/iiif/d1fa6937-25ce-4f4c-a414-91e99c098bf9/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d1fa6937-25ce-4f4c-a414-91e99c098bf9/0,1148,14170,7971/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Roman Theater at Taormina|Louise-Joséphine Sarazin de Belmont, 1828",
    "museum": "National Gallery of Art",
    "tags": [
@@ -661,8 +661,8 @@
    ]
   },
   "rijks-200107792.jpg": {
-   "url": "https://iiif.micr.io/OfGsE/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/OfGsE/0,460,7016,3946/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Mountainous Landscape near Düsseldorf|Gerard van Nijmegen, 1790",
    "museum": "Rijksmuseum",
    "tags": [
@@ -670,8 +670,8 @@
    ]
   },
   "rijks-20015845.jpg": {
-   "url": "https://iiif.micr.io/PxofD/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/PxofD/0,348,3786,2130/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of Tivoli|Isaac de Moucheron, 1725",
    "museum": "Rijksmuseum",
    "tags": [
@@ -679,8 +679,8 @@
    ]
   },
   "nga-66436.jpg": {
-   "url": "https://api.nga.gov/iiif/b74f7de3-fb66-406b-80b9-3a8381097bf6/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b74f7de3-fb66-406b-80b9-3a8381097bf6/0,2666,29434,16557/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Flood at Port-Marly|Alfred Sisley, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -688,8 +688,8 @@
    ]
   },
   "nga-43430.jpg": {
-   "url": "https://api.nga.gov/iiif/924bd29d-5c19-4627-8a56-89d9f7cd9a95/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/924bd29d-5c19-4627-8a56-89d9f7cd9a95/0,2393,24902,14007/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Ville-d'Avray|Jean-Baptiste-Camille Corot, 1865",
    "museum": "National Gallery of Art",
    "tags": [
@@ -706,7 +706,7 @@
    ]
   },
   "rijks-20026185.jpg": {
-   "url": "https://iiif.micr.io/REUyh/123,0,5349,3009/1920,1080/0/default.jpg",
+   "url": "https://iiif.micr.io/REUyh/124,0,5349,3009/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "The Bridge Over the IJssel River at Doesburg|1889",
    "museum": "Rijksmuseum",
@@ -722,8 +722,8 @@
    ]
   },
   "rijks-200108656.jpg": {
-   "url": "https://iiif.micr.io/bPJxR/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/bPJxR/0,446,3754,2112/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The small Fish Market on the Corner of the Brouwersgr…|Johannes Jelgerhuis, 1826",
    "museum": "Rijksmuseum",
    "tags": []
@@ -756,8 +756,8 @@
    ]
   },
   "nga-1166.jpg": {
-   "url": "https://api.nga.gov/iiif/d9e7fbf2-accf-4fcd-9996-ffc204a8875b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d9e7fbf2-accf-4fcd-9996-ffc204a8875b/0,423,4958,2789/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Grand Canal with the Rialto Bridge, Venice|Francesco Guardi, 1780",
    "museum": "National Gallery of Art",
    "tags": [
@@ -765,8 +765,8 @@
    ]
   },
   "nga-166436.jpg": {
-   "url": "https://api.nga.gov/iiif/4d6a4fa1-db74-4586-a753-9951bc5945a3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4d6a4fa1-db74-4586-a753-9951bc5945a3/2440,0,23031,12955/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Niagara|Frederic Edwin Church, 1857",
    "museum": "National Gallery of Art",
    "tags": [
@@ -774,8 +774,8 @@
    ]
   },
   "nga-119184.jpg": {
-   "url": "https://api.nga.gov/iiif/ad9dfdee-4bb5-4cc2-b968-04be6d00455d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/ad9dfdee-4bb5-4cc2-b968-04be6d00455d/0,2064,24620,13849/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Grand Canal|Richard Parkes Bonington, 1826",
    "museum": "National Gallery of Art",
    "tags": [
@@ -783,8 +783,8 @@
    ]
   },
   "nga-166468.jpg": {
-   "url": "https://api.nga.gov/iiif/31b66660-52db-433c-a969-033fb716c138/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/31b66660-52db-433c-a969-033fb716c138/0,1869,16085,9048/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Valley of the Seine, from the Hills of Giverny|Theodore Robinson, 1892",
    "museum": "National Gallery of Art",
    "tags": [
@@ -792,8 +792,8 @@
    ]
   },
   "rijks-20028513.jpg": {
-   "url": "https://iiif.micr.io/nctWD/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/nctWD/0,566,7213,4057/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of the Houtmarkt, Amsterdam|Hendrik Keun, 1760",
    "museum": "Rijksmuseum",
    "tags": [
@@ -801,7 +801,7 @@
    ]
   },
   "nga-35090.jpg": {
-   "url": "https://api.nga.gov/iiif/649827c9-0904-4a03-a23b-612107abd267/0,221,6928,3897/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/649827c9-0904-4a03-a23b-612107abd267/0,222,6928,3897/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Rialto Bridge, Venice|Francesco Guardi, 1770",
    "museum": "National Gallery of Art",
@@ -810,8 +810,8 @@
    ]
   },
   "rijks-200110479.jpg": {
-   "url": "https://iiif.micr.io/wXuhk/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/wXuhk/0,818,6786,3817/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The View from the Batavian Embassy in Paris|1801",
    "museum": "Rijksmuseum",
    "tags": [
@@ -819,8 +819,8 @@
    ]
   },
   "nga-136018.jpg": {
-   "url": "https://api.nga.gov/iiif/1b205f03-ef58-4ce4-9980-ed4a777ff30b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1b205f03-ef58-4ce4-9980-ed4a777ff30b/0,1420,17928,10084/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Towpath|Johan Barthold Jongkind, 1864",
    "museum": "National Gallery of Art",
    "tags": [
@@ -828,8 +828,8 @@
    ]
   },
   "nga-61394.jpg": {
-   "url": "https://api.nga.gov/iiif/403cf43c-7dcd-4082-aae5-f5e0bb512a7c/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/403cf43c-7dcd-4082-aae5-f5e0bb512a7c/0,665,9399,5287/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Lake Albano|Richard Wilson, 1762",
    "museum": "National Gallery of Art",
    "tags": [
@@ -837,8 +837,8 @@
    ]
   },
   "rijks-20029334.jpg": {
-   "url": "https://iiif.micr.io/gxOZj/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/gxOZj/0,529,6776,3812/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter Scene, with a City in the Distance|1850",
    "museum": "Rijksmuseum",
    "tags": [
@@ -847,8 +847,8 @@
    ]
   },
   "rijks-200108695.jpg": {
-   "url": "https://iiif.micr.io/NXYXF/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/NXYXF/0,337,3304,1858/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Slijpsteenmarkt in Amsterdam with the Building '…|George Pieter Westenberg, 1817",
    "museum": "Rijksmuseum",
    "tags": [
@@ -857,8 +857,8 @@
    ]
   },
   "rijks-200411630.jpg": {
-   "url": "https://iiif.micr.io/HOyNH/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/HOyNH/0,757,5595,3147/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Quay de Paris in Rouen|Johannes Bosboom, 1839",
    "museum": "Rijksmuseum",
    "tags": [
@@ -866,8 +866,8 @@
    ]
   },
   "nga-116.jpg": {
-   "url": "https://api.nga.gov/iiif/d90b641f-b6fe-4fc4-a520-69accf46513b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d90b641f-b6fe-4fc4-a520-69accf46513b/0,3330,35379,19901/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Mortlake Terrace|Joseph Mallord William Turner, 1827",
    "museum": "National Gallery of Art",
    "tags": [
@@ -875,8 +875,8 @@
    ]
   },
   "nga-195077.jpg": {
-   "url": "https://api.nga.gov/iiif/a860a56b-d802-47e7-be0e-41d3e8d3d814/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/a860a56b-d802-47e7-be0e-41d3e8d3d814/0,1849,26341,14817/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View on the Hudson in Autumn|Thomas Doughty, 1850",
    "museum": "National Gallery of Art",
    "tags": [
@@ -893,8 +893,8 @@
    ]
   },
   "rijks-20028222.jpg": {
-   "url": "https://iiif.micr.io/xMvbX/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/xMvbX/303,0,3314,1864/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of the Castel Sant'Angelo in Rome|1750",
    "museum": "Rijksmuseum",
    "tags": [
@@ -902,8 +902,8 @@
    ]
   },
   "nga-35094.jpg": {
-   "url": "https://api.nga.gov/iiif/c0279003-c6f3-4eed-a8f9-56d841c45d85/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c0279003-c6f3-4eed-a8f9-56d841c45d85/0,718,8305,4672/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Landscape with Boatman|Théodore Rousseau, 1860",
    "museum": "National Gallery of Art",
    "tags": [
@@ -911,8 +911,8 @@
    ]
   },
   "nga-52179.jpg": {
-   "url": "https://api.nga.gov/iiif/6f450b5f-4d2d-471a-b74e-24c0a0172707/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/6f450b5f-4d2d-471a-b74e-24c0a0172707/0,1004,12671,7127/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Pont de la Tournelle, Paris|Stanislas Lépine, 1862",
    "museum": "National Gallery of Art",
    "tags": [
@@ -920,8 +920,8 @@
    ]
   },
   "nga-52202.jpg": {
-   "url": "https://api.nga.gov/iiif/56303f18-6101-4d5d-9b03-20b58d657afa/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/56303f18-6101-4d5d-9b03-20b58d657afa/0,899,7691,4326/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Pont Neuf, Paris|Auguste Renoir, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -948,7 +948,7 @@
    ]
   },
   "rijks-20026282.jpg": {
-   "url": "https://iiif.micr.io/ZTQTg/0,349,6168,3470/1920,1080/0/default.jpg",
+   "url": "https://iiif.micr.io/ZTQTg/0,350,6168,3470/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Winter Scene on the Ice with Wood Gatherers|Andreas Schelfhout, 1849",
    "museum": "Rijksmuseum",
@@ -967,8 +967,8 @@
    ]
   },
   "nga-46630.jpg": {
-   "url": "https://api.nga.gov/iiif/ce2e25da-4383-426f-933b-e06c3fabac1f/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/ce2e25da-4383-426f-933b-e06c3fabac1f/0,1132,11835,6657/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Bridge of Louis Philippe|Jean-Baptiste-Armand Guillaumin, 1875",
    "museum": "National Gallery of Art",
    "tags": [
@@ -985,8 +985,8 @@
    ]
   },
   "nga-103247.jpg": {
-   "url": "https://api.nga.gov/iiif/6aaf6ad6-2227-46b2-b0fc-ecba89ca418e/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/6aaf6ad6-2227-46b2-b0fc-ecba89ca418e/0,2049,14748,8296/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Roadside Cottage|Dennis Miller Bunker, 1889",
    "museum": "National Gallery of Art",
    "tags": [
@@ -994,8 +994,8 @@
    ]
   },
   "nga-52178.jpg": {
-   "url": "https://api.nga.gov/iiif/51c369a2-cc20-43f6-8262-25877c4377eb/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/51c369a2-cc20-43f6-8262-25877c4377eb/0,2924,31183,17540/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Farmhouse in Provence|Vincent van Gogh, 1888",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1003,7 +1003,7 @@
    ]
   },
   "nga-89684.jpg": {
-   "url": "https://api.nga.gov/iiif/17707775-8562-416f-a470-3761a4ba0414/0,633,10543,5930/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/17707775-8562-416f-a470-3761a4ba0414/0,634,10543,5930/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Breton Village|Odilon Redon, 1890",
    "museum": "National Gallery of Art",
@@ -1012,8 +1012,8 @@
    ]
   },
   "nga-72886.jpg": {
-   "url": "https://api.nga.gov/iiif/39a9ac6c-8098-491f-8a9f-b517567275d5/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/39a9ac6c-8098-491f-8a9f-b517567275d5/0,2834,22831,12842/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Landscape at Les Pâtis, Pontoise|Camille Pissarro, 1868",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1040,8 +1040,8 @@
    ]
   },
   "nga-32588.jpg": {
-   "url": "https://api.nga.gov/iiif/c25be5bf-4592-4102-a908-17082b19542d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c25be5bf-4592-4102-a908-17082b19542d/0,2298,25872,14553/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Square of Saint Mark's, Venice|Canaletto, 1742",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1067,8 +1067,8 @@
    ]
   },
   "nga-46673.jpg": {
-   "url": "https://api.nga.gov/iiif/1921981a-82c4-46ee-8cec-185aa18e2538/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1921981a-82c4-46ee-8cec-185aa18e2538/0,2268,19123,10757/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Boulevard des Italiens, Morning, Sunlight|Camille Pissarro, 1897",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1076,8 +1076,8 @@
    ]
   },
   "nga-62641.jpg": {
-   "url": "https://api.nga.gov/iiif/391cb2aa-b6d1-4417-979c-9e29337ce027/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/391cb2aa-b6d1-4417-979c-9e29337ce027/0,1598,17176,9662/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "First Snow at Veneux-Nadon|Alfred Sisley, 1878",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1116,8 +1116,8 @@
    ]
   },
   "nga-195850.jpg": {
-   "url": "https://api.nga.gov/iiif/f7896300-10dd-4eec-ae25-bf689ce99015/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f7896300-10dd-4eec-ae25-bf689ce99015/0,1941,16127,9071/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Louvre, Afternoon, Rainy Weather|Camille Pissarro, 1900",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1126,8 +1126,8 @@
    ]
   },
   "nga-52187.jpg": {
-   "url": "https://api.nga.gov/iiif/73069488-cbc0-412b-a9fd-8094e24e2915/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/73069488-cbc0-412b-a9fd-8094e24e2915/0,1390,11078,6231/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Ships Riding on the Seine at Rouen|Claude Monet, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1135,8 +1135,8 @@
    ]
   },
   "rijks-20015892.jpg": {
-   "url": "https://iiif.micr.io/RAYtw/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/RAYtw/0,656,5892,3314/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter Scene (Horse-Sleigh on the Ice)|Andries Vermeulen, 1790",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1181,8 +1181,8 @@
    ]
   },
   "nga-66404.jpg": {
-   "url": "https://api.nga.gov/iiif/3313430c-1c8b-4b56-9563-7b20a070c6ef/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/3313430c-1c8b-4b56-9563-7b20a070c6ef/0,2316,23093,12990/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Skiffs|Gustave Caillebotte, 1877",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1190,8 +1190,8 @@
    ]
   },
   "nga-52205.jpg": {
-   "url": "https://api.nga.gov/iiif/0191f5a7-69f5-4e95-a9cf-11fa232f6db2/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/0191f5a7-69f5-4e95-a9cf-11fa232f6db2/0,1035,8872,4990/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Picking Flowers|Auguste Renoir, 1875",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1199,8 +1199,8 @@
    ]
   },
   "nga-39759.jpg": {
-   "url": "https://api.nga.gov/iiif/1153f2b7-bfe6-4159-8ca4-211ce86564b1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1153f2b7-bfe6-4159-8ca4-211ce86564b1/0,1616,12867,7238/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Oarsmen at Chatou|Auguste Renoir, 1879",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1226,7 +1226,7 @@
    ]
   },
   "nga-166472.jpg": {
-   "url": "https://api.nga.gov/iiif/104fd57e-cd5f-4fa5-a31c-440dcd256ed6/0,1093,31495,17716/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/104fd57e-cd5f-4fa5-a31c-440dcd256ed6/0,1094,31495,17716/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "En route pour la pêche (Setting Out to Fish)|John Singer Sargent, 1878",
    "museum": "National Gallery of Art",
@@ -1235,15 +1235,15 @@
    ]
   },
   "nga-166501.jpg": {
-   "url": "https://api.nga.gov/iiif/45bad99c-e7c3-49bc-be81-dc1baccaef48/0,217,22922,12894/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/45bad99c-e7c3-49bc-be81-dc1baccaef48/0,218,22922,12894/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "A Light on the Sea|Winslow Homer, 1897",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "rijks-20078759.jpg": {
-   "url": "https://iiif.micr.io/vjudo/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/vjudo/0,778,7076,3980/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Women’s Skating Competition on Stadsgracht, Leeuwarden, 21 January 1809|1810",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1252,8 +1252,8 @@
    ]
   },
   "nga-157923.jpg": {
-   "url": "https://api.nga.gov/iiif/e448a88b-b7c1-486e-9995-9c96d611faff/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e448a88b-b7c1-486e-9995-9c96d611faff/1184,0,10802,6076/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "East Hampton Beach, Long Island|Winslow Homer, 1874",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1261,8 +1261,8 @@
    ]
   },
   "nga-61376.jpg": {
-   "url": "https://api.nga.gov/iiif/23a7bb39-d6da-4cf4-8961-7e743fd39aba/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/23a7bb39-d6da-4cf4-8961-7e743fd39aba/0,1621,15342,8630/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Interior, after Dinner|Claude Monet, 1868",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1275,8 +1275,8 @@
    "tags": []
   },
   "nga-32697.jpg": {
-   "url": "https://api.nga.gov/iiif/54c8956b-f5b8-404b-b28a-ddbeb2c0e7ec/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/54c8956b-f5b8-404b-b28a-ddbeb2c0e7ec/0,661,5681,3196/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Fête Champêtre|Jean-Baptiste Joseph Pater, 1730",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1298,8 +1298,8 @@
    "tags": []
   },
   "rijks-200109843.jpg": {
-   "url": "https://iiif.micr.io/jdPGY/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/jdPGY/0,372,3820,2149/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Vrouwen aan zee|1885",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1321,8 +1321,8 @@
    "tags": []
   },
   "nga-46624.jpg": {
-   "url": "https://api.nga.gov/iiif/4f9268d4-c250-4dd8-9bee-d08d8942b8d1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4f9268d4-c250-4dd8-9bee-d08d8942b8d1/0,1112,12545,7057/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Fatata te Miti (By the Sea)|Paul Gauguin, 1892",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1335,8 +1335,8 @@
    "tags": []
   },
   "nga-52203.jpg": {
-   "url": "https://api.nga.gov/iiif/bb8d8019-7d4b-4b27-8098-436ff7b1d3f6/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/bb8d8019-7d4b-4b27-8098-436ff7b1d3f6/0,976,13563,7629/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Regatta at Argenteuil|Auguste Renoir, 1874",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1344,8 +1344,8 @@
    ]
   },
   "rijks-20026403.jpg": {
-   "url": "https://iiif.micr.io/xCheR/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/xCheR/0,670,6951,3910/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Interieur van het Tsaar Peterhuisje te Zaandam|Pierre Tetar van Elven, 1851",
    "museum": "Rijksmuseum",
    "tags": []
@@ -1360,8 +1360,8 @@
    ]
   },
   "nga-195681.jpg": {
-   "url": "https://api.nga.gov/iiif/80fffb38-6661-4c39-9825-a87703fe86cd/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/80fffb38-6661-4c39-9825-a87703fe86cd/0,1733,18421,10362/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Life on the East Side|Jerome Myers, 1931",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1376,8 +1376,8 @@
    ]
   },
   "nga-45986.jpg": {
-   "url": "https://api.nga.gov/iiif/5c394976-ec50-4c25-9c36-a39365a5fffe/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5c394976-ec50-4c25-9c36-a39365a5fffe/0,4435,37222,20937/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Still Life with Apples and Peaches|Paul Cezanne, 1905",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1410,15 +1410,15 @@
    ]
   },
   "nga-46579.jpg": {
-   "url": "https://api.nga.gov/iiif/a747d251-bb1f-404b-a167-26bd03611006/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/a747d251-bb1f-404b-a167-26bd03611006/0,4080,34561,19441/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Peppermint Bottle|Paul Cezanne, 1893",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-53124.jpg": {
-   "url": "https://api.nga.gov/iiif/5983913c-1ece-4631-9b32-f7b450695dc1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5983913c-1ece-4631-9b32-f7b450695dc1/0,777,6774,3810/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Still Life with a White Mug|Jean Siméon Chardin, 1764",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1433,8 +1433,8 @@
    ]
   },
   "nga-214131.jpg": {
-   "url": "https://api.nga.gov/iiif/2430a030-7bcd-4433-a59e-91cfc9ead186/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/2430a030-7bcd-4433-a59e-91cfc9ead186/0,1588,16832,9468/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Marble Tabletop with Fruit and Wineglass|Milne Ramsey, 1869",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1442,8 +1442,8 @@
    ]
   },
   "nga-164923.jpg": {
-   "url": "https://api.nga.gov/iiif/b74be188-7a6a-4fc8-866e-55c4e11937c9/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b74be188-7a6a-4fc8-866e-55c4e11937c9/0,1752,16898,9505/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Still Life of Oranges and Lemons with Blue Gloves|Vincent van Gogh, 1889",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1483,8 +1483,8 @@
    ]
   },
   "nga-110101.jpg": {
-   "url": "https://api.nga.gov/iiif/970feb51-ee9f-422f-a6ba-e13a3d708c4c/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/970feb51-ee9f-422f-a6ba-e13a3d708c4c/0,342,4933,2775/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "A Dessert|Raphaelle Peale, 1814",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1506,15 +1506,15 @@
    ]
   },
   "nga-178114.jpg": {
-   "url": "https://api.nga.gov/iiif/c020c6d4-357c-47a0-828e-3fc134f70c30/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c020c6d4-357c-47a0-828e-3fc134f70c30/0,3004,23653,13305/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Still Life with Silver Cake Basket|John F. Francis, 1866",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-89679.jpg": {
-   "url": "https://api.nga.gov/iiif/382f0d18-13f7-4d42-8a39-053b781541e3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/382f0d18-13f7-4d42-8a39-053b781541e3/0,442,4699,2643/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Three Peaches on a Plate|Henri Fantin-Latour, 1868",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1522,8 +1522,8 @@
    ]
   },
   "nga-89673.jpg": {
-   "url": "https://api.nga.gov/iiif/3c2dcfb1-a13c-4137-876a-b5481a4de8cd/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/3c2dcfb1-a13c-4137-876a-b5481a4de8cd/0,566,4452,2504/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Green Plums|Joseph Decker, 1885",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1554,8 +1554,8 @@
    ]
   },
   "nga-61244.jpg": {
-   "url": "https://api.nga.gov/iiif/0dde1c3c-6c08-431d-85e2-7288c2c93f26/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/0dde1c3c-6c08-431d-85e2-7288c2c93f26/0,2157,21932,12337/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Cattleya Orchid and Three Hummingbirds|Martin Johnson Heade, 1871",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1579,8 +1579,8 @@
    "tags": []
   },
   "nga-214123.jpg": {
-   "url": "https://api.nga.gov/iiif/4dd0739b-4dbc-4a6a-acf6-3f8e6e4fcaf3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4dd0739b-4dbc-4a6a-acf6-3f8e6e4fcaf3/0,976,9226,5190/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Two McLaughlin Pears|Anna Eliza Hardy, 1839",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1613,8 +1613,8 @@
    ]
   },
   "nga-75030.jpg": {
-   "url": "https://api.nga.gov/iiif/7c21205d-d77c-43b1-bca1-5598e912051c/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/7c21205d-d77c-43b1-bca1-5598e912051c/0,572,4428,2491/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Mound of Butter|Antoine Vollon, 1875",
    "museum": "National Gallery of Art",
    "tags": []
@@ -1638,8 +1638,8 @@
    ]
   },
   "nga-214901.jpg": {
-   "url": "https://api.nga.gov/iiif/9407728e-20d4-4328-bcc2-2daba99ed795/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/9407728e-20d4-4328-bcc2-2daba99ed795/0,2109,15510,8724/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Still Life|John O'Brien Inman, 1828",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1688,8 +1688,8 @@
    ]
   },
   "rijks-20027621.jpg": {
-   "url": "https://iiif.micr.io/qkzEG/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/qkzEG/614,0,6393,3596/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Stilleven met gitaar en rozen|Margaretha Roosenboom, 1880",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1697,8 +1697,8 @@
    ]
   },
   "nga-52198.jpg": {
-   "url": "https://api.nga.gov/iiif/e291058c-0769-493c-a5f3-8e0e64e9ea46/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e291058c-0769-493c-a5f3-8e0e64e9ea46/0,2006,17209,9680/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Artist's Garden at Eragny|Camille Pissarro, 1898",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1706,8 +1706,8 @@
    ]
   },
   "nga-72138.jpg": {
-   "url": "https://api.nga.gov/iiif/4196f97b-1edb-4fae-aa9f-882afe35978b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4196f97b-1edb-4fae-aa9f-882afe35978b/0,1610,17348,9758/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Artist's Garden in Argenteuil|Claude Monet, 1873",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1715,7 +1715,7 @@
    ]
   },
   "rijks-200111828.jpg": {
-   "url": "https://iiif.micr.io/VFoeu/0,343,6551,3685/1920,1080/0/default.jpg",
+   "url": "https://iiif.micr.io/VFoeu/0,344,6551,3685/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "The Herepad in the Haagse Bos|1778",
    "museum": "Rijksmuseum",
@@ -1724,8 +1724,8 @@
    ]
   },
   "nga-74796.jpg": {
-   "url": "https://api.nga.gov/iiif/0b9cefb5-1ee4-401a-8154-8d4039191a28/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/0b9cefb5-1ee4-401a-8154-8d4039191a28/0,3618,29700,16706/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Japanese Footbridge|Claude Monet, 1899",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1742,8 +1742,8 @@
    ]
   },
   "nga-52195.jpg": {
-   "url": "https://api.nga.gov/iiif/73f10a5d-7d60-4d8f-916e-1ad76ef25421/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/73f10a5d-7d60-4d8f-916e-1ad76ef25421/0,1675,13067,7350/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Orchard in Bloom, Louveciennes|Camille Pissarro, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1751,8 +1751,8 @@
    ]
   },
   "nga-195490.jpg": {
-   "url": "https://api.nga.gov/iiif/feacc066-4ff8-417c-b2be-f38de838e530/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/feacc066-4ff8-417c-b2be-f38de838e530/0,2948,23187,13043/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Old House at East Hampton|Childe Hassam, 1916",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1769,8 +1769,8 @@
    ]
   },
   "nga-52199.jpg": {
-   "url": "https://api.nga.gov/iiif/2f61c3b8-00ff-41d4-941a-9d639c291472/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/2f61c3b8-00ff-41d4-941a-9d639c291472/0,774,5802,3264/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Place du Carrousel, Paris|Camille Pissarro, 1900",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1778,8 +1778,8 @@
    ]
   },
   "nga-61371.jpg": {
-   "url": "https://api.nga.gov/iiif/de9ed4a3-3aed-4e56-b4c0-8c64a6ca4cc5/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/de9ed4a3-3aed-4e56-b4c0-8c64a6ca4cc5/0,2998,35365,19893/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Flower Beds in Holland|Vincent van Gogh, 1883",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1787,8 +1787,8 @@
    ]
   },
   "rijks-20066586.jpg": {
-   "url": "https://iiif.micr.io/WWOgF/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/WWOgF/0,842,8186,4605/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "House on the Rijswijk, Batavia (Jalan Veteran)|Ernest Alfred Hardouin, 1835",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1805,8 +1805,8 @@
    ]
   },
   "rijks-200494333.jpg": {
-   "url": "https://iiif.micr.io/mLVTD/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/mLVTD/0,641,5683,3197/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of the Gardens of Villa Medici|Michel-Martin Drolling, 1811",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1814,8 +1814,8 @@
    ]
   },
   "rijks-200110466.jpg": {
-   "url": "https://iiif.micr.io/foUHc/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/foUHc/0,863,6278,3531/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Garden and Coach House of 524 Keizersgracht in Amsterdam|1772",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1850,8 +1850,8 @@
    ]
   },
   "nga-166500.jpg": {
-   "url": "https://api.nga.gov/iiif/f6edcd0b-e9c1-4ed7-9f1c-290b68b1dd92/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f6edcd0b-e9c1-4ed7-9f1c-290b68b1dd92/0,1486,16729,9410/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Luxembourg Gardens|William James Glackens, 1906",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1868,8 +1868,8 @@
    ]
   },
   "rijks-20028479.jpg": {
-   "url": "https://iiif.micr.io/AdrKR/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/AdrKR/0,554,5439,3059/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Moestuin|Willem Witsen, 1885",
    "museum": "Rijksmuseum",
    "tags": [
@@ -1877,8 +1877,8 @@
    ]
   },
   "nga-96.jpg": {
-   "url": "https://api.nga.gov/iiif/8abd9a6d-3b2f-4c4f-8afd-6dc55fb69834/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/8abd9a6d-3b2f-4c4f-8afd-6dc55fb69834/0,384,5069,2851/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "La Camargo Dancing|Nicolas Lancret, 1730",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1895,8 +1895,8 @@
    ]
   },
   "nga-66431.jpg": {
-   "url": "https://api.nga.gov/iiif/249223aa-3fd2-4591-ae57-8a472e8ba5fc/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/249223aa-3fd2-4591-ae57-8a472e8ba5fc/0,883,7441,4186/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Salem Cove|Maurice Prendergast, 1915",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1913,7 +1913,7 @@
    ]
   },
   "nga-164954.jpg": {
-   "url": "https://api.nga.gov/iiif/ef0fab65-cbbc-465c-8033-5653fade0472/0,523,8681,4883/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/ef0fab65-cbbc-465c-8033-5653fade0472/0,524,8681,4883/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "In the Park, Paris|Maurice Prendergast, 1891",
    "museum": "National Gallery of Art",
@@ -1922,8 +1922,8 @@
    ]
   },
   "nga-226402.jpg": {
-   "url": "https://api.nga.gov/iiif/4e44d93e-c206-45ed-bdc1-54dcb1ddf541/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/4e44d93e-c206-45ed-bdc1-54dcb1ddf541/0,1993,24181,13602/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Marguerite|Marie Bracquemond, 1869",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1940,8 +1940,8 @@
    ]
   },
   "nga-43320.jpg": {
-   "url": "https://api.nga.gov/iiif/1804fdc0-8b6a-44ab-8db5-ab29d8cfa1b0/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1804fdc0-8b6a-44ab-8db5-ab29d8cfa1b0/0,392,5147,2895/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "On the Terrace|Jean-Baptiste Joseph Pater, 1730",
    "museum": "National Gallery of Art",
    "tags": [
@@ -1983,8 +1983,8 @@
    ]
   },
   "nga-135512.jpg": {
-   "url": "https://api.nga.gov/iiif/8bffe28f-ef5b-4098-9356-ff5a5d70cbb1/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/8bffe28f-ef5b-4098-9356-ff5a5d70cbb1/0,2296,19261,10834/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Nanny and Child|Eva Gonzalès, 1877",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2001,8 +2001,8 @@
    ]
   },
   "nga-50257.jpg": {
-   "url": "https://api.nga.gov/iiif/24f75bef-6596-4eac-8470-719b2f9876ec/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/24f75bef-6596-4eac-8470-719b2f9876ec/0,2331,19298,10855/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter Harmony|John Henry Twachtman, 1890",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2011,8 +2011,8 @@
    ]
   },
   "nga-89675.jpg": {
-   "url": "https://api.nga.gov/iiif/a6a9b39d-661b-4420-9c1e-00adf4d9e8e8/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/a6a9b39d-661b-4420-9c1e-00adf4d9e8e8/0,586,6720,3780/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter in the Country|George Henry Durrie, 1858",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2021,8 +2021,8 @@
    ]
   },
   "nga-109732.jpg": {
-   "url": "https://api.nga.gov/iiif/458896db-3993-40ff-a3ad-c67106243ed9/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/458896db-3993-40ff-a3ad-c67106243ed9/0,486,6311,3550/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter in the Country|George Henry Durrie, 1859",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2031,8 +2031,8 @@
    ]
   },
   "rijks-200111820.jpg": {
-   "url": "https://iiif.micr.io/jVXTZ/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/jVXTZ/0,709,5360,3015/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter Landscape|Barend Cornelis Koekkoek, 1835",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2041,8 +2041,8 @@
    ]
   },
   "rijks-20029041.jpg": {
-   "url": "https://iiif.micr.io/OVYGI/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/OVYGI/0,393,3716,2090/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "City View in the Winter|Dirk Jan van der Laan, 1790",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2051,8 +2051,8 @@
    ]
   },
   "nga-205411.jpg": {
-   "url": "https://api.nga.gov/iiif/34e5e933-22a6-4c4a-8e69-98c5011f97a6/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/34e5e933-22a6-4c4a-8e69-98c5011f97a6/0,1621,17357,9763/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Woods in Winter|Charles Warren Eaton, 1886",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2061,8 +2061,8 @@
    ]
   },
   "nga-101749.jpg": {
-   "url": "https://api.nga.gov/iiif/1fc7eee8-516f-4a14-955c-e2f7e9e2f15a/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1fc7eee8-516f-4a14-955c-e2f7e9e2f15a/0,700,7888,4437/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Santa Trinità dei Monti in the Snow|André Giroux, 1825",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2071,8 +2071,8 @@
    ]
   },
   "nga-195433.jpg": {
-   "url": "https://api.nga.gov/iiif/7d161202-0488-4730-ae08-c175a8e85c93/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/7d161202-0488-4730-ae08-c175a8e85c93/0,2709,23120,13005/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Boathouse, Winter, Harlem River|Ernest Lawson, 1916",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2100,8 +2100,8 @@
    ]
   },
   "nga-66429.jpg": {
-   "url": "https://api.nga.gov/iiif/94413b0f-688f-4cf4-9a08-f52e836faab4/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/94413b0f-688f-4cf4-9a08-f52e836faab4/0,1246,9662,5435/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Fence|Camille Pissarro, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2109,8 +2109,8 @@
    ]
   },
   "nga-46558.jpg": {
-   "url": "https://api.nga.gov/iiif/bf35b647-0355-44d7-a684-5a193a937b9d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/bf35b647-0355-44d7-a684-5a193a937b9d/0,974,10481,5896/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Lone Tenement|George Bellows, 1909",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2118,8 +2118,8 @@
    ]
   },
   "nga-195123.jpg": {
-   "url": "https://api.nga.gov/iiif/f1e8637b-03bd-41ec-b660-09411d8a194b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f1e8637b-03bd-41ec-b660-09411d8a194b/0,2142,16105,9059/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Truants|Eastman Johnson, 1870",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2128,8 +2128,8 @@
    ]
   },
   "nga-69392.jpg": {
-   "url": "https://api.nga.gov/iiif/6bea4e79-1320-4c0a-96b1-d5aa2f149dfe/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/6bea4e79-1320-4c0a-96b1-d5aa2f149dfe/0,333,5211,2931/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "New York|George Bellows, 1911",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2137,8 +2137,8 @@
    ]
   },
   "nga-195580.jpg": {
-   "url": "https://api.nga.gov/iiif/64ab9db6-15c8-4558-bbef-bf9388e8a3a3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/64ab9db6-15c8-4558-bbef-bf9388e8a3a3/0,3095,22080,12420/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Boulevard|Jean François Raffaëlli, 1900",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2146,8 +2146,8 @@
    ]
   },
   "nga-130555.jpg": {
-   "url": "https://api.nga.gov/iiif/40bb6453-0326-4377-8ffd-872226a0e5d8/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/40bb6453-0326-4377-8ffd-872226a0e5d8/0,1042,13245,7450/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Northern Landscape, Spring|Caspar David Friedrich, 1825",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2156,8 +2156,8 @@
    ]
   },
   "nga-52446.jpg": {
-   "url": "https://api.nga.gov/iiif/d0d76f21-3750-4ab5-b772-e046d638e96a/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d0d76f21-3750-4ab5-b772-e046d638e96a/0,1613,12035,6770/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Madison Square, Snow|Allen Tucker, 1904",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2176,8 +2176,8 @@
    ]
   },
   "nga-46557.jpg": {
-   "url": "https://api.nga.gov/iiif/acc96e3f-6b67-443a-b2af-6d6ba7d1b664/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/acc96e3f-6b67-443a-b2af-6d6ba7d1b664/0,1424,13134,7388/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Blue Morning|George Bellows, 1909",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2185,8 +2185,8 @@
    ]
   },
   "rijks-20015960.jpg": {
-   "url": "https://iiif.micr.io/IhJqG/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/IhJqG/0,359,3720,2092/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Winter Landscape|1850",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2195,7 +2195,7 @@
    ]
   },
   "nga-140909.jpg": {
-   "url": "https://api.nga.gov/iiif/7349411e-b7c9-4739-95c9-bd541af9aca6/0,201,5099,2868/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/7349411e-b7c9-4739-95c9-bd541af9aca6/0,202,5099,2868/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "On Their Way to Camp|Eastman Johnson, 1873",
    "museum": "National Gallery of Art",
@@ -2205,8 +2205,8 @@
    ]
   },
   "nga-62640.jpg": {
-   "url": "https://api.nga.gov/iiif/bc95069a-43c7-4dc5-bbe4-8b34041203ed/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/bc95069a-43c7-4dc5-bbe4-8b34041203ed/0,1412,18948,10658/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Siberian Dogs in the Snow|Franz Marc, 1909",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2235,7 +2235,7 @@
    ]
   },
   "rijks-20029056.jpg": {
-   "url": "https://iiif.micr.io/RiwwC/0,231,3952,2223/1920,1080/0/default.jpg",
+   "url": "https://iiif.micr.io/RiwwC/0,232,3952,2223/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "The Neva at St Petersburg (Leningrad) in the Winter|Theodor Hildebrandt, 1844",
    "museum": "Rijksmuseum",
@@ -2245,8 +2245,8 @@
    ]
   },
   "nga-178318.jpg": {
-   "url": "https://api.nga.gov/iiif/a555a8ba-5b28-4e35-89db-b43b87264253/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/a555a8ba-5b28-4e35-89db-b43b87264253/0,1918,22117,12441/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Square in Paris|Jean François Raffaëlli, 1850",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2264,8 +2264,8 @@
    ]
   },
   "nga-176904.jpg": {
-   "url": "https://api.nga.gov/iiif/655778ad-36d6-42b8-875c-7a04994f2eeb/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/655778ad-36d6-42b8-875c-7a04994f2eeb/0,1118,9404,5290/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Landscape|Morton Livingston Schamberg, 1912",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2274,8 +2274,8 @@
    ]
   },
   "rijks-200111819.jpg": {
-   "url": "https://iiif.micr.io/XygBp/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/XygBp/0,792,5497,3092/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Forest Scene|Barend Cornelis Koekkoek, 1848",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2292,8 +2292,8 @@
    ]
   },
   "rijks-20063862.jpg": {
-   "url": "https://iiif.micr.io/rpVEU/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/rpVEU/0,376,3848,2164/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Hilly Landscape near Wageningen|Abraham Johannes Couwenberg, 1833",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2301,8 +2301,8 @@
    ]
   },
   "rijks-20029299.jpg": {
-   "url": "https://iiif.micr.io/HEHGD/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/HEHGD/0,879,7874,4429/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Landscape with an Oncoming Rainstorm|Barend Cornelis Koekkoek, 1825",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2319,8 +2319,8 @@
    ]
   },
   "rijks-20026019.jpg": {
-   "url": "https://iiif.micr.io/mqFjY/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/mqFjY/0,830,6504,3658/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of the house of the resident, Mr. J. Ph. van Zuylen van Nyevelt, in B…|1828",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2337,8 +2337,8 @@
    ]
   },
   "rijks-20026344.jpg": {
-   "url": "https://iiif.micr.io/MVoNU/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/MVoNU/0,687,7057,3970/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Zuiderhavendijk, Enkhuizen|Cornelis Springer, 1868",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2355,15 +2355,15 @@
    ]
   },
   "nga-154844.jpg": {
-   "url": "https://api.nga.gov/iiif/c0d7780f-d00d-4c01-b5f8-c138420d2340/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c0d7780f-d00d-4c01-b5f8-c138420d2340/0,3843,29309,16486/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Black Rocks at Trouville|Gustave Courbet, 1865",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "rijks-200108646.jpg": {
-   "url": "https://iiif.micr.io/TubGB/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/TubGB/0,734,7687,4324/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View on the Beach near Katwijk aan Zee|Willem Anthonie van Deventer, 1860",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2371,8 +2371,8 @@
    ]
   },
   "rijks-2004267.jpg": {
-   "url": "https://iiif.micr.io/JBFfm/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/JBFfm/0,686,5344,3006/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Rue Notre-Dame, Paris|1866",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2380,8 +2380,8 @@
    ]
   },
   "nga-166502.jpg": {
-   "url": "https://api.nga.gov/iiif/d72d916c-74df-4bc4-9b86-97b65b158042/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d72d916c-74df-4bc4-9b86-97b65b158042/0,2012,24144,13581/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Trout Brook in the Catskills|Worthington Whittredge, 1875",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2416,7 +2416,7 @@
    ]
   },
   "nga-46485.jpg": {
-   "url": "https://api.nga.gov/iiif/388d34c4-2515-480f-8184-424ed1a758a7/0,321,5993,3371/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/388d34c4-2515-480f-8184-424ed1a758a7/0,322,5993,3371/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Beach in Normandy|Gustave Courbet, 1872",
    "museum": "National Gallery of Art",
@@ -2425,7 +2425,7 @@
    ]
   },
   "nga-82416.jpg": {
-   "url": "https://api.nga.gov/iiif/ac936d8c-9ae1-491f-8848-421016c51c9b/0,1621,32607,18341/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/ac936d8c-9ae1-491f-8848-421016c51c9b/0,1622,32607,18341/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "Battersea Reach|James McNeill Whistler, 1858",
    "museum": "National Gallery of Art",
@@ -2434,8 +2434,8 @@
    ]
   },
   "rijks-20027269.jpg": {
-   "url": "https://iiif.micr.io/SrYoc/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/SrYoc/0,522,7220,4061/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View in Bentheim Forest|George Andries Roth, 1870",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2443,8 +2443,8 @@
    ]
   },
   "nga-126145.jpg": {
-   "url": "https://api.nga.gov/iiif/0a11bd7a-9993-4e27-939d-dc264bb2cba4/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/0a11bd7a-9993-4e27-939d-dc264bb2cba4/3741,0,31403,17664/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Sunlight and Shadow: The Newbury Marshes|Martin Johnson Heade, 1871",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2461,7 +2461,7 @@
    ]
   },
   "nga-140908.jpg": {
-   "url": "https://api.nga.gov/iiif/d8f03e63-5d23-4db8-931b-35d82e8233f4/195,0,4757,2676/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/d8f03e63-5d23-4db8-931b-35d82e8233f4/196,0,4757,2676/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "A Quiet Day near Manchester|Alfred Thompson Bricher, 1873",
    "museum": "National Gallery of Art",
@@ -2470,15 +2470,15 @@
    ]
   },
   "nga-53125.jpg": {
-   "url": "https://api.nga.gov/iiif/94c31f42-4c02-483a-9d70-ee9d8534f4e5/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/94c31f42-4c02-483a-9d70-ee9d8534f4e5/0,1950,27844,15662/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Boats on a Beach, Etretat|Gustave Courbet, 1872",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-52227.jpg": {
-   "url": "https://api.nga.gov/iiif/1c2440bb-63a8-434b-8cd9-8307226aa917/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1c2440bb-63a8-434b-8cd9-8307226aa917/0,1274,14045,7900/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Meadow|Alfred Sisley, 1875",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2486,8 +2486,8 @@
    ]
   },
   "nga-42935.jpg": {
-   "url": "https://api.nga.gov/iiif/1d18373f-5ced-4d68-bbc5-c50097ca4644/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/1d18373f-5ced-4d68-bbc5-c50097ca4644/0,2062,15503,8720/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Mussel Harvest|Auguste Renoir, 1879",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2495,8 +2495,8 @@
    ]
   },
   "nga-46657.jpg": {
-   "url": "https://api.nga.gov/iiif/f339a180-c87a-446b-8605-060f7b53f1a3/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f339a180-c87a-446b-8605-060f7b53f1a3/0,1682,17104,9621/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Palazzo da Mula, Venice|Claude Monet, 1908",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2513,8 +2513,8 @@
    ]
   },
   "nga-195807.jpg": {
-   "url": "https://api.nga.gov/iiif/9522b5b2-14a4-46c8-8d8e-3f77a5e8ddd5/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/9522b5b2-14a4-46c8-8d8e-3f77a5e8ddd5/0,2214,27170,15283/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Notre Dame de Paris|Robert William Vonnoh, 1890",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2522,8 +2522,8 @@
    ]
   },
   "nga-163323.jpg": {
-   "url": "https://api.nga.gov/iiif/b479275a-4f8a-4702-83c2-9dcc4cbe60ce/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b479275a-4f8a-4702-83c2-9dcc4cbe60ce/0,1808,16266,9150/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Green Wheat Fields, Auvers|Vincent van Gogh, 1890",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2531,8 +2531,8 @@
    ]
   },
   "nga-61253.jpg": {
-   "url": "https://api.nga.gov/iiif/95f1ff73-c4e9-45d4-ae3a-79837c4926d8/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/95f1ff73-c4e9-45d4-ae3a-79837c4926d8/0,6893,41655,23431/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Tropical Forest with Monkeys|Henri Rousseau, 1910",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2549,8 +2549,8 @@
    ]
   },
   "nga-46627.jpg": {
-   "url": "https://api.nga.gov/iiif/f07617e8-43ad-4954-8223-4b40dce37061/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f07617e8-43ad-4954-8223-4b40dce37061/0,2585,22832,12843/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Olive Orchard|Vincent van Gogh, 1889",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2558,8 +2558,8 @@
    ]
   },
   "nga-195122.jpg": {
-   "url": "https://api.nga.gov/iiif/e11d2304-c999-4d2f-86d4-65e3362394ae/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e11d2304-c999-4d2f-86d4-65e3362394ae/0,1952,16181,9102/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "View of Monte Carlo from Cap Martin|Auguste Renoir, 1884",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2567,8 +2567,8 @@
    ]
   },
   "nga-61248.jpg": {
-   "url": "https://api.nga.gov/iiif/b7ab66f0-1522-46e6-b6e0-128875563fbb/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b7ab66f0-1522-46e6-b6e0-128875563fbb/0,1284,17948,10096/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Calanque des Antibois|Henri Edmond Cross, 1891",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2576,8 +2576,8 @@
    ]
   },
   "nga-53139.jpg": {
-   "url": "https://api.nga.gov/iiif/f395c5e5-6711-487e-8c1b-747c698d1ef9/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f395c5e5-6711-487e-8c1b-747c698d1ef9/0,3824,31546,17745/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Seascape at Port-en-Bessin, Normandy|Georges Seurat, 1888",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2585,8 +2585,8 @@
    ]
   },
   "nga-52165.jpg": {
-   "url": "https://api.nga.gov/iiif/e9d26ac4-eca2-4102-8728-51d4b131aebe/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e9d26ac4-eca2-4102-8728-51d4b131aebe/0,1914,16780,9439/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Banks of the Seine at Médan|Paul Cezanne, 1885",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2610,8 +2610,8 @@
    ]
   },
   "nga-54129.jpg": {
-   "url": "https://api.nga.gov/iiif/96a750e5-76bb-4773-892e-d73d79d671a8/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/96a750e5-76bb-4773-892e-d73d79d671a8/0,1814,15793,8884/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Houses in Provence: The Riaux Valley near L'Estaque|Paul Cezanne, 1883",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2628,8 +2628,8 @@
    ]
   },
   "nga-46595.jpg": {
-   "url": "https://api.nga.gov/iiif/07b19546-3586-450f-9a4b-4759fc0592fe/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/07b19546-3586-450f-9a4b-4759fc0592fe/0,936,7331,4124/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Flecks of Foam|Henry Golden Dearth, 1911",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2637,8 +2637,8 @@
    ]
   },
   "nga-92999.jpg": {
-   "url": "https://api.nga.gov/iiif/5fa22c1d-2957-4984-b648-5aab648ec91d/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5fa22c1d-2957-4984-b648-5aab648ec91d/0,647,6310,3549/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Landscape of the Ile-de-France|Edouard Vuillard, 1894",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2646,8 +2646,8 @@
    ]
   },
   "nga-89677.jpg": {
-   "url": "https://api.nga.gov/iiif/719a2b8f-5b98-4c0b-9319-5d3908e720bf/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/719a2b8f-5b98-4c0b-9319-5d3908e720bf/0,723,5674,3192/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Rue Terre Neuve, Meudon|Gwen John, 1915",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2655,8 +2655,8 @@
    ]
   },
   "nga-166491.jpg": {
-   "url": "https://api.nga.gov/iiif/d4ca2b12-bdf1-4360-a3de-4fb2b1927481/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/d4ca2b12-bdf1-4360-a3de-4fb2b1927481/0,1576,17185,9667/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Glass and Checkerboard|Juan Gris, 1917",
    "museum": "National Gallery of Art",
    "tags": []
@@ -2678,8 +2678,8 @@
    "tags": []
   },
   "nga-53129.jpg": {
-   "url": "https://api.nga.gov/iiif/9f7943f8-f2c8-4e4e-9c46-78fff42696d8/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/9f7943f8-f2c8-4e4e-9c46-78fff42696d8/0,3006,25643,14424/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Haystacks in Brittany|Paul Gauguin, 1890",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2717,8 +2717,8 @@
    "tags": []
   },
   "nga-178254.jpg": {
-   "url": "https://api.nga.gov/iiif/98e60cb0-0cd5-42ec-8e2f-373104b12e3f/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/98e60cb0-0cd5-42ec-8e2f-373104b12e3f/0,1904,15922,8956/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Willows|Claude Monet, 1880",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2726,8 +2726,8 @@
    ]
   },
   "nga-52186.jpg": {
-   "url": "https://api.nga.gov/iiif/c6780a7f-2720-433c-9562-552c996c6d04/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c6780a7f-2720-433c-9562-552c996c6d04/0,1714,16980,9551/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Argenteuil|Claude Monet, 1872",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2735,8 +2735,8 @@
    ]
   },
   "nga-46655.jpg": {
-   "url": "https://api.nga.gov/iiif/9b536eb8-6b53-42d5-aa3c-5e8b02f0b37a/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/9b536eb8-6b53-42d5-aa3c-5e8b02f0b37a/0,2053,16794,9447/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Seine at Giverny|Claude Monet, 1897",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2745,8 +2745,8 @@
    ]
   },
   "nga-46652.jpg": {
-   "url": "https://api.nga.gov/iiif/5dd2009f-7782-43d8-9892-be5733d8f43b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/5dd2009f-7782-43d8-9892-be5733d8f43b/0,1514,18220,10249/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Banks of the Seine, Vétheuil|Claude Monet, 1880",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2754,8 +2754,8 @@
    ]
   },
   "nga-61374.jpg": {
-   "url": "https://api.nga.gov/iiif/7372b15a-3830-43bf-8c41-4836619312b7/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/7372b15a-3830-43bf-8c41-4836619312b7/0,750,7999,4499/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Bridge at Argenteuil|Claude Monet, 1874",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2763,8 +2763,8 @@
    ]
   },
   "nga-61378.jpg": {
-   "url": "https://api.nga.gov/iiif/e5c0853d-e3ac-49c2-884e-c0ac3b0af597/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e5c0853d-e3ac-49c2-884e-c0ac3b0af597/0,1326,18666,10500/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Waterloo Bridge, London, at Sunset|Claude Monet, 1904",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2772,8 +2772,8 @@
    ]
   },
   "nga-45872.jpg": {
-   "url": "https://api.nga.gov/iiif/36bd94fc-291f-43cb-9fd4-7b391fe3f0e5/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/36bd94fc-291f-43cb-9fd4-7b391fe3f0e5/0,696,5980,3364/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Morning Haze|Claude Monet, 1888",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2800,8 +2800,8 @@
    ]
   },
   "nga-52188.jpg": {
-   "url": "https://api.nga.gov/iiif/823405e0-599f-4fd8-ae71-4d901edc36b0/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/823405e0-599f-4fd8-ae71-4d901edc36b0/0,1474,15468,8701/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Bridge at Argenteuil on a Gray Day|Claude Monet, 1876",
    "museum": "National Gallery of Art",
    "tags": []
@@ -2830,15 +2830,15 @@
    "tags": []
   },
   "rijks-200672685.jpg": {
-   "url": "https://iiif.micr.io/PMnLE/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/PMnLE/0,1051,11001,6188/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Singel near the Lutheran Church in Amsterdam|Vincent van Gogh, 1885",
    "museum": "Rijksmuseum",
    "tags": []
   },
   "rijks-200109305.jpg": {
-   "url": "https://iiif.micr.io/egrgo/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://iiif.micr.io/egrgo/0,380,5670,3189/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Farming Village at Twilight|Vincent van Gogh, 1884",
    "museum": "Rijksmuseum",
    "tags": [
@@ -2846,8 +2846,8 @@
    ]
   },
   "nga-115.jpg": {
-   "url": "https://api.nga.gov/iiif/644bd0f2-3a24-4971-a234-3a3a0c76d3ba/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/644bd0f2-3a24-4971-a234-3a3a0c76d3ba/0,507,4648,2614/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Salisbury Cathedral from Lower Marsh Close|John Constable, 1820",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2864,8 +2864,8 @@
    ]
   },
   "nga-1225.jpg": {
-   "url": "https://api.nga.gov/iiif/c1e33e8d-ffe4-4d20-a267-87ffcf94f7ce/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/c1e33e8d-ffe4-4d20-a267-87ffcf94f7ce/0,463,5144,2894/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Keelmen Heaving in Coals by Moonlight|Joseph Mallord William Turner, 1835",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2873,8 +2873,8 @@
    ]
   },
   "nga-104243.jpg": {
-   "url": "https://api.nga.gov/iiif/83544e9a-2499-4d42-aeb1-62dbc2c2392b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/83544e9a-2499-4d42-aeb1-62dbc2c2392b/0,476,6519,3667/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Cloud Study: Stormy Sunset|John Constable, 1821",
    "museum": "National Gallery of Art",
    "tags": []
@@ -2889,8 +2889,8 @@
    ]
   },
   "nga-1224.jpg": {
-   "url": "https://api.nga.gov/iiif/e69c25bb-f772-4ac2-966f-2954eb420a84/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e69c25bb-f772-4ac2-966f-2954eb420a84/0,451,5057,2845/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Venice: The Dogana and San Giorgio Maggiore|Joseph Mallord William Turner, 1834",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2898,8 +2898,8 @@
    ]
   },
   "nga-1146.jpg": {
-   "url": "https://api.nga.gov/iiif/f43020bc-c6cb-4225-9808-f95d854f5025/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/f43020bc-c6cb-4225-9808-f95d854f5025/0,1747,25579,14388/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The White Horse|John Constable, 1818",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2917,8 +2917,8 @@
    ]
   },
   "nga-166478.jpg": {
-   "url": "https://api.nga.gov/iiif/e6638594-4e6c-424a-95e5-b412b08aff95/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/e6638594-4e6c-424a-95e5-b412b08aff95/0,2694,24304,13671/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Boats Carrying Out Anchors to the Dutch Men…|Joseph Mallord William Turner, 1804",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2935,8 +2935,8 @@
    ]
   },
   "nga-41535.jpg": {
-   "url": "https://api.nga.gov/iiif/39d0fea8-ac4d-4cb1-a86f-98fb74543fae/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/39d0fea8-ac4d-4cb1-a86f-98fb74543fae/0,680,7793,4384/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "The Rape of Proserpine|Joseph Mallord William Turner, 1839",
    "museum": "National Gallery of Art",
    "tags": [
@@ -2945,8 +2945,8 @@
    ]
   },
   "nga-46428.jpg": {
-   "url": "https://api.nga.gov/iiif/101f6ae4-948e-4d84-923c-cdf4e37d2b36/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/101f6ae4-948e-4d84-923c-cdf4e37d2b36/0,4588,23781,13377/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Street in Venice|John Singer Sargent, 1882",
    "museum": "National Gallery of Art",
    "tags": []
@@ -2961,7 +2961,7 @@
    ]
   },
   "nga-164929.jpg": {
-   "url": "https://api.nga.gov/iiif/4e2c5d2f-48a5-4119-a0ad-65b7f8e13b85/0,643,13434,7557/1920,1080/0/default.jpg",
+   "url": "https://api.nga.gov/iiif/4e2c5d2f-48a5-4119-a0ad-65b7f8e13b85/0,644,13434,7557/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "School Time|Winslow Homer, 1874",
    "museum": "National Gallery of Art",
@@ -2986,15 +2986,15 @@
    "tags": []
   },
   "nga-35080.jpg": {
-   "url": "https://api.nga.gov/iiif/718e014f-fb5f-4702-a95a-db496abefeb7/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/718e014f-fb5f-4702-a95a-db496abefeb7/0,2513,18332,10312/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Nonchaloir (Repose)|John Singer Sargent, 1911",
    "museum": "National Gallery of Art",
    "tags": []
   },
   "nga-129288.jpg": {
-   "url": "https://api.nga.gov/iiif/174d294f-d2bd-4319-aada-9f217f2541ed/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/174d294f-d2bd-4319-aada-9f217f2541ed/0,3100,23404,13165/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Pavement, Cairo|John Singer Sargent, 1891",
    "museum": "National Gallery of Art",
    "tags": []
@@ -3009,8 +3009,8 @@
    ]
   },
   "nga-73835.jpg": {
-   "url": "https://api.nga.gov/iiif/3df49ea6-27c1-4bf6-a122-3e996abc5a5b/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/3df49ea6-27c1-4bf6-a122-3e996abc5a5b/0,3326,29634,16669/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Wild Olive Tree Roots, Valldemosa, Majorca|John Singer Sargent, 1908",
    "museum": "National Gallery of Art",
    "tags": []
@@ -3030,8 +3030,8 @@
    "tags": []
   },
   "nga-126152.jpg": {
-   "url": "https://api.nga.gov/iiif/b0ad6f6c-7691-446e-8744-3e476ba283fb/full/!1920,1080/0/default.jpg",
-   "fit": "mat",
+   "url": "https://api.nga.gov/iiif/b0ad6f6c-7691-446e-8744-3e476ba283fb/0,1446,22550,12684/1920,1080/0/default.jpg",
+   "fit": "fill",
    "caption": "Sparrow Hall|Winslow Homer, 1881",
    "museum": "National Gallery of Art",
    "tags": []

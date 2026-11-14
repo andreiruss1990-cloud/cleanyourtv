@@ -12,8 +12,8 @@ subjects: sea, mtn, lake, city, int, life, still, gard, wint, sky, land, anim, m
 weather: clear cloud rain snow fog night or -; quality 0-3 (0 never shown); mood c (calm), m (moody), b (bright).
 
 Collections hold up to 40 paintings, best first; a subject collection takes at most 5 by one painter. Wide paintings
-(aspect 1.45 to 2.1) are cropped to 16:9 by the museum's IIIF server; the rest come whole and the launcher shows them
-on a blurred mat. tools/art_index.py then writes art/index.json from this file and any picture folders under art/.
+(aspect 1.45 to 2.1) and those listed in art/crops.json are cropped to 16:9 by the museum's IIIF server; the rest come
+whole and the launcher shows them on a blurred mat. tools/art_index.py then writes art/index.json from this file and any picture folders under art/.
 """
 import hashlib
 import json
@@ -56,12 +56,22 @@ def collections():
     ]
 
 
+CROPS = {}
+
+
 def picture(c):
+    """Fill the screen when the painting is 16:9-ish or listed in art/crops.json (key -> where the 16:9 window sits,
+    0 top/left to 1 bottom/right, chosen by eye); otherwise show it whole on a mat."""
     w, h = c["width"], c["height"]
     aspect = w / h
-    if 1.45 <= aspect <= 2.1:
-        cw, ch = (round(h * 16 / 9), h) if aspect > 16 / 9 else (w, round(w * 9 / 16))
-        x, y = (w - cw) // 2, (h - ch) // 2
+    at = CROPS.get(c["key"], 0.5 if 1.45 <= aspect <= 2.1 else None)
+    if at is not None:
+        if aspect > 16 / 9:
+            cw, ch = round(h * 16 / 9), h
+            x, y = round((w - cw) * at), 0
+        else:
+            cw, ch = w, round(w * 9 / 16)
+            x, y = 0, round((h - ch) * at)
         url, fit = f"{c['iiif']}/{x},{y},{cw},{ch}/1920,1080/0/default.jpg", "fill"
     else:
         url, fit = f"{c['iiif']}/full/!1920,1080/0/default.jpg", "mat"
@@ -80,6 +90,10 @@ def picture(c):
 
 def main():
     out, runs = sys.argv[1], sys.argv[2:]
+    import os
+    crops = os.path.join(os.path.dirname(os.path.abspath(out)), "crops.json")
+    if os.path.isfile(crops):
+        CROPS.update(json.load(open(crops)))
     tagged = []
     for i in range(0, len(runs), 3):
         cands = {c["key"]: c for c in json.load(open(runs[i]))}
