@@ -49,7 +49,7 @@ final class ArtSync {
      * and also every few dozen new pictures during a long first download, so collections fill in as they arrive.
      */
     void maybeRun(Runnable done) {
-        if (busy || System.currentTimeMillis() - prefs.getLong("synced", 0) < everyMs) return;
+        if (busy || System.currentTimeMillis() - prefs.getLong("synced_at", 0) < everyMs) return;
         busy = true;
         executor.execute(() -> {
             boolean changed = false;
@@ -64,7 +64,7 @@ final class ArtSync {
             final boolean good = ok;
             main.post(() -> {
                 busy = false;
-                if (good) prefs.edit().putLong("synced", System.currentTimeMillis()).apply();
+                if (good) prefs.edit().putLong("synced_at", System.currentTimeMillis()).apply();
                 if (any && done != null) done.run();
             });
         });
@@ -79,7 +79,8 @@ final class ArtSync {
         File root = ArtLibrary.dir(context);
         if (root == null) return false;
         byte[] indexBytes = get(base + "art/index.json", MAX_INDEX);
-        if (indexBytes == null) return false;
+        // Not there (yet) or not reachable: not a sync, so the next Home tries again instead of waiting hours.
+        if (indexBytes == null) throw new java.io.IOException("no art/index.json at " + base);
         String indexText = new String(indexBytes, StandardCharsets.UTF_8);
         JSONObject pictures = new JSONObject(indexText).getJSONObject("pictures");
         File localIndex = new File(root, "index.json");
