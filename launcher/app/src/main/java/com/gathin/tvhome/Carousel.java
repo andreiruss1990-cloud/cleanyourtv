@@ -31,7 +31,8 @@ final class Carousel extends FrameLayout {
     private final float density;
     private final int itemW;
     private final int itemH;
-    private final int pitch;
+    private int pitch;
+    private final int gap;
     private final int pad;
     private final float radius;
     private final Binder binder;
@@ -68,6 +69,7 @@ final class Carousel extends FrameLayout {
         this.itemW = itemW;
         this.itemH = itemH;
         this.pitch = itemW + gap;
+        this.gap = gap;
         this.pad = pad;
         this.radius = radius;
         this.binder = binder;
@@ -100,6 +102,7 @@ final class Carousel extends FrameLayout {
     void setVertical(float focusScale) {
         vertical = true;
         this.focusScale = focusScale;
+        pitch = itemH + gap;   // a column steps by the row's height, not its width
     }
 
     void setOnTarget(Runnable onTarget) {
