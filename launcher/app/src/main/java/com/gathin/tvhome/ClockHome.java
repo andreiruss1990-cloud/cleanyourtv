@@ -43,6 +43,9 @@ final class ClockHome {
 
         /** dock_tile_style: glyph (white glyph on clear glass), placard, framed, smoked or ivory. */
         String tileStyle();
+
+        /** clock_home_idle_seconds: back to the bare page after this long without a key; 0 never. */
+        int idleSeconds();
     }
 
     private interface Step {
@@ -120,6 +123,12 @@ final class ClockHome {
     private Tween barTween;
     private Tween allTween;
 
+    /** clock_home_idle_seconds: with no key for this long, the dock, the settings row and All apps put themselves away. */
+    private final long idleMs;
+    private final Runnable idle = () -> {
+        if (!home || barOpen || allOpen || menuOpen) show(true);
+    };
+
     ClockHome(Activity activity, Host host, boolean animations, View... hiddenForGood) {
         this.activity = activity;
         this.host = host;
@@ -129,6 +138,7 @@ final class ClockHome {
         regular = font(R.string.font_regular);
         store = new DockApps(activity);
         style = host.tileStyle() == null ? "glyph" : host.tileStyle();
+        idleMs = Math.max(0, host.idleSeconds()) * 1000L;
 
         // The grid and its floating name and highlight stay out of the way for good.
         View gridWrap = activity.findViewById(R.id.gridWrap);
@@ -716,6 +726,9 @@ final class ClockHome {
     boolean handleKey(KeyEvent event) {
         int code = event.getKeyCode();
         if (!isNav(code)) return false;
+        // Any key on Home restarts the idle countdown; it only matters while something is open.
+        overlay.removeCallbacks(idle);
+        if (idleMs > 0) overlay.postDelayed(idle, idleMs);
         boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
         boolean up = event.getAction() == KeyEvent.ACTION_UP;
         boolean repeat = event.getRepeatCount() > 0;

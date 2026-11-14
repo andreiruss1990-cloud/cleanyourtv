@@ -9,7 +9,9 @@ switched on). Wireless debugging is off when the job is done: switch it on again
 - **Home:** the launcher from this fork (`com.gathin.tvhome`) with the `themes/frame-glass` theme. The bare page shows
   only the wallpaper. Down: the clock, date and weather (Open-Meteo, at most every 30 minutes while Home is on
   screen) with the dock at the bottom: one endless row of white glass app icons, the focus fixed on the first slot
-  while the apps slide into it, the app's name above. Up from the dock or Back: the bare page.
+  while the apps slide into it, the app's name above, the painting's title and painter top right. Up from the dock or
+  Back: the bare page, which Home also returns to by itself after 30 seconds without a key
+  (`clock_home_idle_seconds`).
 - **Your apps:** hold OK on an app for Move (Left/Right, then OK), Remove from Home or App info. *All apps* in the
   settings row lists everything installed; OK adds an app to the dock or takes it off. The dock started with
   YouTube, YouTube Music, Kodi, Stremio, Spotify and Play Store.
@@ -20,6 +22,11 @@ switched on). Wireless debugging is off when the job is done: switch it on again
   This needs the launcher's Home-button helper (Settings > Accessibility > Home button).
 - **Held volume:** on this TV any key-filtering helper drops held-key repeat, so the theme sets `key_filter: false`.
   Volume ramps normally. In exchange, the Settings button does what each app does when you are inside an app.
+- **Screensaver and sleep:** no screensaver, and the TV never sleeps by itself: Home stays on the painting until you
+  switch the TV off with the remote. To let it sleep after 15 minutes again: `adb -s <tv> shell settings put system
+  screen_off_timeout 900000`, `settings put secure sleep_timeout 900000` and `settings put secure attentive_timeout
+  14400000`. The art screensaver can come back with `settings put secure screensaver_components
+  com.gathin.tvhome/.ArtDream` and `settings put secure screensaver_enabled 1`.
 - **Private DNS:** `dns.adguard-dns.com`, set during the first debloat. It does not block YouTube ads. To undo it:
   `adb -s <tv> shell settings put global private_dns_mode opportunistic`.
 - **Debloat:** 31 packages are disabled (none uninstalled). They are listed in `tools/restore-mine.sh`. Projectivy

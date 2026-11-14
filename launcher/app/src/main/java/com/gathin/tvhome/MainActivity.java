@@ -1042,6 +1042,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 public String tileStyle() {
                     return cfg.dockTileStyle;
                 }
+
+                @Override
+                public int idleSeconds() {
+                    return cfg.clockIdleSeconds;
+                }
             }, animations, hero, glass);
             wallpaperPlayer.setNameListener(clockHome::setPainting);
             clockHome.show(false);
