@@ -108,9 +108,11 @@ final class WallpaperPlayer {
         List<File> playable = playable();
         File first = WallpaperRotation.find(playable, previous);
         if (first == null) first = WallpaperRotation.pick(playable, previous, order, random);
+        Log.w("TvHome.Wallpaper", "showFirst files=" + files.size() + " first=" + (first == null ? "null" : first.getName()));
         while (first != null) {
             Bitmap bitmap = decode(first);
             if (bitmap != null) {
+                Log.w("TvHome.Wallpaper", "decoded " + first.getName() + " " + bitmap.getWidth() + "x" + bitmap.getHeight());
                 show(bitmap);
                 // The picture covers the whole screen: the root's plain colour under it is overdraw.
                 root.setBackground(null);
@@ -275,9 +277,15 @@ final class WallpaperPlayer {
             options.inJustDecodeBounds = true;
             BitmapFactory.decodeFile(file.getPath(), options);
             int width = options.outWidth, height = options.outHeight;
-            if (width <= 0 || height <= 0) return null;
+            if (width <= 0 || height <= 0) {
+                Log.w("TvHome.Wallpaper", "bounds failed " + file.getName() + " readable=" + file.canRead() + " len=" + file.length());
+                return null;
+            }
             int sample = WallpaperSize.sampleSize(width, height, this.width, this.height);
-            if (!WallpaperSize.accepted(width / sample, height / sample)) return null;
+            if (!WallpaperSize.accepted(width / sample, height / sample)) {
+                Log.w("TvHome.Wallpaper", "too big " + width + "x" + height + " sample=" + sample + " screen=" + this.width + "x" + this.height);
+                return null;
+            }
             options.inJustDecodeBounds = false;
             options.inSampleSize = sample;
             int[] scale = WallpaperSize.coverScale(width / sample, height / sample, this.width, this.height);
@@ -289,7 +297,10 @@ final class WallpaperPlayer {
             options.inPreferredConfig = bitmapConfig;
             options.inMutable = dimColor != 0;
             Bitmap decoded = BitmapFactory.decodeFile(file.getPath(), options);
-            if (decoded == null) return null;
+            if (decoded == null) {
+                Log.w("TvHome.Wallpaper", "decodeFile null " + file.getName());
+                return null;
+            }
             if (dimColor != 0) new Canvas(decoded).drawColor(dimColor);
             // One copy in GPU memory instead of a software bitmap plus its texture; the decode stays off the UI
             // thread for rotations, and Home's return no longer uploads 4-8 MB to the GPU.
@@ -298,6 +309,7 @@ final class WallpaperPlayer {
             decoded.recycle();
             return gpu;
         } catch (Exception | OutOfMemoryError failure) {
+            Log.w("TvHome.Wallpaper", "decode failed " + file.getName(), failure);
             return null;
         }
     }
