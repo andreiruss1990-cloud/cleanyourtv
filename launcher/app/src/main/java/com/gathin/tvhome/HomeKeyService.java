@@ -82,6 +82,8 @@ public class HomeKeyService extends AccessibilityService {
     private Map<Integer, String> frontAppScancodes = Collections.emptyMap();
     /** power_on_home_always: Home at every power-on, not only over Live TV. */
     private boolean powerOnAlways;
+    private String powerOnInput = "";
+    private String powerOnLiveTvPkg = "";
     /** power_on_home: re-arms after the screen turns on; null unless the key is on. */
     private BroadcastReceiver screenOnReceiver;
     /** Stops key filtering while a game controller is connected or after a volume change; null unless gamepad_passthrough or volume_pauses_filter, and key_filter, or before the unlock. */
@@ -216,6 +218,8 @@ public class HomeKeyService extends AccessibilityService {
         powerOnLiveTv = config.powerOnHome && !config.bootToLiveTv && !config.liveTvPackage.equals(openOnStart)
                 ? config.liveTvPackage : "";
         powerOnAlways = config.powerOnHomeAlways && !config.bootToLiveTv && openOnStart.isEmpty();
+        powerOnInput = config.powerOnInput;
+        powerOnLiveTvPkg = config.liveTvPackage == null ? "" : config.liveTvPackage;
         if (!powerOnLiveTv.isEmpty() || powerOnAlways) {
             armPowerOnHome();
         } else if (screenOnReceiver != null) {
@@ -363,7 +367,59 @@ public class HomeKeyService extends AccessibilityService {
 
     /** power_on_home_always: Home, unless a key was pressed since the screen came on (the user has the TV). */
     private void homeAtPowerOn() {
-        if (stillArmed(SystemClock.elapsedRealtime(), powerOnUntil)) openHome();
+        powerOnInputTries = 0;
+        landAtPowerOn();
+    }
+
+    /** power_on_input: how often, and how many times, the input is checked before Home wins (0.5 s x 6 = 3 s). */
+    static final long POWER_ON_INPUT_POLL_MS = 500L;
+    static final int POWER_ON_INPUT_TRIES = 6;
+    private int powerOnInputTries;
+
+    /** power_on_input: that input while it is connected (the PC is on), else Home once the HDMI link had time to come up. */
+    private void landAtPowerOn() {
+        if (!stillArmed(SystemClock.elapsedRealtime(), powerOnUntil)) return;
+        if (powerOnInput.isEmpty()) {
+            openHome();
+            return;
+        }
+        if (inputConnected(powerOnInput)) {
+            openPassthrough(powerOnInput);
+        } else if (++powerOnInputTries < POWER_ON_INPUT_TRIES) {
+            handler.postDelayed(this::landAtPowerOn, POWER_ON_INPUT_POLL_MS);
+        } else {
+            openHome();
+        }
+    }
+
+    private boolean inputConnected(String inputId) {
+        android.media.tv.TvInputManager tim = (android.media.tv.TvInputManager) getSystemService(TV_INPUT_SERVICE);
+        if (tim == null) return false;
+        try {
+            return tim.getInputState(inputId) == android.media.tv.TvInputManager.INPUT_STATE_CONNECTED;
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
+
+    /** The passthrough URI the Inputs menu opens, aimed at the Live TV app first so no chooser comes up. */
+    private void openPassthrough(String inputId) {
+        Intent view = new Intent(Intent.ACTION_VIEW)
+                .setDataAndType(android.media.tv.TvContract.buildChannelUriForPassthroughInput(inputId),
+                        "vnd.android.cursor.item/channel")
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (!powerOnLiveTvPkg.isEmpty()) {
+            try {
+                startActivity(new Intent(view).setPackage(powerOnLiveTvPkg));
+                return;
+            } catch (android.content.ActivityNotFoundException | SecurityException ignored) {
+            }
+        }
+        try {
+            startActivity(view);
+        } catch (android.content.ActivityNotFoundException | SecurityException e) {
+            openHome();
+        }
     }
 
     static boolean stillArmed(long now, long armedUntil) {
