@@ -147,6 +147,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private WallpaperPlayer wallpaperPlayer;
     /** clock_home: the big clock screen in front of the dock; null when the theme does not ask for it. */
     private ClockHome clockHome;
+    /** liquid_glass: the frosted wallpaper behind the dock band, and the band's last place in the grid. */
+    private FrostLayer frost;
+    private final android.graphics.RectF dockBand = new android.graphics.RectF();
+    private float dockBandRadius;
+    private boolean dockBandShown;
+    private float dockBandExtra = -1f;
+    private final Rect frostRect = new Rect();
     /** clock_home weather line under the date; null unless the theme asks for it. */
     private Weather weather;
     private TextView weatherText;
@@ -700,8 +707,26 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             public void onChildViewDetachedFromWindow(@NonNull View v) {
             }
         });
-        if (dockRow) grid.addItemDecoration(new DockDecoration(COLUMNS, density, cinematic, cfg.alwaysShowNames, cfg.dockOpacity, cfg.dockGlass, cfg.dockEvenPadding, cfg.dockBand,
-                singleRow, cfg.dockBandAll));
+        if (dockRow) {
+            DockDecoration dock = new DockDecoration(COLUMNS, density, cinematic, cfg.alwaysShowNames, cfg.dockOpacity, cfg.dockGlass, cfg.dockEvenPadding, cfg.dockBand,
+                    singleRow, cfg.dockBandAll);
+            if (cfg.liquidGlass) {
+                if (FrostLayer.supported() && wallpaperPlayer.showing()) {
+                    // Just above the wallpaper (index 0), under everything else.
+                    frost = new FrostLayer(this, root, 1, 36 * density);
+                    wallpaperPlayer.setListener(frost::setBitmap);
+                }
+                dock.setLiquid(new LiquidGlass(density, 0, 0x2EFFFFFF, 0x0AFFFFFF, false), (band, radius) -> {
+                    dockBandShown = band != null;
+                    if (band != null) {
+                        dockBand.set(band);
+                        dockBandRadius = radius;
+                    }
+                    placeFrost();
+                });
+            }
+            grid.addItemDecoration(dock);
+        }
         if (cfg.fadeRows) TopFade.attach(grid, 48 * density);
         // Reduced motion: the tiles are simply there, with no entrance (reloadApps skips it there too).
         if (animations && !reducedMotion) {
@@ -1000,7 +1025,36 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 public void openInputs() {
                     showInputs();
                 }
+
+                @Override
+                public float dockBottomInWrap() {
+                    RecyclerView.ViewHolder vh = grid.findViewHolderForAdapterPosition(0);
+                    if (vh == null) return -1f;
+                    View item = vh.itemView;
+                    View card = item.findViewById(R.id.card);
+                    if (card == null) return -1f;
+                    float cardBottom = item.getTop() + card.getTop() + card.getHeight();
+                    if (dockBandShown) dockBandExtra = dockBand.bottom - cardBottom;
+                    // Before the band was ever drawn (gridWrap hidden on the bare page), an even-padded band's usual room.
+                    float extra = dockBandExtra > 0 ? dockBandExtra : 32 * density;
+                    // Parked: the dock row's decorated top sits at the grid's top padding.
+                    float parkedCardBottom = grid.getPaddingTop() + 6 * density + card.getTop() + card.getHeight();
+                    return grid.getTop() + parkedCardBottom + Math.max(0f, extra);
+                }
+
+                @Override
+                public void gridMoved() {
+                    placeFrost();
+                }
+
+                @Override
+                public void refocus() {
+                    View f = getCurrentFocus();
+                    int pos = focusedTilePosition();
+                    if (f != null && pos >= 0) onTileFocused(pos, f);
+                }
             }, animations, hero, glass);
+            clockHome.setLiquid(cfg.liquidGlass);
             clockHome.show(false);
         }
         // Not after recreate(): the launch intent survives it and would open the settings again.
@@ -1502,6 +1556,20 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) clockHome.show(true);
                     return true;
                 }
+                // Up from the first row of apps: the rows slide away and the dock goes back to the bottom.
+                if (tile >= COLUMNS && tile < 2 * COLUMNS && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (event.getRepeatCount() > 0) return true;
+                    clockHome.toDock();
+                }
+            }
+            // Down from the dock row: the rows slide up into view (the grid then moves the focus as usual).
+            if (!clockHome.isHome() && !clockHome.showingRows() && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN
+                    && grid.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN) {
+                int tile = focusedTilePosition();
+                if (tile >= 0 && tile < COLUMNS && adapter.getItemCount() > COLUMNS) {
+                    if (event.getRepeatCount() > 0) return true;
+                    clockHome.toRows();
+                }
             }
         }
         if (holdOk(event)) return true;
@@ -1878,6 +1946,32 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         appLibrary.show();
     }
 
+    /** liquid_glass: the frost follows the dock band (grid coordinates) through the grid's scroll and gridWrap's slide. */
+    private void placeFrost() {
+        if (frost == null) return;
+        View wrap = (View) grid.getParent();
+        if (!dockBandShown || wrap.getAlpha() == 0f) {
+            frost.setAlpha(0f);
+            return;
+        }
+        Rect at = frostRect;
+        at.set(0, 0, grid.getWidth(), grid.getHeight());
+        root.offsetDescendantRectToMyCoords(grid, at);
+        float dx = at.left + wrap.getTranslationX();
+        float dy = at.top + wrap.getTranslationY();
+        android.graphics.RectF band = new android.graphics.RectF(dockBand);
+        band.offset(dx, dy);
+        // What gridWrap lets through: its own bounds, cut by its clip.
+        Rect visible = new Rect(0, 0, wrap.getWidth(), wrap.getHeight());
+        Rect clip = wrap.getClipBounds();
+        if (clip != null && !visible.intersect(clip)) visible.setEmpty();
+        Rect wrapAt = new Rect(0, 0, wrap.getWidth(), wrap.getHeight());
+        root.offsetDescendantRectToMyCoords(wrap, wrapAt);
+        visible.offset(wrapAt.left + Math.round(wrap.getTranslationX()), wrapAt.top + Math.round(wrap.getTranslationY()));
+        frost.place(band, dockBandRadius, visible);
+        frost.setAlpha(wrap.getAlpha());
+    }
+
     @Override
     public void onTileFocused(int position, View card) {
         lastFocused = position;
@@ -1894,6 +1988,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         Rect r = tileRect;
         r.set(0, 0, card.getWidth(), card.getHeight());
         root.offsetDescendantRectToMyCoords(card, r);
+        // clock_home slides gridWrap with a translation, which the rect above leaves out: aim where it is going.
+        if (clockHome != null) r.offset(0, Math.round(clockHome.gridShiftTarget()));
         float pad = 6f * density;        // matches GlassView's glow inset
         float scale = adapter.focusScale();
         float w = card.getWidth() * scale + 2 * pad;

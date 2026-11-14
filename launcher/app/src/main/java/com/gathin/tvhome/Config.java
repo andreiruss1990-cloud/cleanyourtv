@@ -142,6 +142,9 @@ final class Config {
     boolean hideTopButtons;
     /** Theme quick_panel_side: the Settings button's quick panel is a full-height, see-through sheet on the right edge. */
     boolean quickPanelSide;
+    /** Theme liquid_glass: the dock is frosted glass (a blurred copy of the wallpaper behind it), the quick panel and
+     *  the settings cards clear glass slabs with a bright rim. */
+    boolean liquidGlass;
     /** Theme power_on_input: with power_on_home_always, the TV input to open at power-on instead of Home while it is
      *  connected (a PC that is switched on), e.g. "com.tcl.tvinput/.TvPassThroughService/HW15". Empty: always Home. */
     String powerOnInput = "";
@@ -757,6 +760,7 @@ final class Config {
             built.clockHome = json.optBoolean("clock_home", false);
             built.hideTopButtons = json.optBoolean("hide_top_buttons", false);
             built.quickPanelSide = json.optBoolean("quick_panel_side", false);
+            built.liquidGlass = json.optBoolean("liquid_glass", false);
             built.powerOnInput = json.optString("power_on_input", "").trim();
             built.weather = json.optBoolean("weather", false)
                     && json.has("weather_lat") && json.has("weather_lon");

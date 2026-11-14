@@ -3,6 +3,7 @@ package com.gathin.tvhome;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.SystemClock;
@@ -38,6 +39,15 @@ final class ClockHome {
 
         /** The Inputs entry of the settings row. */
         void openInputs();
+
+        /** The dock band's bottom edge in gridWrap's coordinates with the dock parked at the grid's top, or -1. */
+        float dockBottomInWrap();
+
+        /** gridWrap moved or faded (every frame of a slide): things drawn outside it that follow it catch up. */
+        void gridMoved();
+
+        /** A slide ended: put the highlight and the app name back on the focused tile. */
+        void refocus();
     }
 
     private interface Step {
@@ -79,6 +89,8 @@ final class ClockHome {
     private final Activity activity;
     private final Host host;
     private final View gridWrap;
+    /** The clock, date and weather: hidden on the bare page, shown with the dock. */
+    private final View header;
     private final View overlay;
     private final HorizontalScrollView scroll;
     private final LinearLayout bar;
@@ -90,6 +102,12 @@ final class ClockHome {
     private final List<View> cards = new ArrayList<>();
     private final List<Runnable> actions = new ArrayList<>();
     private boolean home;
+    /** With the dock in: true once Down went on into the rows of apps, false while only the dock shows. */
+    private boolean rows;
+    /** Where the slide currently running leaves gridWrap's translation (the highlight aims for it). */
+    private float shiftTarget;
+    /** gridWrap's clip bottom with only the dock showing, or -1 when it was not measured yet. */
+    private float dockClip = -1f;
     private boolean barOpen;
     private int selected;
     private long lastTransition;
@@ -103,6 +121,7 @@ final class ClockHome {
         this.hiddenWhileHome = hiddenWhileHome;
         density = activity.getResources().getDisplayMetrics().density;
         gridWrap = activity.findViewById(R.id.gridWrap);
+        header = (View) activity.findViewById(R.id.leftBlock).getParent();
         overlay = activity.findViewById(R.id.clockHome);
         scroll = activity.findViewById(R.id.settingsScroll);
         bar = activity.findViewById(R.id.settingsBar);
@@ -123,16 +142,87 @@ final class ClockHome {
         return animations ? ms : 0;
     }
 
-    private void gridTo(float target, long ms, Runnable end) {
+    /** Where the dock-only state puts gridWrap: the band just above the bottom of the screen. */
+    private float dockShift() {
+        float bottom = host.dockBottomInWrap();
+        View screen = gridWrap.getRootView();
+        if (bottom < 0 || screen == null || screen.getHeight() == 0) {
+            dockClip = -1f;
+            return 0f;
+        }
+        int[] at = new int[2];
+        gridWrap.getLocationInWindow(at);
+        float wrapTop = at[1] - gridWrap.getTranslationY();
+        dockClip = bottom + 4 * density;
+        return Math.max(0f, screen.getHeight() - 44 * density - (wrapTop + bottom));
+    }
+
+    /** The translation the focused tile's highlight and name should be placed for. */
+    float gridShiftTarget() {
+        return shiftTarget;
+    }
+
+    /**
+     * One slide of gridWrap: its alpha, its translation and how much of it shows (clip: its bottom edge in its own
+     * coordinates, or -1 for all of it), with the header's alpha, all on one frame loop.
+     */
+    private void gridTo(float alpha, float shift, float clip, float headerAlpha, long ms, Runnable end) {
         if (gridTween != null) gridTween.cancel();
-        final float from = gridWrap.getAlpha();
-        final float distance = 44 * density;
+        final float fromAlpha = gridWrap.getAlpha();
+        final float fromShift = gridWrap.getTranslationY();
+        final float fromHeader = header.getAlpha();
+        final float full = Math.max(1f, gridWrap.getHeight());
+        Rect current = gridWrap.getClipBounds();
+        final float fromClip = current == null ? full : current.bottom;
+        final float toClip = clip < 0 ? full : clip;
+        final Rect bounds = new Rect();
+        shiftTarget = shift;
         gridTween = new Tween(ms, p -> {
-            float v = from + (target - from) * p;
-            gridWrap.setAlpha(v);
-            gridWrap.setTranslationY((1f - v) * distance);
-        }, end);
+            gridWrap.setAlpha(fromAlpha + (alpha - fromAlpha) * p);
+            gridWrap.setTranslationY(fromShift + (shift - fromShift) * p);
+            header.setAlpha(fromHeader + (headerAlpha - fromHeader) * p);
+            float c = fromClip + (toClip - fromClip) * p;
+            if (p >= 1f && clip < 0) {
+                gridWrap.setClipBounds(null);
+            } else {
+                bounds.set(0, 0, gridWrap.getWidth(), Math.round(c));
+                gridWrap.setClipBounds(bounds);
+            }
+            host.gridMoved();
+        }, () -> {
+            host.refocus();
+            if (end != null) end.run();
+        });
         gridTween.run();
+    }
+
+    /** Down from the dock row: the rows of apps slide up into view under it. */
+    void toRows() {
+        if (home || rows) return;
+        rows = true;
+        lastTransition = System.currentTimeMillis();
+        gridTo(1f, 0f, -1f, 1f, duration(300), null);
+    }
+
+    /** Up from the first row of apps: back to the dock alone at the bottom. */
+    void toDock() {
+        if (home || !rows) return;
+        rows = false;
+        lastTransition = System.currentTimeMillis();
+        gridTo(1f, dockShift(), dockClip, 1f, duration(300), this::settleDock);
+    }
+
+    /** After a slide to the dock: measure again now the band has been drawn, and correct the place if it was off. */
+    private void settleDock() {
+        if (home || rows) return;
+        float shift = dockShift();
+        if (Math.abs(shift - gridWrap.getTranslationY()) < 1f && dockClip >= 0
+                && gridWrap.getClipBounds() != null && Math.abs(gridWrap.getClipBounds().bottom - dockClip) < 1f) return;
+        gridTo(1f, shift, dockClip, 1f, duration(120), null);
+    }
+
+    boolean showingRows() {
+        return !home && rows;
     }
 
     /** Shows the bare page: the dock slides down and out of sight. */
@@ -151,7 +241,9 @@ final class ClockHome {
             v.setAlpha(0f);
         }
         overlay.setVisibility(View.VISIBLE);
-        gridTo(0f, animated ? duration(280) : 0, null);
+        rows = false;
+        float shift = dockShift();
+        gridTo(0f, shift + 44 * density, dockClip, 0f, animated ? duration(280) : 0, null);
     }
 
     /** Leaves the bare page: the dock slides up and takes focus. */
@@ -161,7 +253,13 @@ final class ClockHome {
         lastTransition = System.currentTimeMillis();
         closeBar(false);
         ((ViewGroup) gridWrap).setDescendantFocusability(savedFocusability);
-        gridTo(1f, duration(300), null);
+        rows = false;
+        float shift = dockShift();
+        if (gridWrap.getAlpha() == 0f) {
+            // From the bare page: start just under where the dock will rest, so it rises into place.
+            gridWrap.setTranslationY(shift + 44 * density);
+        }
+        gridTo(1f, shift, dockClip, 1f, duration(300), this::settleDock);
         host.focusDock();
     }
 
@@ -274,7 +372,22 @@ final class ClockHome {
         return Math.round(dp * density);
     }
 
-    private GradientDrawable background(boolean on) {
+    /** liquid_glass: the settings cards are clear glass slabs. */
+    private boolean liquid;
+
+    void setLiquid(boolean liquid) {
+        this.liquid = liquid;
+    }
+
+    private android.graphics.drawable.Drawable background(boolean on) {
+        if (liquid) {
+            return on ? new LiquidGlass(density, px(28), 0x47FFFFFF, 0x1FFFFFFF, true)
+                    : new LiquidGlass(density, px(28), 0x2EFFFFFF, 0x0FFFFFFF, false);
+        }
+        return plainBackground(on);
+    }
+
+    private GradientDrawable plainBackground(boolean on) {
         GradientDrawable g = new GradientDrawable();
         g.setCornerRadius(px(24));
         g.setColor(on ? 0x66FFFFFF : 0x66000000);

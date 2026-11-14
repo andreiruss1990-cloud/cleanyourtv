@@ -20,6 +20,20 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     private final Paint edge = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rect = new RectF();
 
+    /** liquid_glass: where the band is now, in the grid's coordinates (null: no band on screen). */
+    interface BandListener {
+        void onBand(RectF rectInGrid, float radius);
+    }
+
+    private LiquidGlass liquid;
+    private BandListener bandListener;
+
+    /** liquid_glass: draw the band as clear glass over the frosted wallpaper, and report where it is. */
+    void setLiquid(LiquidGlass liquid, BandListener listener) {
+        this.liquid = liquid;
+        this.bandListener = listener;
+    }
+
     /** Extra band below the tiles for their names (always_show_names), in px. */
     private final float namesRoom;
     /** Light glass like the top bar's pills (config.xml dock_glass): a white tint that fades downwards. */
@@ -109,7 +123,10 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
                 rect.union(l, t, r, b);
             }
         }
-        if (!any) return;
+        if (!any) {
+            if (bandListener != null) bandListener.onBand(null, 0f);
+            return;
+        }
         float pad = 14 * density;
         // The band can only draw inside the grid, and the first and last dock tiles sit 12dp in from its
         // edges: a full 14dp at the sides sliced the rounded ends flat (#454). Keep the sides, with the
@@ -139,6 +156,13 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
             rect.right = Math.min(rect.right, parent.getWidth() - density);
         }
         rect.bottom += namesRoom;
+        if (liquid != null) {
+            // Less rounded than the quick panel's 40dp slab: a band, not a pill.
+            radius = Math.min(radius, 28 * density);
+            liquid.draw(c, rect, radius);
+            if (bandListener != null) bandListener.onBand(rect, radius);
+            return;
+        }
         if (lightGlass && (rect.top != shaderTop || rect.bottom != shaderBottom)) {
             // The pills' glass (pill_bg: white, 18% fading to 8%), a little fainter over this much larger area.
             band.setShader(new LinearGradient(0, rect.top, 0, rect.bottom, 0x24FFFFFF, 0x0DFFFFFF,

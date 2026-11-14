@@ -48,6 +48,8 @@ final class WallpaperPlayer {
     private final int dimColor;
     /** The picture on screen, released once the next one has been drawn. */
     private Bitmap current;
+    /** liquid_glass: told about every picture put on screen (null when it is released), for the dock's frost. */
+    private java.util.function.Consumer<Bitmap> listener;
     private boolean active;
     private boolean closed;
     private boolean loading;
@@ -141,9 +143,21 @@ final class WallpaperPlayer {
     }
 
     /** Drops the wallpaper texture when Home is hidden and Android asks the process to free memory. */
+    /** liquid_glass: follow the picture on screen; called at once with the current one. */
+    void setListener(java.util.function.Consumer<Bitmap> listener) {
+        this.listener = listener;
+        if (listener != null) listener.accept(current);
+    }
+
+    /** True when the wallpaper image sits in the root (wallpaper on and pictures found). */
+    boolean showing() {
+        return image.getParent() != null;
+    }
+
     void releaseForMemoryPressure() {
         if (current == null) return;
         image.setImageDrawable(null);
+        if (listener != null) listener.accept(null);
         // The renderer may still have a queued frame that references this hardware bitmap. Drop our references and
         // let Android reclaim its native buffer after rendering releases it instead of recycling it mid-frame.
         current = null;
@@ -269,6 +283,7 @@ final class WallpaperPlayer {
         // The wallpaper covers the whole root; avoid drawing the fallback colour under it.
         root.setBackground(null);
         image.setImageBitmap(bitmap);
+        if (listener != null) listener.accept(bitmap);
         if (old != null && old != bitmap) image.postDelayed(old::recycle, 500);
     }
 

@@ -38,8 +38,9 @@ public final class QuickSettingsActivity extends Activity {
             position.setMargins(inset, position.topMargin, 0, position.bottomMargin);
             panel.setLayoutParams(position);
         }
-        boolean side = Config.load(this).quickPanelSide;
-        if (side) placeOnSide();
+        Config config = Config.load(this);
+        boolean side = config.quickPanelSide;
+        if (side) placeOnSide(config.liquidGlass);
         findViewById(R.id.scrim).setOnClickListener(v -> finish());
         LinearLayout rows = findViewById(R.id.rows);
         addRow(rows, R.drawable.ic_settings, R.string.tv_settings, 0, SystemSettings.intent(this, Settings.ACTION_SETTINGS));
@@ -54,17 +55,27 @@ public final class QuickSettingsActivity extends Activity {
         rows.getChildAt(0).requestFocus();
     }
 
-    /** quick_panel_side: full height against the right edge (left in Hebrew), see-through, no corners. */
-    private void placeOnSide() {
+    /**
+     * quick_panel_side: full height against the right edge (left in Hebrew), see-through. With liquid_glass it floats
+     * 24dp in from the edges as a clear glass slab with large rounded corners.
+     */
+    private void placeOnSide(boolean liquid) {
         float dp = getResources().getDisplayMetrics().density;
         View panel = findViewById(R.id.panel);
         android.widget.FrameLayout.LayoutParams lp = new android.widget.FrameLayout.LayoutParams(
                 Math.round(320 * dp), android.view.ViewGroup.LayoutParams.MATCH_PARENT,
                 getResources().getBoolean(R.bool.rtl_menu_bar) ? android.view.Gravity.LEFT : android.view.Gravity.RIGHT);
+        if (liquid) {
+            int inset = Math.round(24 * dp);
+            lp.setMargins(inset, inset, inset, inset);
+            panel.setBackground(new LiquidGlass(dp, 40 * dp, 0xB3181A20, 0xD90C0D10, false));
+            panel.setPadding(Math.round(22 * dp), Math.round(40 * dp), Math.round(22 * dp), Math.round(24 * dp));
+        } else {
+            panel.setBackgroundResource(R.drawable.glass_side_panel);
+            panel.setPadding(Math.round(28 * dp), Math.round(64 * dp), Math.round(28 * dp), Math.round(32 * dp));
+        }
         panel.setLayoutParams(lp);
-        panel.setBackgroundResource(R.drawable.glass_side_panel);
         panel.setElevation(0);
-        panel.setPadding(Math.round(28 * dp), Math.round(64 * dp), Math.round(28 * dp), Math.round(32 * dp));
     }
 
     /** Taller rows with air between them, to suit the full-height sheet. */
