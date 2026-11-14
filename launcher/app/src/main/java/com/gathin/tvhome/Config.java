@@ -706,6 +706,13 @@ final class Config {
         String wallpaperChoice = choices.getString(WALLPAPER_CHOICE_KEY, null);
         List<File> chosen = WallpaperRotation.chosen(dir == null ? Collections.emptyList()
                 : WallpaperRotation.images(new File(dir, "wallpapers")), wallpaper, wallpaperChoice);
+        {
+            File wdir = dir == null ? null : new File(dir, "wallpapers");
+            String[] raw = wdir == null ? null : wdir.list();
+            android.util.Log.w("TvHome.Wallpaper", "cfg enabled=" + wallpaperEnabled + " rot=" + rotationMinutes
+                    + " dir=" + dir + " rawList=" + (raw == null ? "null" : raw.length)
+                    + " images=" + wallpapers.size() + " choice=" + wallpaperChoice + " json=" + (json != null));
+        }
         if (chosen != null) {
             wallpapers.clear();
             wallpapers.addAll(chosen);
