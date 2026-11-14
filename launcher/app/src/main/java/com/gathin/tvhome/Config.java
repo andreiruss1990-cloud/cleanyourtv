@@ -136,6 +136,10 @@ final class Config {
     final boolean iconOnlyVpn;
     /** Back on the Home screen opens the clock screensaver instead of doing nothing (config.xml / theme back_opens_clock). */
     final boolean backOpensClock;
+    /** Theme clock_home: Home opens on a big centred clock; Down shows the dock, Up opens a settings row. */
+    boolean clockHome;
+    /** Theme hide_top_buttons: the Inputs, Wi-Fi and Settings buttons are not drawn (the remote's keys still work). */
+    boolean hideTopButtons;
     /** The ambient glow takes a new app's colour in one frame instead of dipping and fading (config.xml / theme glow_snap). */
     final boolean glowSnap;
     /** The remote's Settings button clears the TV Settings task before opening it (config.xml / theme settings_key_clear_task). */
@@ -724,7 +728,7 @@ final class Config {
         Festival festival = json == null ? Festival.NONE : Festival.parse(festivalName(json),
                 string(json, "festival_until", ""), string(json, "greeting", ""), string(json, "accent_color", ""));
 
-        return new Config(dock, fillDock, hidden, libraryApps, libraryExcludedApps, liveTv, liveTvAction, liveTvInputId, packageMap(launchActions), packageMap(appLabels),
+        Config built = new Config(dock, fillDock, hidden, libraryApps, libraryExcludedApps, liveTv, liveTvAction, liveTvInputId, packageMap(launchActions), packageMap(appLabels),
                 packageMap(appBanners), panelService, panelAction, panelExtra, coocaaSources, inputAction, inputSources, inputUriScheme, Math.max(1, columns),
                 Math.max(0, rowsBelow), animations, advancedEffects, shamsi, greetingName, moduleCards, reducedMotion, bootToLiveTv,
                 openOnStartChoice, dockTitle, dockRow, topMenu, launcherSettingsButton, reorderButton, showNetworkPill, showInputsPill,
@@ -740,6 +744,11 @@ final class Config {
                 dateBelowClock, vpnPill, locale, powerOnHomeAlways, inputsConnectedOnly, inputsCecStateOnly,
                 Math.max(0, Math.min(600, openOnStartNetworkWait)), openOnStartOnWake, iconOnlyVpn, clockFormat, backOpensClock, glowSnap,
                 settingsKeyClearTask);
+        if (json != null) {
+            built.clockHome = json.optBoolean("clock_home", false);
+            built.hideTopButtons = json.optBoolean("hide_top_buttons", false);
+        }
+        return built;
     }
 
     /**

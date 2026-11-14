@@ -157,6 +157,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -404,6 +405,75 @@
                 android:descendantFocusability="afterDescendants" />
         </FrameLayout>
     </LinearLayout>
+
+    <!-- clock_home: a big centred clock over the wallpaper. Down reveals the dock, Up opens the settings bar. -->
+    <FrameLayout
+        android:id="@+id/clockHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:importantForAccessibility="no">
+
+        <LinearLayout
+            android:id="@+id/clockHomeBlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextClock
+                android:id="@+id/bigClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:format12Hour="h:mm"
+                android:format24Hour="HH:mm"
+                android:textColor="#FFFFFFFF"
+                android:textSize="150sp"
+                android:fontFamily="@string/font_light"
+                android:letterSpacing="-0.03"
+                android:fontFeatureSettings="tnum"
+                android:shadowColor="#66000000"
+                android:shadowRadius="24"
+                android:includeFontPadding="false" />
+
+            <TextClock
+                android:id="@+id/bigDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:format12Hour="@string/date_format_home"
+                android:format24Hour="@string/date_format_home"
+                android:textColor="#E6FFFFFF"
+                android:textSize="22sp"
+                android:fontFamily="@string/font_regular"
+                android:letterSpacing="0.14"
+                android:shadowColor="#66000000"
+                android:shadowRadius="12"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <!-- Up from the clock: a row of settings to scroll through left and right. -->
+        <HorizontalScrollView
+            android:id="@+id/settingsScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="36dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:paddingStart="56dp"
+            android:paddingEnd="56dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/settingsBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+    </FrameLayout>
 
     <!-- The single floating glass highlight that springs between tiles. -->
     <com.gathin.tvhome.GlassView

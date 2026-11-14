@@ -145,6 +145,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private RecyclerView grid;
     private FrameLayout root;
     private WallpaperPlayer wallpaperPlayer;
+    /** clock_home: the big clock screen in front of the dock; null when the theme does not ask for it. */
+    private ClockHome clockHome;
     private GlassView glass;
     private View ambient;
     private TextView heroName;
@@ -969,6 +971,24 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     .removeCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN)
                     .build(), vpnCallback);
         }
+        if (cfg.hideTopButtons) {
+            // Invisible, not gone: the Inputs list still hangs under its pill, and nothing can focus it.
+            findViewById(R.id.topButtons).setVisibility(View.INVISIBLE);
+        }
+        if (cfg.clockHome) {
+            clockHome = new ClockHome(this, new ClockHome.Host() {
+                @Override
+                public void focusDock() {
+                    grid.post(() -> focusTile(lastFocused >= 0 && lastFocused < COLUMNS ? lastFocused : 0));
+                }
+
+                @Override
+                public void openInputs() {
+                    showInputs();
+                }
+            }, animations, hero, glass);
+            clockHome.show(false);
+        }
         // Not after recreate(): the launch intent survives it and would open the settings again.
         if (savedInstanceState == null && !openLauncherSettingsIfAsked(getIntent()) && !openLibraryIfAsked(getIntent())) {
             openInputsIfAsked(getIntent());
@@ -1059,6 +1079,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (openLibraryIfAsked(intent)) return;
         if (openInputsIfAsked(intent)) return;
         if (intent == null || !intent.hasCategory(Intent.CATEGORY_HOME)) return;
+        if (clockHome != null) clockHome.show(true);
         if (gameDay != null && !stopped) gameDay.read();
         grid.scrollToPosition(0);
         lastFocused = 0;
@@ -1445,6 +1466,18 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (resumed && event.getKeyCode() >= 1000 && RemoteKeys.handle(this, event, homeAppKeys.get(event.getKeyCode()),
                 homeHoldAppKeys.get(event.getKeyCode()))) return true;
         if (handleSettingsKey(event)) return true;
+        if (clockHome != null && openPopup == null && appLibrary == null && cardPrompt == null && !reordering) {
+            if (clockHome.swallowRepeat(event)) return true;
+            if (clockHome.handleKey(event)) return true;
+            // Up from the dock row goes back to the clock.
+            if (!clockHome.isActive() && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP && grid.hasFocus()) {
+                int tile = focusedTilePosition();
+                if (tile >= 0 && tile < COLUMNS) {
+                    if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) clockHome.show(true);
+                    return true;
+                }
+            }
+        }
         if (holdOk(event)) return true;
         if (tileMenuEnabled && !reordering && openPopup == null && cardPrompt == null
                 && event.getKeyCode() == KeyEvent.KEYCODE_MENU) {
@@ -1777,6 +1810,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     @SuppressWarnings("deprecation")
     public void onBackPressed() {
+        // clock_home: Back from the dock returns to the big clock.
+        if (clockHome != null) {
+            if (!clockHome.isActive()) clockHome.show(true);
+            return;
+        }
         // Home screen: Back goes nowhere, unless back_opens_clock is on.
         if (backOpensClock) startActivity(new Intent(this, ClockActivity.class));
     }
