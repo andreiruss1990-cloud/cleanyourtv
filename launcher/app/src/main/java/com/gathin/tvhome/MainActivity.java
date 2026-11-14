@@ -1037,7 +1037,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 public java.util.List<String> themeDock() {
                     return cfg.dockApps;
                 }
+
+                @Override
+                public String tileStyle() {
+                    return cfg.dockTileStyle;
+                }
             }, animations, hero, glass);
+            wallpaperPlayer.setNameListener(clockHome::setPainting);
             clockHome.show(false);
         }
         // Not after recreate(): the launch intent survives it and would open the settings again.

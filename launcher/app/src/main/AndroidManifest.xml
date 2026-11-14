@@ -215,6 +215,18 @@
             </intent-filter>
         </service>
 
+        <!-- clock_home's art screensaver: the theme's paintings, full screen, nothing else. -->
+        <service
+            android:name=".ArtDream"
+            android:label="Art"
+            android:exported="true"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
         <!-- tools/theme.sh writes the theme through this where the shell can't reach Android/data;
              see ThemeProvider. WRITE_SECURE_SETTINGS: the adb shell has it, ordinary apps don't. -->
         <provider

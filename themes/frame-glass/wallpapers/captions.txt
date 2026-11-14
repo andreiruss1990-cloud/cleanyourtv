@@ -1,0 +1,31 @@
+# file<TAB>Title|Painter, year (clock_home caption)
+01-le-bas-meudon-a-curve-of-the-seine-near-.jpg	Le Bas Meudon (A Curve of the Seine near Paris)|Attributed to Paul Huet, 1824
+02-lake-george.jpg	Lake George|John William Casilear, 1851
+03-washerwomen-on-the-banks-of-the-durance.jpg	Washerwomen on the Banks of the Durance|Paul Guigou, 1866
+04-autumn-on-the-hudson-river.jpg	Autumn - On the Hudson River|Jasper Francis Cropsey, 1860
+05-on-the-coast-of-new-jersey.jpg	On the Coast of New Jersey|William Trost Richards, 1883
+06-maison-de-la-poste-cagnes.jpg	Maison de la Poste, Cagnes|Auguste Renoir, 1906
+07-becalmed-off-halfway-rock.jpg	Becalmed off Halfway Rock|Fitz Henry Lane, 1860
+08-the-artist-sketching-at-mount-desert-mai.jpg	The Artist Sketching at Mount Desert, Maine|Sanford Robinson Gifford, 1864
+09-a-pier-overlooking-dordrecht.jpg	A Pier Overlooking Dordrecht|Aelbert Cuyp, 1640
+10-peaceful-valley.jpg	Peaceful Valley|Alexander Helwig Wyant, 1872
+11-view-of-the-mill-and-bridge-on-the-noord.jpg	View of the Mill and Bridge on the Noordwest Buitensingel in The Hague|Jacob Mar
+12-view-on-the-outskirts-of-caen.jpg	View on the Outskirts of Caen|Stanislas Lépine, 1872
+13-view-of-mt-washington.jpg	View of Mt. Washington|Jasper Francis Cropsey, 1881
+14-study-of-clouds-over-the-roman-campagna.jpg	Study of Clouds over the Roman Campagna|Pierre-Henri de Valenciennes, 1782
+15-wivenhoe-park-essex.jpg	Wivenhoe Park, Essex|John Constable, 1816
+16-view-of-hoorn.jpg	View of Hoorn|Abraham de Verwer, 1650
+17-river-landscape.jpg	River Landscape|Annibale Carracci, 1590
+18-the-harbor-at-lorient.jpg	The Harbor at Lorient|Berthe Morisot, 1869
+19-fallen-tree.jpg	Fallen Tree|Alexandre Calame, 1839
+20-cliffs-at-pourville.jpg	Cliffs at Pourville|Claude Monet, 1882
+21-second-beach-newport.jpg	Second Beach, Newport|Worthington Whittredge, 1878
+22-new-england-farm-in-winter.jpg	New England Farm in Winter|American 19th Century, 1850
+23-lake-lucerne.jpg	Lake Lucerne|Albert Bierstadt, 1858
+24-view-of-bregentved-forest-sjaeeland.jpg	View of Bregentved Forest, Sjaeeland|Frederik Sødring, 1830
+25-view-of-the-tiber-near-perugia.jpg	View of the Tiber near Perugia|George Inness, 1872
+26-view-near-epernon.jpg	View near Epernon|Jean-Baptiste-Camille Corot, 1850
+27-estuary-at-day-s-end.jpg	Estuary at Day's End|Simon de Vlieger, 1640
+28-a-quiet-day-near-manchester.jpg	A Quiet Day near Manchester|Alfred Thompson Bricher, 1873
+29-siout-egypt.jpg	Siout, Egypt|Sanford Robinson Gifford, 1874
+30-washerwomen-at-the-oise-river-near-valmo.jpg	Washerwomen at the Oise River near Valmondois|Charles-François Daubigny, 1865

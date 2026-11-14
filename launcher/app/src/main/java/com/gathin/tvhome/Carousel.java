@@ -39,6 +39,7 @@ final class Carousel extends FrameLayout {
     private final List<LiquidGlass> lifts = new ArrayList<>();
     private final boolean restGlass;
     private final float tileRadius;
+    private int restTop = 0x24FFFFFF, restBottom = 0x0AFFFFFF;
     private final List<View> slots = new ArrayList<>();
     private final List<Integer> bound = new ArrayList<>();
     private int count;
@@ -87,6 +88,12 @@ final class Carousel extends FrameLayout {
     /** The band's height for these items. */
     int bandHeight() {
         return itemH + 2 * pad;
+    }
+
+    /** The colour of every slot's glass at rest (set before the carousel is laid out). */
+    void setRestGlass(int top, int bottom) {
+        restTop = top;
+        restBottom = bottom;
     }
 
     /** Make this a column: slots stack downwards, the focus is the top slot. */
@@ -186,14 +193,18 @@ final class Carousel extends FrameLayout {
             lift.setAlpha(0);
             v.setBackground(restGlass
                     ? new android.graphics.drawable.LayerDrawable(new android.graphics.drawable.Drawable[]{
-                            LiquidGlass.tile(density, tileRadius), lift})
+                            new LiquidGlass(density, tileRadius, restTop, restBottom, false), lift})
                     : lift);
             addView(v, new LayoutParams(itemW, itemH));
             slots.add(v);
             lifts.add(lift);
             bound.add(Integer.MIN_VALUE);
         }
-        post(this::layoutSlots);
+        // Slots added during this layout pass miss it (they stay 0x0 until something else asks for a layout): ask now.
+        post(() -> {
+            requestLayout();
+            layoutSlots();
+        });
     }
 
     private void layoutSlots() {

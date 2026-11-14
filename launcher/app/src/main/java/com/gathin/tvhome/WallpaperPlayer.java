@@ -50,6 +50,8 @@ final class WallpaperPlayer {
     private Bitmap current;
     /** liquid_glass: told about every picture put on screen (null when it is released), for the dock's frost. */
     private java.util.function.Consumer<Bitmap> listener;
+    /** clock_home: told the file name of each picture put on screen, for the painting's caption. */
+    private java.util.function.Consumer<String> nameListener;
     private boolean active;
     private boolean closed;
     private boolean loading;
@@ -120,6 +122,7 @@ final class WallpaperPlayer {
                 // The picture covers the whole screen: the root's plain colour under it is overdraw.
                 root.setBackground(null);
                 displayed = first.getName();
+                if (nameListener != null) nameListener.accept(displayed);
                 showCaption(false);
                 if (!displayed.equals(previous)) {
                     preferences.edit().putString("image", displayed)
@@ -147,6 +150,12 @@ final class WallpaperPlayer {
     void setListener(java.util.function.Consumer<Bitmap> listener) {
         this.listener = listener;
         if (listener != null) listener.accept(current);
+    }
+
+    /** clock_home: follow the name of the picture on screen; called at once with the current one. */
+    void setNameListener(java.util.function.Consumer<String> listener) {
+        nameListener = listener;
+        if (listener != null && !displayed.isEmpty()) listener.accept(displayed);
     }
 
     /** True when the wallpaper image sits in the root (wallpaper on and pictures found). */
@@ -211,6 +220,7 @@ final class WallpaperPlayer {
                 }
                 show(bitmap);
                 displayed = next.getName();
+                if (nameListener != null) nameListener.accept(displayed);
                 showCaption(true);
                 if (!displayed.equals(previous) || changed == 0) {
                     preferences.edit().putString("image", displayed)

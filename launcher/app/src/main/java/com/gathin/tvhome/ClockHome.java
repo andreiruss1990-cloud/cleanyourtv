@@ -40,6 +40,9 @@ final class ClockHome {
 
         /** The theme's dock_apps, the row's first apps until the person changes it. */
         List<String> themeDock();
+
+        /** dock_tile_style: glyph (white glyph on clear glass), placard, framed, smoked or ivory. */
+        String tileStyle();
     }
 
     private interface Step {
@@ -97,6 +100,12 @@ final class ClockHome {
     private final List<DockApps.App> allApps = new ArrayList<>();
     private final Typeface light;
     private final Typeface regular;
+    private final String style;
+    /** The painting's title and painter, top right, shown with the dock. */
+    private final LinearLayout caption;
+    private final TextView captionTitle;
+    private final TextView captionArtist;
+    private java.util.Map<String, String> captions;
 
     private boolean home = true;
     private boolean barOpen;
@@ -119,6 +128,7 @@ final class ClockHome {
         light = font(R.string.font_light);
         regular = font(R.string.font_regular);
         store = new DockApps(activity);
+        style = host.tileStyle() == null ? "glyph" : host.tileStyle();
 
         // The grid and its floating name and highlight stay out of the way for good.
         View gridWrap = activity.findViewById(R.id.gridWrap);
@@ -162,6 +172,17 @@ final class ClockHome {
                 Gravity.BOTTOM | Gravity.START);
         dockLp.leftMargin = side;
         dockLp.bottomMargin = px(44);
+        switch (style) {
+            case "framed":
+            case "smoked":
+                dock.setRestGlass(0x8C121418, 0xA60A0B0E);
+                break;
+            case "ivory":
+                dock.setRestGlass(0xF2EFE9DD, 0xF2E3DCCB);
+                break;
+            default:
+                break;
+        }
         overlay.addView(dock, dockLp);
         dock.setAlpha(0f);
         dock.setOnTarget(this::showName);
@@ -178,6 +199,36 @@ final class ClockHome {
         heroLp.bottomMargin = px(44) + dock.bandHeight() + px(16);
         overlay.addView(hero, heroLp);
         hero.setAlpha(0f);
+
+        // ---- the painting's caption, top right ---------------------------------------------------------------
+        caption = new LinearLayout(activity);
+        caption.setOrientation(LinearLayout.VERTICAL);
+        caption.setGravity(Gravity.END);
+        captionTitle = new TextView(activity);
+        captionTitle.setTextColor(0xFFFFFFFF);
+        captionTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+        captionTitle.setGravity(Gravity.END);
+        captionTitle.setSingleLine(true);
+        if (light != null) captionTitle.setTypeface(light);
+        // A fixed-width line, right-aligned: a wrap_content title in this column was cut short on the TV.
+        caption.addView(captionTitle, new LinearLayout.LayoutParams(px(720), ViewGroup.LayoutParams.WRAP_CONTENT));
+        captionArtist = new TextView(activity);
+        captionArtist.setTextColor(0xC8FFFFFF);
+        captionArtist.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
+        captionArtist.setGravity(Gravity.END);
+        captionArtist.setSingleLine(true);
+        if (regular != null) captionArtist.setTypeface(regular);
+        LinearLayout.LayoutParams artistLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        artistLp.topMargin = px(4);
+        artistLp.gravity = Gravity.END;
+        caption.addView(captionArtist, artistLp);
+        FrameLayout.LayoutParams captionLp = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.TOP | Gravity.END);
+        captionLp.rightMargin = side;
+        captionLp.topMargin = px(48);
+        overlay.addView(caption, captionLp);
+        caption.setAlpha(0f);
 
         // ---- the settings row, in the header -----------------------------------------------------------------
         settings = SettingsItems.build(activity, host::openInputs, this::openAllApps);
@@ -297,18 +348,33 @@ final class ClockHome {
         showName();
     }
 
-    /** A dock slot: clear glass (drawn by the carousel) with the app's white glyph in the middle. */
+    /** A dock slot: glass (drawn by the carousel) holding the app in the theme's dock_tile_style. */
     private View tile(Context c) {
         FrameLayout t = new FrameLayout(c);
         ImageView glyph = new ImageView(c);
         glyph.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        t.addView(glyph, new FrameLayout.LayoutParams(px(40), px(40), Gravity.CENTER));
+        int size = px("framed".equals(style) ? 46 : 40);
+        t.addView(glyph, new FrameLayout.LayoutParams(size, size, Gravity.CENTER));
+        if ("ivory".equals(style)) glyph.setImageTintList(android.content.res.ColorStateList.valueOf(0xFF2B2824));
+        TextView name = new TextView(c);
+        name.setTextColor(0xFFFFFFFF);
+        name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
+        name.setGravity(Gravity.CENTER);
+        name.setMaxLines(2);
+        name.setPadding(px(10), 0, px(10), 0);
+        if (light != null) name.setTypeface(light);
+        t.addView(name, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER));
         return t;
     }
 
     private void bindTile(View view, DockApps.App app) {
         FrameLayout t = (FrameLayout) view;
-        ((ImageView) t.getChildAt(0)).setImageDrawable(app.glyph(activity.getResources()));
+        ImageView glyph = (ImageView) t.getChildAt(0);
+        TextView name = (TextView) t.getChildAt(1);
+        boolean placard = "placard".equals(style);
+        glyph.setImageDrawable(placard ? null : "framed".equals(style) ? app.icon : app.glyph(activity.getResources()));
+        name.setText(placard ? app.label : "");
         // While moving, the carried app is marked by a blue edge.
         t.setForeground(moving && apps.indexOf(app) == dock.current() ? carried() : null);
     }
@@ -318,6 +384,23 @@ final class ClockHome {
         g.setCornerRadius(14 * density);
         g.setStroke(px(3), 0xFF6EC1FF);
         return g;
+    }
+
+    /** The wallpaper changed: its title and painter from wallpapers/captions.txt ("file<TAB>Title|Painter, date"). */
+    void setPainting(String file) {
+        if (captions == null) {
+            java.io.File dir = Config.dir(activity);
+            captions = WallpaperCaptions.read(dir == null ? null : new java.io.File(dir, "wallpapers"));
+        }
+        String text = file == null ? null : captions.get(file);
+        if (text == null) {
+            captionTitle.setText("");
+            captionArtist.setText("");
+            return;
+        }
+        int bar = text.indexOf('|');
+        captionTitle.setText(bar < 0 ? text : text.substring(0, bar).trim());
+        captionArtist.setText(bar < 0 ? "" : text.substring(bar + 1).trim());
     }
 
     private void showName() {
@@ -360,6 +443,7 @@ final class ClockHome {
             hero.setAlpha(v);
             hero.setTranslationY((1f - v) * distance);
             header.setAlpha(v);
+            caption.setAlpha(v);
             placeFrost();
         }, end);
         dockTween.run();
@@ -383,6 +467,7 @@ final class ClockHome {
             dock.setAlpha(0f);
             hero.setAlpha(0f);
             header.setAlpha(0f);
+            caption.setAlpha(0f);
             placeFrost();
         }
     }

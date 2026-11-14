@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cormorant Garamond at weight 300 (clock_home's serif; OFL, launcher/fonts/Cormorant-Garamond-OFL.txt). Built once
+     per process, as the Outfit files are. Cormorant runs light, so each role sits one step heavier than Outfit's. -->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <font
+        android:font="@font/cormorant"
+        android:fontStyle="normal"
+        android:fontWeight="300"
+        android:fontVariationSettings="'wght' 300"
+        tools:targetApi="28" />
+</font-family>
