@@ -48,6 +48,38 @@ final class LiquidGlass extends Drawable {
         shine.setStrokeWidth(1f * density);
     }
 
+    // ---- the one recipe every clock_home surface uses -------------------------------------------------------
+
+    /** A band holding a row (the dock, the settings row): light glossy glass. */
+    static LiquidGlass band(float density) {
+        return new LiquidGlass(density, 28 * density, 0x33FFFFFF, 0x12FFFFFF, false);
+    }
+
+    /** A slot at rest: faint clear glass. */
+    static LiquidGlass tile(float density, float radiusPx) {
+        return new LiquidGlass(density, radiusPx, 0x24FFFFFF, 0x0AFFFFFF, false);
+    }
+
+    /** A slot in focus: the same glass, brighter and glossier (laid over tile() and faded in). */
+    static LiquidGlass lift(float density, float radiusPx) {
+        return new LiquidGlass(density, radiusPx, 0x52FFFFFF, 0x1FFFFFFF, true);
+    }
+
+    /** The fixed focus slot: a brighter slab with a strong rim. */
+    static LiquidGlass focus(float density) {
+        return new LiquidGlass(density, 20 * density, 0x66FFFFFF, 0x2EFFFFFF, true);
+    }
+
+    /** A card on a band (a settings entry): the same glass, fainter. */
+    static LiquidGlass card(float density) {
+        return new LiquidGlass(density, 14 * density, 0x1FFFFFFF, 0x0AFFFFFF, false);
+    }
+
+    /** Glass over a picture that moves (an app playing) or holding text (All apps): darker, so it stays readable. */
+    static LiquidGlass dark(float density) {
+        return new LiquidGlass(density, 28 * density, 0xB31C1E24, 0xCC101114, false);
+    }
+
     void setRadius(float radiusPx) {
         radius = radiusPx;
         invalidateSelf();

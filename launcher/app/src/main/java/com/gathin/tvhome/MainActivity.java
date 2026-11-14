@@ -105,6 +105,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** Sent by QuickSettingsActivity: open Launcher settings from here so Home rebuilds when they close. */
     static final String ACTION_LAUNCHER_SETTINGS = "com.gathin.tvhome.action.LAUNCHER_SETTINGS";
     /** Sent by the "library" action word of app_keys: open the App library over Home (needs app_library). */
+    /** clock_home: open All apps (the Settings button's window over an app sends it). */
+    static final String ACTION_ALL_APPS = "com.gathin.tvhome.action.ALL_APPS";
     static final String ACTION_APP_LIBRARY = "com.gathin.tvhome.action.APP_LIBRARY";
     /** The system input switcher, forwarded here by InputsRequestActivity while handle_view_inputs is on. */
     static final String ACTION_VIEW_INPUTS = "com.android.tv.action.VIEW_INPUTS";
@@ -710,7 +712,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (dockRow) {
             DockDecoration dock = new DockDecoration(COLUMNS, density, cinematic, cfg.alwaysShowNames, cfg.dockOpacity, cfg.dockGlass, cfg.dockEvenPadding, cfg.dockBand,
                     singleRow, cfg.dockBandAll);
-            if (cfg.liquidGlass) {
+            if (cfg.liquidGlass && !cfg.clockHome) {
                 if (FrostLayer.supported() && wallpaperPlayer.showing()) {
                     // Just above the wallpaper (index 0), under everything else.
                     frost = new FrostLayer(this, root, 1, 36 * density);
@@ -726,6 +728,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 });
             }
             grid.addItemDecoration(dock);
+        }
+        // clock_home: one faint frost under whichever glass band is in front (the dock, the settings row, All apps).
+        if (cfg.clockHome && cfg.liquidGlass && FrostLayer.supported() && wallpaperPlayer.showing()) {
+            frost = new FrostLayer(this, root, 1, 10 * density);
+            wallpaperPlayer.setListener(frost::setBitmap);
         }
         if (cfg.fadeRows) TopFade.attach(grid, 48 * density);
         // Reduced motion: the tiles are simply there, with no entrance (reloadApps skips it there too).
@@ -1017,44 +1024,20 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (cfg.clockHome) {
             clockHome = new ClockHome(this, new ClockHome.Host() {
                 @Override
-                public void focusDock() {
-                    grid.post(() -> focusTile(lastFocused >= 0 && lastFocused < COLUMNS ? lastFocused : 0));
-                }
-
-                @Override
                 public void openInputs() {
                     showInputs();
                 }
 
                 @Override
-                public float dockBottomInWrap() {
-                    RecyclerView.ViewHolder vh = grid.findViewHolderForAdapterPosition(0);
-                    if (vh == null) return -1f;
-                    View item = vh.itemView;
-                    View card = item.findViewById(R.id.card);
-                    if (card == null) return -1f;
-                    float cardBottom = item.getTop() + card.getTop() + card.getHeight();
-                    if (dockBandShown) dockBandExtra = dockBand.bottom - cardBottom;
-                    // Before the band was ever drawn (gridWrap hidden on the bare page), an even-padded band's usual room.
-                    float extra = dockBandExtra > 0 ? dockBandExtra : 32 * density;
-                    // Parked: the dock row's decorated top sits at the grid's top padding.
-                    float parkedCardBottom = grid.getPaddingTop() + 6 * density + card.getTop() + card.getHeight();
-                    return grid.getTop() + parkedCardBottom + Math.max(0f, extra);
+                public FrostLayer frost() {
+                    return frost;
                 }
 
                 @Override
-                public void gridMoved() {
-                    placeFrost();
-                }
-
-                @Override
-                public void refocus() {
-                    View f = getCurrentFocus();
-                    int pos = focusedTilePosition();
-                    if (f != null && pos >= 0) onTileFocused(pos, f);
+                public java.util.List<String> themeDock() {
+                    return cfg.dockApps;
                 }
             }, animations, hero, glass);
-            clockHome.setLiquid(cfg.liquidGlass);
             clockHome.show(false);
         }
         // Not after recreate(): the launch intent survives it and would open the settings again.
@@ -1146,6 +1129,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (openLauncherSettingsIfAsked(intent)) return;
         if (openLibraryIfAsked(intent)) return;
         if (openInputsIfAsked(intent)) return;
+        if (intent != null && ACTION_ALL_APPS.equals(intent.getAction()) && clockHome != null) {
+            clockHome.openAllApps();
+            return;
+        }
         if (intent == null || !intent.hasCategory(Intent.CATEGORY_HOME)) return;
         if (clockHome != null) clockHome.show(true);
         if (gameDay != null && !stopped) gameDay.read();
@@ -1513,6 +1500,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean handleSettingsKey(KeyEvent event) {
         for (int code : settingsKeycodes) {
             if (event.getKeyCode() != code) continue;
+            if (clockHome != null) {
+                // clock_home: the one settings menu, the row in the header, with Home's own glass.
+                if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) clockHome.toggleSettings();
+                return true;
+            }
             if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) {
                 Intent settings = settingsKeyPanel ? new Intent(this, QuickSettingsActivity.class)
                         : systemIntent(Settings.ACTION_SETTINGS);
@@ -1555,20 +1547,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 if (tile >= 0 && tile < COLUMNS) {
                     if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) clockHome.show(true);
                     return true;
-                }
-                // Up from the first row of apps: the rows slide away and the dock goes back to the bottom.
-                if (tile >= COLUMNS && tile < 2 * COLUMNS && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (event.getRepeatCount() > 0) return true;
-                    clockHome.toDock();
-                }
-            }
-            // Down from the dock row: the rows slide up into view (the grid then moves the focus as usual).
-            if (!clockHome.isHome() && !clockHome.showingRows() && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN
-                    && grid.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN) {
-                int tile = focusedTilePosition();
-                if (tile >= 0 && tile < COLUMNS && adapter.getItemCount() > COLUMNS) {
-                    if (event.getRepeatCount() > 0) return true;
-                    clockHome.toRows();
                 }
             }
         }
@@ -1988,8 +1966,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         Rect r = tileRect;
         r.set(0, 0, card.getWidth(), card.getHeight());
         root.offsetDescendantRectToMyCoords(card, r);
-        // clock_home slides gridWrap with a translation, which the rect above leaves out: aim where it is going.
-        if (clockHome != null) r.offset(0, Math.round(clockHome.gridShiftTarget()));
         float pad = 6f * density;        // matches GlassView's glow inset
         float scale = adapter.focusScale();
         float w = card.getWidth() * scale + 2 * pad;

@@ -8,10 +8,14 @@ switched on). Wireless debugging is off when the job is done: switch it on again
 
 - **Home:** the launcher from this fork (`com.gathin.tvhome`) with the `themes/frame-glass` theme. The bare page shows
   only the wallpaper. Down: the clock, date and weather (Open-Meteo, at most every 30 minutes while Home is on
-  screen) with the frosted-glass dock at the bottom (YouTube, YouTube Music, Kodi, Stremio, Spotify). Down again:
-  all other apps slide up. Up from the dock or Back: the bare page. Up on the bare page: the settings cards.
-- **Settings button:** opens the launcher's quick panel on the right edge, but only while Home is in front
-  (`key_filter: false`, see below).
+  screen) with the dock at the bottom: one endless row of white glass app icons, the focus fixed on the first slot
+  while the apps slide into it, the app's name above. Up from the dock or Back: the bare page.
+- **Your apps:** hold OK on an app for Move (Left/Right, then OK), Remove from Home or App info. *All apps* in the
+  settings row lists everything installed; OK adds an app to the dock or takes it off. The dock started with
+  YouTube, YouTube Music, Kodi, Stremio, Spotify and Play Store.
+- **Settings menu:** one menu, a row across the top: Wi-Fi, Bluetooth, Display, Sound, Inputs, All apps, Apps,
+  Settings, Launcher settings. Up on the bare page or the remote's Settings button opens it on Home; Down or Back
+  closes it. Inside an app the Settings button does what that app does (`key_filter: false`, see below).
 - **Power-on:** opens the PC's HDMI (HDMI 1) if the PC is on, otherwise Home (`power_on_home_always`, `power_on_input`).
   This needs the launcher's Home-button helper (Settings > Accessibility > Home button).
 - **Held volume:** on this TV any key-filtering helper drops held-key repeat, so the theme sets `key_filter: false`.
