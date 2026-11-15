@@ -19,7 +19,9 @@ switched on). Wireless debugging is off when the job is done: switch it on again
   Settings, Launcher settings. Up on the bare page or the remote's Settings button opens it on Home; Down or Back
   closes it. Inside an app the Settings button does what that app does (`key_filter: false`, see below).
 - **Power-on:** opens the PC's HDMI (HDMI 1) if the PC is on, otherwise Home (`power_on_home_always`, `power_on_input`).
-  This needs the launcher's Home-button helper (Settings > Accessibility > Home button).
+  This needs the launcher's Home-button helper (Settings > Accessibility > Home button). Because key filtering is off
+  (see Held volume), a button pressed to wake the TV does not cancel this: waking it with the YouTube button still
+  lands on the PC or Home a moment later. Turn the TV on with the power button, then open the app.
 - **Held volume:** on this TV any key-filtering helper drops held-key repeat, so the theme sets `key_filter: false`.
   Volume ramps normally. In exchange, the Settings button does what each app does when you are inside an app.
 - **Screensaver and sleep:** no screensaver, and the TV never sleeps by itself: Home stays on the painting until you

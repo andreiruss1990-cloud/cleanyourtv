@@ -44,7 +44,12 @@ for p in "${PACKAGES[@]}"; do
   printf '%s: ' "$p"; "$ADB" -s "$TARGET" shell pm enable "$p" | tr -d '\r'
 done
 if [ "${2:-}" = --stock-home ]; then
-  "$ADB" -s "$TARGET" shell cmd package set-home-activity com.google.android.apps.tv.launcherx/com.google.android.apps.tv.launcherx.home.HomeActivity
+  # Only hand Home back once the stock launcher is really enabled: Home pointing at a disabled launcher does nothing.
+  if "$ADB" -s "$TARGET" shell pm enable com.google.android.apps.tv.launcherx | grep -q "new state: enabled"; then
+    "$ADB" -s "$TARGET" shell cmd package set-home-activity com.google.android.apps.tv.launcherx/com.google.android.apps.tv.launcherx.home.HomeActivity
+  else
+    echo "The stock launcher did not enable, so Home was left as it is." >&2
+  fi
 fi
 "$ADB" -s "$TARGET" shell sync
 echo "Still disabled:"; "$ADB" -s "$TARGET" shell pm list packages -d

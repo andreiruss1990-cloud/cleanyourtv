@@ -36,6 +36,8 @@ final class ArtSync {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler main = new Handler(Looper.getMainLooper());
     private boolean busy;
+    /** One sync at a time in the process: a recreated Home must not start a second writer on the same files. */
+    private static final java.util.concurrent.atomic.AtomicBoolean RUNNING = new java.util.concurrent.atomic.AtomicBoolean();
 
     ArtSync(Context context, String base, int everyHours) {
         this.context = context;
@@ -50,6 +52,7 @@ final class ArtSync {
      */
     void maybeRun(Runnable done) {
         if (busy || System.currentTimeMillis() - prefs.getLong("synced_at", 0) < everyMs) return;
+        if (!RUNNING.compareAndSet(false, true)) return;
         busy = true;
         executor.execute(() -> {
             boolean changed = false;
@@ -59,6 +62,8 @@ final class ArtSync {
                 ok = true;
             } catch (Exception | OutOfMemoryError ignored) {
                 // offline or the address is wrong: try again on a later Home
+            } finally {
+                RUNNING.set(false);
             }
             final boolean any = changed;
             final boolean good = ok;
@@ -94,17 +99,16 @@ final class ArtSync {
         java.util.Iterator<String> keys = pictures.keys();
         while (keys.hasNext()) {
             String name = keys.next();
-            if (!name.matches("[A-Za-z0-9._-]+")) continue;
+            if (!name.matches("[A-Za-z0-9][A-Za-z0-9._-]*")) continue;
             names.add(name);
             File file = new File(pool, name);
             if (file.isFile() && file.length() > 0) continue;
             String url = pictures.getJSONObject(name).optString("url", "");
             if (url.isEmpty() || url.contains("..")) continue;
-            byte[] data = get(url.startsWith("https://") ? url : base + url, MAX_PICTURE);
-            if (data == null || data.length == 0) continue;
-            File part = new File(pool, name + ".part");
-            try (FileOutputStream out = new FileOutputStream(part)) {
-                out.write(data);
+            File part = new File(pool, name + "." + Thread.currentThread().getId() + ".part");
+            if (!download(url.startsWith("https://") ? url : base + url, part, MAX_PICTURE)) {
+                part.delete();
+                continue;
             }
             if (part.renameTo(file)) {
                 changed = true;
@@ -139,6 +143,32 @@ final class ArtSync {
             out.write(bytes);
         }
         return part.renameTo(localIndex);
+    }
+
+    /** Streams address into file, at most max bytes; false (and a partial file to delete) on any failure. */
+    private static boolean download(String address, File file, long max) {
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) new URL(address).openConnection();
+            connection.setConnectTimeout(10_000);
+            connection.setReadTimeout(30_000);
+            if (connection.getResponseCode() != 200) return false;
+            long total = 0;
+            try (InputStream in = connection.getInputStream(); FileOutputStream out = new FileOutputStream(file)) {
+                byte[] buffer = new byte[16384];
+                int n;
+                while ((n = in.read(buffer)) > 0) {
+                    total += n;
+                    if (total > max) return false;
+                    out.write(buffer, 0, n);
+                }
+            }
+            return total > 0;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
     }
 
     private static byte[] get(String address, long max) throws Exception {

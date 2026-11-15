@@ -55,6 +55,10 @@ final class WallpaperPlayer {
     private File displayedFile;
     /** art_source: where the pictures come from now (a collection, or Auto's pick); empty: the theme's own. */
     private java.util.function.Supplier<List<File>> poolProvider;
+    /** Pictures that failed to decode: never picked again this session (an art pool file can be truncated). */
+    private final java.util.Set<String> unreadable = new java.util.HashSet<>();
+    /** changeNow() arrived while a decode was running: change again as soon as it lands. */
+    private boolean changePending;
     private boolean active;
     private boolean closed;
     private boolean loading;
@@ -170,6 +174,7 @@ final class WallpaperPlayer {
     /** Show a picture from the current pool now (a new collection was chosen, or the collections arrived). */
     void changeNow() {
         preferences.edit().putLong("changed", 0).apply();
+        if (loading) changePending = true;
         update();
     }
 
@@ -193,6 +198,11 @@ final class WallpaperPlayer {
     private List<File> playable() {
         if (poolProvider != null) {
             List<File> pool = poolProvider.get();
+            if (pool != null && !unreadable.isEmpty()) {
+                List<File> readable = new java.util.ArrayList<>(pool.size());
+                for (File f : pool) if (!unreadable.contains(f.getAbsolutePath())) readable.add(f);
+                pool = readable;
+            }
             if (pool != null && !pool.isEmpty()) return pool;
         }
         if (moods.isEmpty()) return files;
@@ -233,6 +243,7 @@ final class WallpaperPlayer {
                 }
                 if (bitmap == null) {
                     files.remove(next);
+                    unreadable.add(next.getAbsolutePath());
                     Log.w("TvHome.Wallpaper", "Skipping unreadable image: " + next.getName());
                     update();
                     return;
@@ -245,6 +256,10 @@ final class WallpaperPlayer {
                 if (!displayed.equals(previous) || changed == 0) {
                     preferences.edit().putString("image", displayed)
                             .putLong("changed", System.currentTimeMillis()).apply();
+                }
+                if (changePending) {
+                    changePending = false;
+                    changeNow();
                 }
             });
         });

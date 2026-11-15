@@ -1108,6 +1108,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean openInputsIfAsked(Intent intent) {
         if (intent == null || !ACTION_VIEW_INPUTS.equals(intent.getAction())) return false;
         setIntent(new Intent(Intent.ACTION_MAIN));
+        if (clockHome != null) {
+            // clock_home draws no Inputs pill to hang the list from: open it as the settings row's Inputs card does.
+            root.post(() -> {
+                if (!isFinishing()) showInputs();
+            });
+            return true;
+        }
         View anchor = topMenu ? findViewById(R.id.btnSettings) : btnInputs;
         if (anchor.getVisibility() != View.VISIBLE) return true;
         if (anchor.isLaidOut()) {
@@ -1551,7 +1558,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         for (int code : settingsKeycodes) {
             if (event.getKeyCode() != code) continue;
             if (clockHome != null) {
-                // clock_home: the one settings menu, the row in the header, with Home's own glass.
+                // clock_home: the one settings menu, the row in the header, with Home's own glass. Not over an open
+                // popup (Inputs) or prompt: Back closes those first.
+                if (openPopup != null || appLibrary != null || cardPrompt != null) return true;
                 if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) clockHome.toggleSettings();
                 return true;
             }

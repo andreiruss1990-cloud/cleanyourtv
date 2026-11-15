@@ -71,7 +71,7 @@ public final class QuickSettingsActivity extends Activity {
         int side = Math.round(56 * density);
         int bandW = getResources().getDisplayMetrics().widthPixels - 2 * side;
         items = SettingsItems.build(this,
-                () -> SettingsItems.start(this, new Intent(MainActivity.ACTION_VIEW_INPUTS).setPackage(getPackageName())),
+                () -> SettingsItems.start(this, new Intent(this, MainActivity.class).setAction(MainActivity.ACTION_VIEW_INPUTS)),
                 () -> SettingsItems.start(this, new Intent(this, MainActivity.class).setAction(MainActivity.ACTION_ALL_APPS)),
                 () -> SettingsItems.start(this, new Intent(this, MainActivity.class).setAction(MainActivity.ACTION_ART)));
         row = SettingsItems.row(this, density, bandW, items);

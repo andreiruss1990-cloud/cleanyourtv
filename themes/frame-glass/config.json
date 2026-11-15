@@ -54,6 +54,6 @@
   "power_on_input": "com.tcl.tvinput/.TvPassThroughService/HW15",
   "key_filter": false,
   "weather": true,
-  "weather_lat": 46.7712,
-  "weather_lon": 23.6236
+  "weather_lat": 46.77,
+  "weather_lon": 23.62
 }

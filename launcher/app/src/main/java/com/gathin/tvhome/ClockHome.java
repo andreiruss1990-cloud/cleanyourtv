@@ -940,7 +940,8 @@ final class ClockHome {
         if (first) {
             okDown = true;
             okLong = false;
-        } else if (down && okDown && !okLong) {
+        } else if (down && okDown && !okLong && event.getEventTime() - event.getDownTime() >= RemoteKeys.HOLD_MS) {
+            // A hold is time, not the first repeat: IR remotes repeat within ~100 ms of a normal press.
             okLong = true;
             openMenu();
         } else if (up) {
