@@ -76,6 +76,8 @@ def picture(c):
     else:
         url, fit = f"{c['iiif']}/full/!1920,1080/0/default.jpg", "mat"
     artist = re.sub(r"^(Attributed to|Circle of|Follower of|Workshop of|Style of|Imitator of)\s+", "", c["artist"] or "")
+    # Museum notes on the name ("(mentioned on object)", "(I)") are not part of how a painter is known.
+    artist = re.sub(r"\s*\([^)]*\)", "", artist).strip()
     title = c["title"] or "Untitled"
     who = ", ".join(x for x in (artist, str(c["year"]) if c["year"] else "") if x)
     text = f"{title}|{who}"

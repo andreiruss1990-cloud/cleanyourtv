@@ -568,12 +568,14 @@ final class ClockHome {
         menuSelected = 0;
         refreshMenu();
         menu.setVisibility(View.VISIBLE);
+        hero.setVisibility(View.INVISIBLE);   // the menu sits where the app's name is
     }
 
     private void closeMenu() {
         if (!menuOpen) return;
         menuOpen = false;
         menu.setVisibility(View.GONE);
+        hero.setVisibility(View.VISIBLE);
     }
 
     private void refreshMenu() {
@@ -940,8 +942,9 @@ final class ClockHome {
         if (first) {
             okDown = true;
             okLong = false;
-        } else if (down && okDown && !okLong && event.getEventTime() - event.getDownTime() >= RemoteKeys.HOLD_MS) {
-            // A hold is time, not the first repeat: IR remotes repeat within ~100 ms of a normal press.
+        } else if (down && okDown && !okLong && ((event.getFlags() & KeyEvent.FLAG_LONG_PRESS) != 0
+                || event.getEventTime() - event.getDownTime() >= RemoteKeys.HOLD_MS)) {
+            // A hold is Android's long press (or HOLD_MS), not the first repeat: IR remotes repeat within ~100 ms.
             okLong = true;
             openMenu();
         } else if (up) {

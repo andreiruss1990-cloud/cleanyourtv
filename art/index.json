@@ -448,7 +448,7 @@
   "rijks-20078750.jpg": {
    "url": "https://iiif.micr.io/OOoAD/0,738,7059,3971/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "View of Civita Castellana|1792",
+   "caption": "View of Civita Castellana|Daniël Dupré, 1792",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -610,7 +610,7 @@
   "rijks-200381875.jpg": {
    "url": "https://iiif.micr.io/xaOZx/full/!1920,1080/0/default.jpg",
    "fit": "mat",
-   "caption": "View of Nagasaki bay|1833",
+   "caption": "View of Nagasaki bay|workshop of Kawahara Keiga, 1833",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -708,7 +708,7 @@
   "rijks-20026185.jpg": {
    "url": "https://iiif.micr.io/REUyh/124,0,5349,3009/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "The Bridge Over the IJssel River at Doesburg|1889",
+   "caption": "The Bridge Over the IJssel River at Doesburg|Willem Roelofs, 1889",
    "museum": "Rijksmuseum",
    "tags": []
   },
@@ -740,7 +740,7 @@
   "rijks-20028564.jpg": {
    "url": "https://iiif.micr.io/qtNvj/0,219,3826,2152/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Landschap met een vaart|1873",
+   "caption": "Landschap met een vaart|Geo Poggenbeek, 1873",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -812,7 +812,7 @@
   "rijks-200110479.jpg": {
    "url": "https://iiif.micr.io/wXuhk/0,818,6786,3817/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "The View from the Batavian Embassy in Paris|1801",
+   "caption": "The View from the Batavian Embassy in Paris|Josephus Augustus Knip, 1801",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -839,7 +839,7 @@
   "rijks-20029334.jpg": {
    "url": "https://iiif.micr.io/gxOZj/0,529,6776,3812/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Winter Scene, with a City in the Distance|1850",
+   "caption": "Winter Scene, with a City in the Distance|Charles Leickert, 1850",
    "museum": "Rijksmuseum",
    "tags": [
     "winter",
@@ -895,7 +895,7 @@
   "rijks-20028222.jpg": {
    "url": "https://iiif.micr.io/xMvbX/303,0,3314,1864/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "View of the Castel Sant'Angelo in Rome|1750",
+   "caption": "View of the Castel Sant'Angelo i…|Caspar van Wittel [rejected attribution], 1750",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -926,6 +926,16 @@
    "museum": "National Gallery of Art",
    "tags": [
     "summer"
+   ]
+  },
+  "rijks-200108944.jpg": {
+   "url": "https://iiif.micr.io/cJXML/0,153,4333,2437/1920,1080/0/default.jpg",
+   "fit": "fill",
+   "caption": "Dordrecht in the Winter|Siebe Johannes ten Cate, 1892",
+   "museum": "Rijksmuseum",
+   "tags": [
+    "winter",
+    "snow"
    ]
   },
   "nga-50299.jpg": {
@@ -970,15 +980,6 @@
    "url": "https://api.nga.gov/iiif/ce2e25da-4383-426f-933b-e06c3fabac1f/0,1132,11835,6657/1920,1080/0/default.jpg",
    "fit": "fill",
    "caption": "The Bridge of Louis Philippe|Jean-Baptiste-Armand Guillaumin, 1875",
-   "museum": "National Gallery of Art",
-   "tags": [
-    "summer"
-   ]
-  },
-  "nga-52192.jpg": {
-   "url": "https://api.nga.gov/iiif/bf6c7c73-82e8-4ef7-8ac8-71920c8eb2b9/0,422,27871,15677/1920,1080/0/default.jpg",
-   "fit": "fill",
-   "caption": "The Harbor at Lorient|Berthe Morisot, 1869",
    "museum": "National Gallery of Art",
    "tags": [
     "summer"
@@ -1085,20 +1086,10 @@
     "snow"
    ]
   },
-  "rijks-200108944.jpg": {
-   "url": "https://iiif.micr.io/cJXML/0,153,4333,2437/1920,1080/0/default.jpg",
-   "fit": "fill",
-   "caption": "Dordrecht in the Winter|1892",
-   "museum": "Rijksmuseum",
-   "tags": [
-    "winter",
-    "snow"
-   ]
-  },
   "rijks-200108317.jpg": {
    "url": "https://iiif.micr.io/RXguV/0,280,5805,3265/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "The Singel Bridge at the Paleisstraat in Amsterdam|1896",
+   "caption": "The Singel Bridge at the Paleisstraat in Amsterdam|George Hendrik Breitner, 1896",
    "museum": "Rijksmuseum",
    "tags": [
     "winter",
@@ -1113,6 +1104,15 @@
    "tags": [
     "winter",
     "snow"
+   ]
+  },
+  "nga-52192.jpg": {
+   "url": "https://api.nga.gov/iiif/bf6c7c73-82e8-4ef7-8ac8-71920c8eb2b9/0,422,27871,15677/1920,1080/0/default.jpg",
+   "fit": "fill",
+   "caption": "The Harbor at Lorient|Berthe Morisot, 1869",
+   "museum": "National Gallery of Art",
+   "tags": [
+    "summer"
    ]
   },
   "nga-195850.jpg": {
@@ -1210,7 +1210,7 @@
   "rijks-200109454.jpg": {
    "url": "https://iiif.micr.io/eVjnU/0,245,5780,3251/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Morning Ride along the Beach|1876",
+   "caption": "Morning Ride along the Beach|Anton Mauve, 1876",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -1244,7 +1244,7 @@
   "rijks-20078759.jpg": {
    "url": "https://iiif.micr.io/vjudo/0,778,7076,3980/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Women’s Skating Competition on Stadsgracht, Leeuwarden, 21 January 1809|1810",
+   "caption": "Women’s Skating Competition on Stadsgracht, Leeuwarden, 21…|Nicolaas Baur, 1810",
    "museum": "Rijksmuseum",
    "tags": [
     "winter",
@@ -1300,7 +1300,7 @@
   "rijks-200109843.jpg": {
    "url": "https://iiif.micr.io/jdPGY/0,372,3820,2149/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Vrouwen aan zee|1885",
+   "caption": "Vrouwen aan zee|Jan Toorop, 1885",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -1369,7 +1369,7 @@
   "rijks-200730058.jpg": {
    "url": "https://iiif.micr.io/SfHXL/full/!1920,1080/0/default.jpg",
    "fit": "mat",
-   "caption": "Flower Still-life with an Alabaster Vase|1783",
+   "caption": "Flower Still-life with an Alabaster Vase|Gerard van Spaendonck, 1783",
    "museum": "Rijksmuseum",
    "tags": [
     "spring"
@@ -1385,7 +1385,7 @@
   "rijks-20025767.jpg": {
    "url": "https://iiif.micr.io/dEjtR/full/!1920,1080/0/default.jpg",
    "fit": "mat",
-   "caption": "Still Life with Flowers and Fruit|Jan Evert Morel (I), 1800",
+   "caption": "Still Life with Flowers and Fruit|Jan Evert Morel, 1800",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -1717,7 +1717,7 @@
   "rijks-200111828.jpg": {
    "url": "https://iiif.micr.io/VFoeu/0,344,6551,3685/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "The Herepad in the Haagse Bos|1778",
+   "caption": "The Herepad in the Haagse Bos|Paulus Constantijn la Fargue, 1778",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -1816,7 +1816,7 @@
   "rijks-200110466.jpg": {
    "url": "https://iiif.micr.io/foUHc/0,863,6278,3531/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "The Garden and Coach House of 524 Keizersgracht in Amsterdam|1772",
+   "caption": "The Garden and Coach House of 524 Keizersgracht in Amsterdam|Hendrik Keun, 1772",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -2187,7 +2187,7 @@
   "rijks-20015960.jpg": {
    "url": "https://iiif.micr.io/IhJqG/0,359,3720,2092/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Winter Landscape|1850",
+   "caption": "Winter Landscape|Gustave Courbet [rejected attribution], 1850",
    "museum": "Rijksmuseum",
    "tags": [
     "winter",
@@ -2263,11 +2263,11 @@
     "snow"
    ]
   },
-  "nga-176904.jpg": {
-   "url": "https://api.nga.gov/iiif/655778ad-36d6-42b8-875c-7a04994f2eeb/0,1118,9404,5290/1920,1080/0/default.jpg",
-   "fit": "fill",
-   "caption": "Landscape|Morton Livingston Schamberg, 1912",
-   "museum": "National Gallery of Art",
+  "rijks-20028536.jpg": {
+   "url": "https://iiif.micr.io/kTLAt/full/!1920,1080/0/default.jpg",
+   "fit": "mat",
+   "caption": "Street in Montmartre, Paris, in the Winter|Willem de Zwart, 1885",
+   "museum": "Rijksmuseum",
    "tags": [
     "winter",
     "snow"
@@ -2321,7 +2321,7 @@
   "rijks-20026019.jpg": {
    "url": "https://iiif.micr.io/mqFjY/0,830,6504,3658/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "View of the house of the resident, Mr. J. Ph. van Zuylen van Nyevelt, in B…|1828",
+   "caption": "View of the house of the resident, Mr. J. Ph…|Antoine Auguste Joseph Payen, 1828",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -2348,7 +2348,7 @@
   "rijks-200107949.jpg": {
    "url": "https://iiif.micr.io/rkbGp/0,144,5864,3298/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Water Meadows on the River IJssel|Willem Roelofs (I), 1870",
+   "caption": "Water Meadows on the River IJssel|Willem Roelofs, 1870",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -2373,7 +2373,7 @@
   "rijks-2004267.jpg": {
    "url": "https://iiif.micr.io/JBFfm/0,686,5344,3006/1920,1080/0/default.jpg",
    "fit": "fill",
-   "caption": "Rue Notre-Dame, Paris|1866",
+   "caption": "Rue Notre-Dame, Paris|Johan Barthold Jongkind, 1866",
    "museum": "Rijksmuseum",
    "tags": [
     "summer"
@@ -3178,14 +3178,14 @@
     "nga-35094.jpg",
     "nga-52179.jpg",
     "nga-52202.jpg",
+    "rijks-200108944.jpg",
     "nga-50299.jpg",
     "nga-46523.jpg",
     "nga-230998.jpg",
     "rijks-20026282.jpg",
     "nga-66430.jpg",
     "nga-72881.jpg",
-    "nga-46630.jpg",
-    "nga-52192.jpg"
+    "nga-46630.jpg"
    ]
   },
   {
@@ -3420,7 +3420,7 @@
     "rijks-20029056.jpg",
     "nga-178318.jpg",
     "rijks-20020092.jpg",
-    "nga-176904.jpg"
+    "rijks-20028536.jpg"
    ]
   },
   {
